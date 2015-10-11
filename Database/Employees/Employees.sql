@@ -1,0 +1,20 @@
+BEGIN TRANSACTION;
+CREATE TABLE `Person` (
+	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`Name`	TEXT NOT NULL,
+	`Last Name`	TEXT NOT NULL,
+	`BirthDate`	TEXT,
+	`Sex`	TEXT,
+	`Phone`	TEXT,
+	`Email`	TEXT,
+	`CellPhone`	TEXT
+);
+CREATE TABLE "Employees" (
+	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`Username`	TEXT NOT NULL,
+	`Password`	TEXT NOT NULL,
+	`Person`	INTEGER NOT NULL,
+	`StartDate`	TEXT NOT NULL,
+	FOREIGN KEY(`Person`) REFERENCES Person ( Id )
+);
+COMMIT;
