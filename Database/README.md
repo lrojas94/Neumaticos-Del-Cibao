@@ -1,0 +1,2 @@
+####Database Folder
+This folder manages all migrations and data sets used around the project. The idea is to expor .cvs data files as well as .sql schema files that will allow us to migrate data and schemas.
