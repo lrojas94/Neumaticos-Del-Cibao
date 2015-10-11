@@ -22,7 +22,7 @@ namespace Neumaticos_del_Cibao.Database
     
         public long Id { get; set; }
         public string Name { get; set; }
-        public string Last_Name { get; set; }
+        public string LastName { get; set; }
         public string Sex { get; set; }
         public string BirthDate { get; set; }
         public string Phone { get; set; }
