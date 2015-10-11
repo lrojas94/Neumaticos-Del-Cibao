@@ -10,12 +10,12 @@ CREATE TABLE `Persons` (
 	`ContactRelativeName`	TEXT,
 	`ContactRelativePhone`	TEXT
 );
-CREATE TABLE `Employees` (
+CREATE TABLE "Employees" (
 	`Id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`Username`	TEXT NOT NULL,
 	`Password`	TEXT NOT NULL,
 	`StartDate`	TEXT,
-	`Person`	INTEGER,
-	FOREIGN KEY(`Person`) REFERENCES Persons(Id)
+	`Person`	INTEGER NOT NULL UNIQUE,
+	FOREIGN KEY(`Person`) REFERENCES Persons ( Id )
 );
 COMMIT;

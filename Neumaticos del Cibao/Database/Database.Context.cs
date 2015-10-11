@@ -25,6 +25,7 @@ namespace Neumaticos_del_Cibao.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
     }
 }
