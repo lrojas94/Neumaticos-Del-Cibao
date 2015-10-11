@@ -3,6 +3,7 @@
 
 # Database
 *.db
+*.bd
 # User-specific files
 *.suo
 *.user
