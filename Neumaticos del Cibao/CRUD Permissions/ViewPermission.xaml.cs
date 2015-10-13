@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Neumaticos_del_Cibao.CRUD_Permissions
 {
     /// <summary>
-    /// Interaction logic for Page1.xaml
+    /// Interaction logic for ViewPermission.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class ViewPermission : Page
     {
-        public Page1()
+        public ViewPermission()
         {
             InitializeComponent();
         }
