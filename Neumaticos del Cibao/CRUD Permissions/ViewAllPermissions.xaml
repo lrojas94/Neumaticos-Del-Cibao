@@ -6,9 +6,20 @@
       xmlns:local="clr-namespace:Neumaticos_del_Cibao.CRUD_Permissions"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="ViewAllPermissions">
+      Title="ViewAllPermissions" Background="lightgray">
 
     <Grid>
-        
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" Height="190" Width="280"/>
+        <Button x:Name="button" Content="Eliminar" HorizontalAlignment="Left" Margin="215,253,0,0" VerticalAlignment="Top" Width="75" />
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="58,14,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="214"/>
+        <Label x:Name="label" Content="Filtrar:&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.739,0.586"/>
+        <Button x:Name="button1" Content="Modificar" HorizontalAlignment="Left" Margin="116,253,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button3" Content="Agregar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="10,253,0,0"/>
     </Grid>
+    <!--falta poner que los datos se carguen de la base de datos -->
+    <!-- y luego de que se conecten la base de datos y la interfaz, 
+    que al darle al boton de eliminar, se elimine el permiso seleccionado, 
+    tambien habria que actualizar los usuarios y quitarle este permiso.
+    por ultimo habria que implementar la funcion de filtrar la cual ayudara a buscar entre todos los
+    permisos en caso de que sean demasiados -->
 </Page>
