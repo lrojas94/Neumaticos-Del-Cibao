@@ -25,15 +25,5 @@ namespace Neumaticos_del_Cibao.CRUD_Permissions
         {
             InitializeComponent();
         }
-
-        private void button3_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new ViewPermission();
-        }
-
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            //Content = new ViewPermission(Name, Description);
-        }
     }
 }
