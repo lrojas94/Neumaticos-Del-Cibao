@@ -6,9 +6,15 @@
       xmlns:local="clr-namespace:Neumaticos_del_Cibao.CRUD_Permissions"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="Page1">
-
+      Title="Crear Permiso" Background="LightGray">
+    
     <Grid>
-        
-    </Grid>
+        <Label Content="Nombre:" Margin="10,41,0,232" HorizontalAlignment="Left" Width="58"></Label>
+            <TextBox Margin="106,77,49.333,123.667"></TextBox>
+            <Label Content="Descripcion: " Margin="10,68,219,206"></Label>
+            <TextBox Margin="106,41,48,234"></TextBox>
+            <Button Content="Crear." Margin="169,240,49,34"></Button>
+            <!-- falta poner que cuando se da al boton crear, agregar a la base de datos el nombre y la descripcion -->
+            <!--como acceder a esta interfaz?-->
+        </Grid>
 </Page>
