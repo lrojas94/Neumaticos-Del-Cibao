@@ -81,11 +81,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CRUD Permissions\CreatePermissions.xaml.cs">
-      <DependentUpon>CreatePermissions.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CRUD Permissions\ViewAllPermissions.xaml.cs">
       <DependentUpon>ViewAllPermissions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CRUD Permissions\ViewPermission.xaml.cs">
+      <DependentUpon>ViewPermission.xaml</DependentUpon>
     </Compile>
     <Compile Include="Database\Database.cs">
       <AutoGen>True</AutoGen>
@@ -95,11 +95,11 @@
     <Compile Include="Database\User.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Page Include="CRUD Permissions\CreatePermissions.xaml">
+    <Page Include="CRUD Permissions\ViewAllPermissions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CRUD Permissions\ViewAllPermissions.xaml">
+    <Page Include="CRUD Permissions\ViewPermission.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

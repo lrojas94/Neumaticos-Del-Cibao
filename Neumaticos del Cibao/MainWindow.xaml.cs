@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Neumaticos_del_Cibao.CRUD_Permissions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Neumaticos_del_Cibao
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Content = new ViewAllPermissions();
         }
     }
 }
