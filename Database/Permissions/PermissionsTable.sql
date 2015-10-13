@@ -1,8 +1,7 @@
 BEGIN TRANSACTION;
-CREATE TABLE `Permissions` (
-	`Id`	INTEGER,
-	`PermissionName`	TEXT,
-	`Description`	TEXT,
-	PRIMARY KEY(Id)
+CREATE TABLE "Permissions" (
+	`Id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	`Name`	TEXT,
+	`Description`	TEXT
 );
 COMMIT;
