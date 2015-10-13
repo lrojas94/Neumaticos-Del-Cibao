@@ -13,16 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.Apps.Employee
+namespace Neumaticos_del_Cibao.Apps.Employees
 {
     /// <summary>
-    /// Interaction logic for EmployeeForm.xaml
+    /// Interaction logic for AddEmployee.xaml
     /// </summary>
-    public partial class EmployeeForm : Page
+    public partial class AddEmployee : Page
     {
-        public EmployeeForm()
+        public AddEmployee()
         {
             InitializeComponent();
+            Common.Placeholder namePlaceholder = new Common.Placeholder("Ej. Miguel Jose", name);
+            Common.Placeholder lastNamePlaceholder = new Common.Placeholder("Ej. Perez Rodriguez", lastName);
+
         }
     }
 }
