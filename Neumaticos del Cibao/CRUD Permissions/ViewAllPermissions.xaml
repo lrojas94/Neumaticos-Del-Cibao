@@ -14,11 +14,11 @@
             <TextBox x:Name="Name" Height="{Binding ActualHeight,ElementName=FiltarLabel}" Margin="122,10,74.333,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
             <DataGrid x:Name="Permissions" Margin="67,54,74.333,106" MinHeight="100" MinWidth="100"/>
 
-            <Label x:Name="FiltarLabel" Content="Filtrar:" Margin="67,10,300.333,0" RenderTransformOrigin="-0.739,0.586" Height="32" VerticalAlignment="Top"/>
-            <StackPanel Orientation="Horizontal" Height="20" Margin="67,0,74.333,81" VerticalAlignment="Bottom" >
-                <Button Width="50">Anadir</Button>
-                <Button Width="50">Modificar</Button>
-                <Button Width="50">Elminar</Button>
+            <Label x:Name="FiltarLabel" Content="Filtrar:" Margin="67,10,300.333,0" RenderTransformOrigin="-0.739,0.586" Height="25" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="67,0,74.333,81" Width="{Binding ActualWidth,ElementName=Permissions}" VerticalAlignment="Bottom" >
+                <Button Width="50" x:Name="btnAnadir">Anadir</Button>
+                <Button Width="{Binding ActualWidth,ElementName=btnAnadir}" Name="btnModificar">Modificar</Button>
+                <Button Width="{Binding ActualWidth,ElementName=btnAnadir}" x:Name="btnEliminar">Eliminar</Button>
             </StackPanel>
         </Grid>
     </ScrollViewer>
