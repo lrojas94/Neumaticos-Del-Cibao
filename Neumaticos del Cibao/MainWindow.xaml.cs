@@ -27,9 +27,5 @@ namespace Neumaticos_del_Cibao
             Content = new Apps.Employees.AddEmployee();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new ViewAllPermissions();
-        }
     }
 }

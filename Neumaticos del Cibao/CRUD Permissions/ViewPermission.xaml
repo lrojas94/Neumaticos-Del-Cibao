@@ -7,14 +7,15 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="ViewPermission" Background="LightGray">
-
-    <Grid>
-        <Label Content="Nombre:" Margin="10,41,0,232" HorizontalAlignment="Left" Width="58"></Label>
-        <TextBox Margin="106,77,49.333,123.667"></TextBox>
-        <Label Content="Descripcion: " Margin="10,68,219,206"></Label>
-        <TextBox Margin="106,41,48,234"></TextBox>
-        <Button Content="Crear." Margin="169,240,49,34"></Button>
-        <!-- falta poner que cuando se da al boton crear, agregar a la base de datos el nombre y la descripcion -->
-        <!--como acceder a esta interfaz?-->
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="auto">
+        <Grid>
+            <Label Content="Nombre:" Margin="10,41,232,0" Height="27" VerticalAlignment="Top"/>
+            <TextBox Margin="107,88,48,112" ></TextBox>
+            <Label Content="Descripcion: " Margin="10,88,219,0" Height="26" VerticalAlignment="Top"></Label>
+            <TextBox Margin="107,41,48,0" Height="25" VerticalAlignment="Top"></TextBox>
+            <Button Content="Crear." Margin="0,0,49,35" HorizontalAlignment="Right" Width="82" Height="26" VerticalAlignment="Bottom"></Button>
+            <!-- falta poner que cuando se da al boton crear, agregar a la base de datos el nombre y la descripcion -->
+            <!--como acceder a esta interfaz?-->
+        </Grid>
+    </ScrollViewer>
 </Page>
