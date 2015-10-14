@@ -1,0 +1,31 @@
+﻿<Page x:Class="Neumaticos_del_Cibao.CRUD_Permissions.ViewAllPermissions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Neumaticos_del_Cibao.CRUD_Permissions"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="417"
+      Title="ViewAllPermissions" Background="lightgray">
+
+    <ScrollViewer VerticalScrollBarVisibility="auto">
+        <Grid>
+
+            <TextBox x:Name="Name" Height="{Binding ActualHeight,ElementName=FiltarLabel}" Margin="122,10,74.333,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+            <DataGrid x:Name="Permissions" Margin="67,54,74.333,106" MinHeight="100" MinWidth="100"/>
+
+            <Label x:Name="FiltarLabel" Content="Filtrar:" Margin="67,10,300.333,0" RenderTransformOrigin="-0.739,0.586" Height="32" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="67,0,74.333,81" VerticalAlignment="Bottom" >
+                <Button Width="50">Anadir</Button>
+                <Button Width="50">Modificar</Button>
+                <Button Width="50">Elminar</Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+    <!--falta poner que los datos se carguen de la base de datos -->
+    <!-- y luego de que se conecten la base de datos y la interfaz, 
+    que al darle al boton de eliminar, se elimine el permiso seleccionado, 
+    tambien habria que actualizar los usuarios y quitarle este permiso.
+    por ultimo habria que implementar la funcion de filtrar la cual ayudara a buscar entre todos los
+    permisos en caso de que sean demasiados -->
+</Page>
