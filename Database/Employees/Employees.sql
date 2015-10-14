@@ -15,7 +15,7 @@ CREATE TABLE "Employees" (
 	`Username`	TEXT NOT NULL,
 	`Password`	TEXT NOT NULL,
 	`StartDate`	TEXT,
-	`Person`	INTEGER NOT NULL UNIQUE,
-	FOREIGN KEY(`Person`) REFERENCES Persons ( Id )
+	`PersonId`	INTEGER NOT NULL UNIQUE,
+	FOREIGN KEY(`PersonId`) REFERENCES Persons ( Id )
 );
 COMMIT;
