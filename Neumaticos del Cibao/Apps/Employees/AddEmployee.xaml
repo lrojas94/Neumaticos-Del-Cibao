@@ -4,9 +4,10 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Neumaticos_del_Cibao.Apps.Employees"
+      xmlns:common="clr-namespace:Neumaticos_del_Cibao.Apps.Common"
       xmlns:Converters="clr-namespace:IKriv.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="600"
+      d:DesignHeight="500" d:DesignWidth="600"
       Title="AddEmployee">
 
 
@@ -14,11 +15,38 @@
         <Converters:MathConverter x:Key="mathConverter" />
     </Page.Resources>
     <Grid Background="#FFECF0F1">
-        <TextBox x:Name="name" HorizontalAlignment="Left" Height="22" Margin="10,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding Path=ActualWidth, ElementName=title, Converter={StaticResource mathConverter},ConverterParameter=x/2 - 5}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000"/>
-        <Label x:Name="title" Content="Agregar Nuevo Usuario" Margin="10,10,10,0" VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,2" BorderBrush="#FF3498DB" HorizontalContentAlignment="Right"/>
-        <Label x:Name="nameLabel" Content="Nombres" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="{Binding Path=ActualWidth, ElementName=name}" FontWeight="Bold"/>
-        <TextBox x:Name="lastName" HorizontalAlignment="Right" Height="22" Margin="0,86,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding ActualWidth, ConverterParameter=x/2 - 5, Converter={StaticResource mathConverter}, ElementName=title}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000"/>
-        <Label x:Name="lastNameLabel" Content="Apellidos" Margin="0,55,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" HorizontalAlignment="Right" FontWeight="Bold"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Label x:Name="personalInfo" Content="Información Personal" Margin="10,56,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
+                <Label x:Name="title" Content="Agregar Nuevo Usuario" VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-3,0" Padding="5"/>
+                <TextBox x:Name="name" HorizontalAlignment="Left" Height="25" Margin="10,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding Path=ActualWidth, ElementName=personalInfo, Converter={StaticResource mathConverter},ConverterParameter=x/2 - 5}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000"/>
+                <Label x:Name="nameLabel" Content="Nombres" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" Width="{Binding Path=ActualWidth, ElementName=name}" FontWeight="Bold"/>
+                <TextBox x:Name="lastName" HorizontalAlignment="Right" Height="25" Margin="0,119,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding ActualWidth, ConverterParameter=x/2 - 5, Converter={StaticResource mathConverter}, ElementName=personalInfo}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000"/>
+                <Label x:Name="lastNameLabel" Content="Apellidos" Margin="0,93,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" HorizontalAlignment="Right" FontWeight="Bold"/>
+                <Label x:Name="sexLabel" Content="Sexo" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" FontWeight="Bold"/>
+                <ComboBox x:Name="sex" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top" Width="{Binding ActualWidth,ElementName=name}" RenderTransformOrigin="0.492,0.591" Height="25">
+                    <ComboBoxItem Content="Masculino"></ComboBoxItem>
+                    <ComboBoxItem Content="Femenino"></ComboBoxItem>
+                </ComboBox>
+                <Label x:Name="birthDateLabel" Content="Fecha de Nacimiento" Margin="0,151,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=lastName}" FontWeight="Bold" HorizontalAlignment="Right"/>
+                <common:NoWatermarkDatePicker PlaceholderText="Seleccione Fecha de Nacimiento" x:Name="birthDate" Margin="0,177,10,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Right" Width="{Binding ActualWidth, ElementName=lastName}"/>
+                <TextBox x:Name="email" HorizontalAlignment="Left" Height="25" Margin="10,233,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000"/>
+                <Label x:Name="emailLabel" Content="Correo Electrónico" HorizontalAlignment="Left" Margin="10,207,0,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" FontWeight="Bold"/>
+                <TextBox x:Name="phone" Height="25" Margin="0,233,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=lastName}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000" HorizontalAlignment="Right"/>
+                <Label x:Name="phoneLabel" Content="Número de Teléfono o Celular" Margin="0,207,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=lastName}" FontWeight="Bold" HorizontalAlignment="Right"/>
+                <Label x:Name="userInfo" Content="Informaciones de Empleado" Margin="10,263,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="#FF95A5A6" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
+                <TextBox x:Name="username" HorizontalAlignment="Left" Height="25" Margin="10,326,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" RenderTransformOrigin="0.59,0.455" Foreground="#7F000000"/>
+                <Label x:Name="usernameLabel" Content="Nombre de Usuario" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" FontWeight="Bold"/>
+                <Label x:Name="passwordLabel" Content="Contraseña" HorizontalAlignment="Left" Margin="10,356,0,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=name}" FontWeight="Bold"/>
+                <Label x:Name="passwordConfirmLabel" Content="Confirmar Contraseña" HorizontalAlignment="Right" Margin="0,356,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=lastName}" FontWeight="Bold"/>
+                <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="10,382,0,0" VerticalAlignment="Top" Height="25" Width="{Binding ActualWidth, ElementName=name}"/>
+                <PasswordBox x:Name="passwordConfirm" HorizontalAlignment="Right" Margin="0,382,10,0" VerticalAlignment="Top" Height="25" Width="{Binding ActualWidth, ElementName=lastName}"/>
+                <Label x:Name="startDateLabel" Content="Fecha de Inicio de Trabajo" HorizontalAlignment="Right" Margin="0,300,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=lastName}" FontWeight="Bold"/>
+                <common:NoWatermarkDatePicker PlaceholderText="Inicio de Trabajo" x:Name="startDate" Margin="0,326,10,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Right" Width="{Binding ActualWidth, ElementName=lastName}"/>
+                <Button x:Name="saveChanges" Content="Guardar Cambios" Margin="10,425,10,0" Height="30" VerticalAlignment="Top"/>
 
+            </Grid>
+        </ScrollViewer>
     </Grid>
+
 </Page>

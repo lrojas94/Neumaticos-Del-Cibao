@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:Neumaticos_del_Cibao"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <SolidColorBrush x:Key="PeterRiver" Color="#FF3498DB"/>
+        <SolidColorBrush x:Key="BelizeHole" Color="#FF2980B9"/>
+        <SolidColorBrush x:Key="Concrete" Color="#FF95A5A6"/>
+
     </Application.Resources>
 </Application>

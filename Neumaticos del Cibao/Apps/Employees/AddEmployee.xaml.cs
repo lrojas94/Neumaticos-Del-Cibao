@@ -20,12 +20,28 @@ namespace Neumaticos_del_Cibao.Apps.Employees
     /// </summary>
     public partial class AddEmployee : Page
     {
-        public AddEmployee()
+        private Database.Employee employee;
+        private Database.Person person;
+
+        private void readFromEmployee()
+        {
+        }
+
+        public AddEmployee(Database.Employee employee = null)
         {
             InitializeComponent();
             Common.Placeholder namePlaceholder = new Common.Placeholder("Ej. Miguel Jose", name);
             Common.Placeholder lastNamePlaceholder = new Common.Placeholder("Ej. Perez Rodriguez", lastName);
+            if(employee != null)
+            {
+                //Fill fields with employee data.
+                this.employee = employee;
+                readFromEmployee();
+            }
+        }
 
+        private void saveChanges_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

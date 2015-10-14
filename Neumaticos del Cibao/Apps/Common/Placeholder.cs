@@ -19,6 +19,17 @@ namespace Neumaticos_del_Cibao.Apps.Common
     class Placeholder
     {
         private string placeHolderText;
+        public string PlaceHolderText
+        {
+            get
+            {
+                return placeHolderText;
+            }
+            set
+            {
+                placeHolderText = value;
+            }
+        }
         public Placeholder(string placeHolderText,TextBox textBox)
         {
             this.placeHolderText = placeHolderText;
