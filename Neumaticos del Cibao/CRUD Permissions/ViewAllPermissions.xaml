@@ -17,7 +17,7 @@
             <Label x:Name="FiltarLabel" Content="Filtrar:" Margin="67,10,300.333,0" RenderTransformOrigin="-0.739,0.586" Height="32" VerticalAlignment="Top"/>
             <StackPanel Orientation="Horizontal" Height="20" Margin="67,0,74.333,81" VerticalAlignment="Bottom" >
                 <Button Width="50">Anadir</Button>
-                <Button Width="{Binding ActualHeight,ElementName=}">Modificar</Button>
+                <Button Width="50">Modificar</Button>
                 <Button Width="50">Elminar</Button>
             </StackPanel>
         </Grid>

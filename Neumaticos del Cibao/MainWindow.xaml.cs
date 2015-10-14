@@ -26,9 +26,5 @@ namespace Neumaticos_del_Cibao
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
-        {
-            Content = new ViewAllPermissions();
-        }
     }
 }
