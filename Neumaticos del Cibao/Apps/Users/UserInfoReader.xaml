@@ -4,23 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Neumaticos_del_Cibao"
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="400"
+      mc:Ignorable="d"
+      d:DesignHeight="500" d:DesignWidth="650"
       Title="UserInfoReader" >
-
-    <Grid Background="#95a5a6">
-        <Label x:Name="TitleLabel" Content="Informacion Usuarios" Height="64" Margin="2,0,0,0" VerticalAlignment="Top" Width="542" FontFamily="Century Gothic" FontSize="32" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <ComboBox x:Name="UsersComboBox" HorizontalAlignment="Left" Height="38" Margin="5,56,0,0" VerticalAlignment="Top" Width="540"/>
-        <Label x:Name="NameLabel" Content="Nombre" HorizontalAlignment="Left" Height="29" Margin="14,146,0,0" VerticalAlignment="Top" Width="86" FontFamily="Century Gothic" FontSize="15"/>
-        <Label x:Name="LastNameLabel" Content="Apellido" HorizontalAlignment="Left" Height="36" Margin="16,184,0,0" VerticalAlignment="Top" Width="73" FontFamily="Century Gothic" FontSize="15"/>
-        <Label x:Name="PhoneLabel" Content="Telefono" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,267,0,0" FontFamily="Century Gothic" FontSize="15"/>
-        <Label x:Name="BirthdateLabel" Content="Fecha Nacimiento" HorizontalAlignment="Left" Margin="15,225,0,0" VerticalAlignment="Top" Height="32" Width="146" FontFamily="Century Gothic" FontSize="15"/>
-        <Label x:Name="EmailLabel" Content="Correo Electronico" HorizontalAlignment="Left" Height="29" Margin="16,301,0,0" VerticalAlignment="Top" Width="145" FontFamily="Century Gothic" FontSize="15"/>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="34" Margin="182,143,-146,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364"/>
-        <TextBox x:Name="LastNameTextBox" HorizontalAlignment="Left" Height="34" Margin="182,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364"/>
-        <TextBox x:Name="BirthdateTextBox" HorizontalAlignment="Left" Height="34" Margin="182,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364"/>
-        <TextBox x:Name="PhoneTextBox" HorizontalAlignment="Left" Height="34" Margin="182,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364"/>
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="34" Margin="182,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="364"/>
-
+    <Grid Background="#FFECF0F1">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <Label x:Name="TitleLabel" Content="Informacion Usuarios" Height="47" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="32" FontWeight="Bold" HorizontalContentAlignment="Center" Background="#2980b9" Foreground="White" RenderTransformOrigin="1.026,4.019"/>
+                <ComboBox x:Name="UsersComboBox" Height="32" Margin="16,56,18,0" VerticalAlignment="Top"/>
+                <Label x:Name="NameLabel" Content="Nombres" HorizontalAlignment="Left" Height="29" Margin="14,144,0,0" VerticalAlignment="Top" Width="86" FontFamily="Arial" FontSize="15" FontWeight="Bold"/>
+                <Label x:Name="LastNameLabel" Content="Apellido" HorizontalAlignment="Left" Height="36" Margin="336,144,0,0" VerticalAlignment="Top" Width="73" FontFamily="Arial" FontSize="15" FontWeight="Bold"/>
+                <Label x:Name="PhoneLabel" Content="Telefono" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="336,301,0,0" FontFamily="Arial" FontSize="15" FontWeight="Bold"/>
+                <Label x:Name="BirthdateLabel" Content="Fecha Nacimiento" HorizontalAlignment="Left" Margin="336,219,0,0" VerticalAlignment="Top" Height="32" Width="146" FontFamily="Arial" FontSize="15" FontWeight="Bold"/>
+                <Label x:Name="EmailLabel" Content="Correo Electronico" HorizontalAlignment="Left" Height="29" Margin="14,301,0,0" VerticalAlignment="Top" Width="145" FontFamily="Arial" FontSize="15" FontWeight="Bold"/>
+                <Label x:Name="SexLabel" Content="Sexo" HorizontalAlignment="Left" Height="27" Margin="14,222,0,0" VerticalAlignment="Top" Width="80" FontFamily="Arial" FontSize="15" FontWeight="Bold"/>
+                <TextBox x:Name="NameTextBox" Height="25" Margin="10,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253"/>
+                <TextBox x:Name="LastNameTextBox" Height="25" Margin="322,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253"/>
+                <TextBox x:Name="BirthdateTextBox" Height="25" Margin="322,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253"/>
+                <TextBox x:Name="PhoneTextBox" Height="25" Margin="322,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="253"/>
+                <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="25" Margin="10,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="253"/>
+                <TextBox x:Name="SexTextBox" HorizontalAlignment="Left" Height="25" Margin="10,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="253"/>
+                <Label x:Name="Linelabel" Margin="2,105,2,0" VerticalAlignment="Top" Height="23" BorderThickness="0,0,0,1" BorderBrush="#FF95A5A6"/>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>
