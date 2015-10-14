@@ -21,27 +21,73 @@ namespace Neumaticos_del_Cibao.Apps.Employees
     public partial class AddEmployee : Page
     {
         private Database.Employee employee;
-        private Database.Person person;
 
-        private void readFromEmployee()
+        private void employeeToForm()
         {
+            name.Text = employee.Person.Name;
+            lastName.Text = employee.Person.LastName;
+            sex.SelectedIndex = employee.Person.Sex == "Masculino" ? 0 : 1;
+            birthDate.Text = employee.Person.BirthDate;
+            email.Text = employee.Person.Email;
+            phone.Text = employee.Person.Phone;
+            username.Text = employee.Username;
+            /*
+            Here we should set password, but since no decryption/encryption algorithm is ready,
+            this won't be taken into account right now.
+            */
+        }
+
+        private void formToEmployee()
+        {
+            bool newEntry = employee == null ? false : true;
+            Database.databaseEntities database = new Database.databaseEntities();
+            if(employee == null)
+            {
+                employee = new Database.Employee();
+                employee.Person = new Database.Person();
+            }
+
+            employee.Person.Name = name.Text;
+            employee.Person.LastName = lastName.Text;
+            employee.Person.Sex = sex.SelectedValue.ToString();
+            employee.Person.BirthDate = birthDate.Text;
+            employee.Person.Email = email.Text;
+            employee.Person.Phone = phone.Text;
+            employee.Username = username.Text;
+            /*
+                Once again, here we're supposed to encrypt password.
+            */
+            if (newEntry)
+            {
+                database.Employees.Add(employee);
+                database.Persons.Add(employee.Person);
+            }
+            database.SaveChangesAsync();
+
+        }
+
+        private bool validate()
+        {
+            return true;
         }
 
         public AddEmployee(Database.Employee employee = null)
         {
             InitializeComponent();
-            Common.Placeholder namePlaceholder = new Common.Placeholder("Ej. Miguel Jose", name);
-            Common.Placeholder lastNamePlaceholder = new Common.Placeholder("Ej. Perez Rodriguez", lastName);
+            /*
+                Placeholder class works fine when it's about 
+            */
             if(employee != null)
             {
                 //Fill fields with employee data.
                 this.employee = employee;
-                readFromEmployee();
+                employeeToForm();
             }
         }
 
         private void saveChanges_Click(object sender, RoutedEventArgs e)
         {
+            formToEmployee();
         }
     }
 }
