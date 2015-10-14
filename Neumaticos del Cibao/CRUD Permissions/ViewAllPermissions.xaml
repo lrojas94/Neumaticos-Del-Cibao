@@ -11,14 +11,15 @@
     <ScrollViewer VerticalScrollBarVisibility="auto">
         <Grid>
 
-            <TextBox x:Name="textBox" Height="{Binding ActualHeight,ElementName=label}" Margin="122,10,74.333,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
-            <DataGrid x:Name="dataGrid" Margin="67,54,74.333,0" VerticalAlignment="Top" Height="190" MinHeight="100" MinWidth="100"/>
+            <TextBox x:Name="Name" Height="{Binding ActualHeight,ElementName=FiltarLabel}" Margin="122,10,74.333,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+            <DataGrid x:Name="Permissions" Margin="67,54,74.333,106" MinHeight="100" MinWidth="100"/>
 
-            <Label x:Name="label" Content="Filtrar:" Margin="67,10,300.333,0" RenderTransformOrigin="-0.739,0.586" Height="32" VerticalAlignment="Top"/>
-            <Button x:Name="button1" Content="Modificar" HorizontalAlignment="Left" Margin="177,0,0,38" VerticalAlignment="Bottom" Width="76" Height="20" Click="button1_Click"/>
-            <Button x:Name="button2" Content="Eliminar" HorizontalAlignment="Right" Margin="0,0,74,38" Width="50" Height="20" VerticalAlignment="Bottom" />
-            <Button x:Name="button" Content="Anadir" HorizontalAlignment="Left" Margin="67,0,0,38" VerticalAlignment="Bottom" Width="50" Height="20"/>
-
+            <Label x:Name="FiltarLabel" Content="Filtrar:" Margin="67,10,300.333,0" RenderTransformOrigin="-0.739,0.586" Height="32" VerticalAlignment="Top"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="67,0,74.333,81" VerticalAlignment="Bottom" >
+                <Button Width="50">Anadir</Button>
+                <Button Width="{Binding ActualHeight,ElementName=}">Modificar</Button>
+                <Button Width="50">Elminar</Button>
+            </StackPanel>
         </Grid>
     </ScrollViewer>
     <!--falta poner que los datos se carguen de la base de datos -->
