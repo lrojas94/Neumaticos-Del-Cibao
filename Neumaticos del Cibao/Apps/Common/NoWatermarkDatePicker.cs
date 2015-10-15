@@ -45,9 +45,9 @@ namespace Neumaticos_del_Cibao.Apps.Common
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            DatePickerTextBox box = base.GetTemplateChild("PART_TextBox") as DatePickerTextBox;
+            var box = GetTemplateChild("PART_TextBox") as DatePickerTextBox;
             box.ApplyTemplate();
-            ContentControl control = box.Template.FindName("PART_Watermark",box) as ContentControl;
+            var control = box.Template.FindName("PART_Watermark",box) as ContentControl;
             control.Content = "";
             placeholder = new Placeholder(placeholderText, box);
         }

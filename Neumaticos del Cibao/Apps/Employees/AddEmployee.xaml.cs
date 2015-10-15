@@ -39,8 +39,8 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         private void formToEmployee()
         {
-            bool newEntry = employee == null ? false : true;
-            Database.databaseEntities database = new Database.databaseEntities();
+            var newEntry = employee == null ? true : false;
+            var database = new Database.databaseEntities();
             if(employee == null)
             {
                 employee = new Database.Employee();
@@ -49,20 +49,37 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
             employee.Person.Name = name.Text;
             employee.Person.LastName = lastName.Text;
-            employee.Person.Sex = sex.SelectedValue.ToString();
+            employee.Person.Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString() ;
             employee.Person.BirthDate = birthDate.Text;
             employee.Person.Email = email.Text;
             employee.Person.Phone = phone.Text;
             employee.Username = username.Text;
             /*
                 Once again, here we're supposed to encrypt password.
+                We're saving it as the database will complain when password
+                field is left empty/null. 
             */
+            employee.Password = password.Password.ToString(); 
             if (newEntry)
             {
                 database.Employees.Add(employee);
-                database.Persons.Add(employee.Person);
             }
-            database.SaveChangesAsync();
+
+            try
+            {
+                database.SaveChangesAsync();
+            }
+            catch (System.Data.Entity.Validation.DbEntityValidationException e)
+            {
+                Console.WriteLine(e.StackTrace);
+                foreach(var error in e.EntityValidationErrors)
+                {
+                    foreach(var valError in error.ValidationErrors)
+                    {
+                        Console.WriteLine(valError.ErrorMessage);
+                    }
+                }
+            }
 
         }
 
