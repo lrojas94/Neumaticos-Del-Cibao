@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 
 namespace Neumaticos_del_Cibao.Apps.Common
 {
@@ -22,10 +23,10 @@ namespace Neumaticos_del_Cibao.Apps.Common
     /// Note that PlaceholderText is set to "Inicio de Trabajo", which will appear as watermark for
     /// this datepicker.
     /// </summary>
-    public class NoWatermarkDatePicker : DatePicker
+    public class NoWatermarkDatePicker : DatePicker,IPlaceholder
     {
-        Placeholder placeholder;
         string placeholderText = "";
+
         public string PlaceholderText
         {
             get
@@ -35,10 +36,19 @@ namespace Neumaticos_del_Cibao.Apps.Common
             set
             {
                 placeholderText = value;
-                if(placeholder != null)
-                {
-                    placeholder.PlaceHolderText = placeholderText;
-                }
+            }
+        }
+
+        public string RealText
+        {
+            get
+            {
+                return Text;
+            }
+
+            set
+            {
+                Text = value;
             }
         }
 
@@ -48,8 +58,9 @@ namespace Neumaticos_del_Cibao.Apps.Common
             var box = GetTemplateChild("PART_TextBox") as DatePickerTextBox;
             box.ApplyTemplate();
             var control = box.Template.FindName("PART_Watermark",box) as ContentControl;
-            control.Content = "";
-            placeholder = new Placeholder(placeholderText, box);
+            control.Content = placeholderText;
+            control.Foreground = new SolidColorBrush(Colors.Black) { Opacity = 0.5 };
+
         }
     }
 }

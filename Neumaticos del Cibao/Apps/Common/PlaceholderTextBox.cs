@@ -16,58 +16,76 @@ using System.Windows.Shapes;
 
 namespace Neumaticos_del_Cibao.Apps.Common
 {
-    class Placeholder
+    public class PlaceholderTextBox : TextBox,IPlaceholder
     {
-        private string placeHolderText;
-        public string PlaceHolderText
+        private string placeholderText;
+        public string PlaceholderText
 
         {
             get
             {
-                return placeHolderText;
+                return placeholderText;
             }
             set
             {
-                placeHolderText = value;
+                placeholderText = value;
+            }
+        }
+        
+        public string RealText
+
+        {
+            get
+            {
+                if(Text == placeholderText)
+                {
+                    return "";
+                }
+                return Text;
+            }
+            set
+            {
+                Text = value;
+                Foreground.Opacity = 1;
             }
         }
 
-        public Placeholder(string placeHolderText,TextBox textBox)
+        public PlaceholderTextBox(string placeHolderText)
         {
-            this.placeHolderText = placeHolderText;
-            textBox.GotFocus += gotFocus;
-            textBox.LostFocus += lostFocus;
-            textBox.Loaded += initPlaceholder;
+            this.placeholderText = placeHolderText;
+            GotFocus += gotFocus;
+            LostFocus += lostFocus;
+            Loaded += initPlaceholder;
         }
 
-        private void initPlaceholder(object sender, EventArgs e)
+        public void initPlaceholder(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
             if (textBox.Text == "")
             //Text may be initialized before calling placeHolderText, so, better this way.
             {
-                textBox.Text = placeHolderText;
+                textBox.Text = placeholderText;
                 textBox.Foreground = new SolidColorBrush(Colors.Black) { Opacity = 0.5 };
             }
             
         }
 
-        private void gotFocus(object sender, EventArgs e)
+        public void gotFocus(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
-            if(textBox.Text == placeHolderText)
+            if(textBox.Text == placeholderText)
             {
                 textBox.Text = "";
             }
             textBox.Foreground.Opacity = 1;
         }
 
-        private void lostFocus(object sender, EventArgs e)
+        public void lostFocus(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
             if(textBox.Text == "")
             {
-                textBox.Text = placeHolderText;
+                textBox.Text = placeholderText;
                 textBox.Foreground.Opacity = 0.5;
             }
         }
