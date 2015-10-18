@@ -9,9 +9,7 @@
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Compradores">
-                <Grid Background="#FFE5E5E5">
-
-                </Grid>
+                <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Vendedores">
                 <Grid Background="#FFE5E5E5"/>
