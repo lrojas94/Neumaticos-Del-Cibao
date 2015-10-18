@@ -81,11 +81,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
     <Compile Include="Apps\Employees\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Apps\Common\Placeholder.cs" />
+    <Compile Include="Apps\Common\PlaceholderTextBox.cs" />
     <Compile Include="Converters\MathConverter.cs" />
     <Compile Include="Database\Database.cs">
       <AutoGen>True</AutoGen>
