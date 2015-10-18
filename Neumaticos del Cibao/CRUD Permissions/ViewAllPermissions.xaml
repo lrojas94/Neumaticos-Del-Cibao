@@ -11,10 +11,10 @@
     <ScrollViewer VerticalScrollBarVisibility="auto">
         <Grid>
 
-            <TextBox x:Name="name" Height="{Binding ActualHeight,ElementName=filtarLabel}" Margin="123,10,73,0" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="name" Height="{Binding ActualHeight,ElementName=filterLabel}" Margin="123,10,73,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
             <DataGrid x:Name="permissions" Margin="67,59,74,101" MinHeight="100" MinWidth="100"/>
 
-            <Label x:Name="filtarLabel" Content="Filtrar:" Margin="67,10,300,0" RenderTransformOrigin="-0.739,0.586" Height="25" VerticalAlignment="Top"/>
+            <Label x:Name="filterLabel" Content="Filtrar:" Margin="67,10,300,0" RenderTransformOrigin="-0.739,0.586" Height="25" VerticalAlignment="Top"/>
             <StackPanel Orientation="Horizontal" Height="20" Margin="67,0,74.333,81" Width="{Binding ActualWidth,ElementName=permissions}" VerticalAlignment="Bottom" >
                 <Button Width="50" x:Name="btnAnadir" Content="Anadir"/>
                 <Button Width="{Binding ActualWidth, ElementName=btnAnadir}" x:Name="btnModificar" Content="Modificar"/>
