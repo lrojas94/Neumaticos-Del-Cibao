@@ -31,6 +31,7 @@ namespace Neumaticos_del_Cibao.Apps.Employees
             email.Text = employee.Person.Email;
             phone.Text = employee.Person.Phone;
             username.Text = employee.Username;
+            startDate.Text = employee.StartDate;
             /*
             Here we should set password, but since no decryption/encryption algorithm is ready,
             this won't be taken into account right now.
@@ -50,10 +51,11 @@ namespace Neumaticos_del_Cibao.Apps.Employees
             employee.Person.Name = name.Text;
             employee.Person.LastName = lastName.Text;
             employee.Person.Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString() ;
-            employee.Person.BirthDate = birthDate.Text;
+            employee.Person.BirthDate = birthDate.RealText;
             employee.Person.Email = email.Text;
             employee.Person.Phone = phone.Text;
             employee.Username = username.Text;
+            employee.StartDate = startDate.Text;
             /*
                 Once again, here we're supposed to encrypt password.
                 We're saving it as the database will complain when password
