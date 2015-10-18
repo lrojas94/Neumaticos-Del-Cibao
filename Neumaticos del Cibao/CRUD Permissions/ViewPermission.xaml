@@ -9,11 +9,14 @@
       Title="ViewPermission" Background="LightGray">
     <ScrollViewer VerticalScrollBarVisibility="auto">
         <Grid>
-            <Label Content="Nombre:" Margin="10,41,232,0" Height="27" VerticalAlignment="Top"/>
-            <TextBox Margin="107,88,48,112" ></TextBox>
-            <Label Content="Descripcion: " Margin="10,88,219,0" Height="26" VerticalAlignment="Top"></Label>
-            <TextBox Margin="107,41,48,0" Height="25" VerticalAlignment="Top"></TextBox>
-            <Button Content="Crear." Margin="0,0,49,35" HorizontalAlignment="Right" Width="82" Height="26" VerticalAlignment="Bottom"></Button>
+            <Label Content="Nombre" x:Name="NameLabel" Margin="10,41,232,0" Height="27" VerticalAlignment="Top"/>
+            <TextBox Margin="107,41,48,0"  x:Name="Name" Height="{Binding ActualHeight, ElementName=NameLabel}" VerticalAlignment="Top"></TextBox>
+            
+            <Label x:Name="DescriptionLabel" Content="Descripcion" Margin="10,88,219,0" Height="27" VerticalAlignment="Top"></Label>
+            <TextBox x:Name="Description" HorizontalAlignment="Left" Height="{Binding ActualHeight, ElementName=DescriptionLabel}" Margin="107,91,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="{Binding ActualWidth, ElementName=Name}"/>
+            
+            <Button x:Name="BtnCreate" Content="Crear" Margin="0,0,49,35" HorizontalAlignment="Right" Width="82" Height="26" VerticalAlignment="Bottom"></Button>
+            
             <!-- falta poner que cuando se da al boton crear, agregar a la base de datos el nombre y la descripcion -->
             <!--como acceder a esta interfaz?-->
         </Grid>
