@@ -8,6 +8,24 @@
         <SolidColorBrush x:Key="PeterRiver" Color="#FF3498DB"/>
         <SolidColorBrush x:Key="BelizeHole" Color="#FF2980B9"/>
         <SolidColorBrush x:Key="Concrete" Color="#FF95A5A6"/>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="#FFECF0F1"/>
+
+        <Style x:Key="TitleBase" TargetType="Label">
+            <Setter Property="Background" Value="{DynamicResource PeterRiver}"></Setter>
+            <Setter Property="BorderBrush" Value="{DynamicResource BelizeHole}"></Setter>
+            <Setter Property="BorderThickness" Value="0,0,0,3"></Setter>
+            <Setter Property="FontSize" Value="21.333"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+        <Style x:Key="SubtitleBase" TargetType="Label">
+            <Setter Property="BorderBrush" Value="{DynamicResource Concrete}"></Setter>
+            <Setter Property="BorderThickness" Value="0,0,0,1"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Right"></Setter>
+        </Style>
+
+
 
     </Application.Resources>
 </Application>

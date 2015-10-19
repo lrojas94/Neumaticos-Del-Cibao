@@ -21,5 +21,10 @@ namespace Neumaticos_del_Cibao.Database
         public long PersonId { get; set; }
     
         public virtual Person Person { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} - ({1} {2})", Username, Person.Name, Person.LastName);
+        }
     }
 }
