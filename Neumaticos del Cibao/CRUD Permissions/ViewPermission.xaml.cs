@@ -1,5 +1,4 @@
-﻿using Neumaticos_del_Cibao.CRUD_Permissions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,19 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao
+namespace Neumaticos_del_Cibao.CRUD_Permissions
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ViewPermission.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ViewPermission : Page
     {
-        public MainWindow()
+        public ViewPermission()
         {
             InitializeComponent();
-            Content = new Apps.Employees.AddEmployee();
         }
-
-
     }
 }

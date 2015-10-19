@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;D:\Universidad\Ingenieria de Software\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Edward\Documents\Projects\Neumaticos-Del-Cibao\Database\database.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,6 +14,14 @@
           <Property Name="Password" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="StartDate" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="PersonId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Persons">
           <Key>
@@ -43,6 +51,7 @@
         </Association>
         <EntityContainer Name="databaseModelStoreContainer">
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
+          <EntitySet Name="Permissions" EntityType="Self.Permissions" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
@@ -60,6 +69,7 @@
             <End Role="Person" EntitySet="Persons" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
+          <EntitySet Name="Permissions" EntityType="databaseModel.Permission" />
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -99,6 +109,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -126,6 +144,15 @@
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="databaseModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
