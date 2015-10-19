@@ -4,11 +4,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Neumaticos_del_Cibao.Apps.Employees"
+      xmlns:Common ="clr-namespace:Neumaticos_del_Cibao.Apps.Common"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="600"
       Title="EmployeePermissions">
 
-    <Grid Background="{DynamicResource BackgroundBrush}">
-        
+    <Grid Style="{StaticResource BaseGrid}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Label x:Name="title" Style="{StaticResource TitleBase}" Content="Permisos de Usuario" VerticalAlignment="Top"/>
+                <Label x:Name="employeeLabel" Content="Empleado" VerticalAlignment="Top" Margin="10,46,10,0" FontWeight="Bold"/>
+                <Common:PlaceholderTextBox PlaceholderText="Buscar Empleado" x:Name="searchBox" Margin="0,72,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth,ElementName=employeeLabel}" HorizontalAlignment="Right" Height="25" VerticalContentAlignment="Center" TextChanged="searchBox_TextChanged"/>
+                <ListBox x:Name="employees" Margin="10,102,10,0" Width="{Binding ActualWidth,ElementName=searchBox}" Height="88" VerticalAlignment="Top" SelectionChanged="employees_SelectionChanged"></ListBox>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Page>

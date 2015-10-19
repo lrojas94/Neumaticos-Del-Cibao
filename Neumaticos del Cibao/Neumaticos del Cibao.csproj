@@ -93,6 +93,9 @@
       <DependentUpon>ViewPermission.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\Common\PlaceholderTextBox.cs" />
+    <Compile Include="Apps\Employees\EmployeePermissions.xaml.cs">
+      <DependentUpon>EmployeePermissions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\MathConverter.cs" />
     <Compile Include="Database\Database.cs">
       <AutoGen>True</AutoGen>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CRUD Permissions\ViewPermission.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\Employees\EmployeePermissions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

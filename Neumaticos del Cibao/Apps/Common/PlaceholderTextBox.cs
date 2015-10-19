@@ -50,6 +50,13 @@ namespace Neumaticos_del_Cibao.Apps.Common
             }
         }
 
+        public PlaceholderTextBox()
+        {
+            GotFocus += gotFocus;
+            LostFocus += lostFocus;
+            Loaded += initPlaceholder;
+        }
+
         public PlaceholderTextBox(string placeHolderText)
         {
             this.placeholderText = placeHolderText;
