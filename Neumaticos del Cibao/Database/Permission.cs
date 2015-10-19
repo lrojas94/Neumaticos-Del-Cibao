@@ -12,14 +12,10 @@ namespace Neumaticos_del_Cibao.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Permission
     {
         public long Id { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string StartDate { get; set; }
-        public long PersonId { get; set; }
-    
-        public virtual Person Person { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
