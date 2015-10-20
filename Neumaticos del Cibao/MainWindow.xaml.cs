@@ -24,7 +24,7 @@ namespace Neumaticos_del_Cibao
         public MainWindow()
         {
             InitializeComponent();
-            Content = new ViewAllPermissions();
+            Content = new Apps.Employees.AddEmployee();
         }
 
 
