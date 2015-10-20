@@ -17,9 +17,9 @@ namespace Neumaticos_del_Cibao
     /// <summary>
     /// Interaction logic for UserInfoReader.xaml
     /// </summary>
-    public partial class UserInfoReader : Page
+    public partial class EmployeeReader : Page
     {
-        public UserInfoReader()
+        public EmployeeReader()
         {
             InitializeComponent();
         }
