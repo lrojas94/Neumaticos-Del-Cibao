@@ -14,6 +14,12 @@ namespace Neumaticos_del_Cibao.Database
     
     public partial class Employee
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Employee()
+        {
+            this.Permissions = new HashSet<Permission>();
+        }
+    
         public long Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -21,5 +27,7 @@ namespace Neumaticos_del_Cibao.Database
         public long PersonId { get; set; }
     
         public virtual Person Person { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Permission> Permissions { get; set; }
     }
 }

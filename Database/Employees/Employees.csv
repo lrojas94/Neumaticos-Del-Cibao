@@ -1,1 +1,3 @@
-Id,Username,Password,StartDate,Person
+Id,Username,Password,StartDate,PersonId
+1,lrojas,rojass,11/11/2015,1
+5,jrojas,rojass,,5

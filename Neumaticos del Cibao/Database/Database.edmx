@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Edward\Documents\Projects\Neumaticos-Del-Cibao\Database\database.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;D:\Universidad\Ingenieria de Software\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -14,6 +14,14 @@
           <Property Name="Password" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="StartDate" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="PersonId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees_Permissions">
+          <Key>
+            <PropertyRef Name="EmployeeId" />
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="EmployeeId" Type="integer" Nullable="false" />
+          <Property Name="PermissionId" Type="integer" Nullable="false" />
         </EntityType>
         <EntityType Name="Permissions">
           <Key>
@@ -49,13 +57,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employees_Permissions_0_0">
+          <End Role="Permissions" Type="Self.Permissions" Multiplicity="1" />
+          <End Role="Employees_Permissions" Type="Self.Employees_Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permissions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees_Permissions">
+              <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employees_Permissions_1_0">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Employees_Permissions" Type="Self.Employees_Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employees_Permissions">
+              <PropertyRef Name="EmployeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="databaseModelStoreContainer">
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
+          <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Permissions_0_0" Association="Self.FK_Employees_Permissions_0_0">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="Employees_Permissions" EntitySet="Employees_Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employees_Permissions_1_0" Association="Self.FK_Employees_Permissions_1_0">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Employees_Permissions" EntitySet="Employees_Permissions" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -70,6 +111,10 @@
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           <EntitySet Name="Permissions" EntityType="databaseModel.Permission" />
+          <AssociationSet Name="Employees_Permissions" Association="databaseModel.Employees_Permissions">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -81,6 +126,7 @@
           <Property Name="StartDate" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="PersonId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Person" Relationship="databaseModel.FK_Employees_0_01" FromRole="Employee" ToRole="Person" />
+          <NavigationProperty Name="Permissions" Relationship="databaseModel.Employees_Permissions" FromRole="Employee" ToRole="Permission" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -116,7 +162,12 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="databaseModel.Employees_Permissions" FromRole="Permission" ToRole="Employee" />
         </EntityType>
+        <Association Name="Employees_Permissions">
+          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
+          <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -158,6 +209,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="Employees_Permissions" TypeName="databaseModel.Employees_Permissions" StoreEntitySet="Employees_Permissions">
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="Id" ColumnName="EmployeeId" />
+            </EndProperty>
+            <EndProperty Name="Permission">
+              <ScalarProperty Name="Id" ColumnName="PermissionId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -10,6 +10,13 @@ CREATE TABLE "Persons" (
 	`ContactRelativeName`	TEXT,
 	`ContactRelativePhone`	TEXT
 );
+CREATE TABLE "Employees_Permissions" (
+	`EmployeeId`	INTEGER NOT NULL,
+	`PermissionId`	INTEGER NOT NULL,
+	PRIMARY KEY(EmployeeId,PermissionId),
+	FOREIGN KEY(`EmployeeId`) REFERENCES Employees ( Id ),
+	FOREIGN KEY(`PermissionId`) REFERENCES Permissions ( Id )
+);
 CREATE TABLE "Employees" (
 	`Id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`Username`	TEXT NOT NULL,
