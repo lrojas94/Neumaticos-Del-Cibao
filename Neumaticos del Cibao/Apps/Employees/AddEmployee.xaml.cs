@@ -21,17 +21,19 @@ namespace Neumaticos_del_Cibao.Apps.Employees
     public partial class AddEmployee : Page
     {
         private Database.Employee employee;
+        private bool isNewEntry = false;
 
-        private void employeeToForm()
+        private void bindEmployee()
         {
-            name.Text = employee.Person.Name;
-            lastName.Text = employee.Person.LastName;
+            name.SetBinding(TextBox.TextProperty,employee.Person.Name);
+            lastName.SetBinding(TextBox.TextProperty, employee.Person.LastName);
+            birthDate.SetBinding(DatePicker.TextProperty, employee.Person.BirthDate);
+            email.SetBinding(TextBox.TextProperty,employee.Person.Email);
+            phone.SetBinding(TextBox.TextProperty, employee.Person.Phone) ;
+            username.SetBinding(TextBox.TextProperty,employee.Username);
+            startDate.SetBinding(TextBox.TextProperty,employee.StartDate);
+
             sex.SelectedIndex = employee.Person.Sex == "Masculino" ? 0 : 1;
-            birthDate.Text = employee.Person.BirthDate;
-            email.Text = employee.Person.Email;
-            phone.Text = employee.Person.Phone;
-            username.Text = employee.Username;
-            startDate.Text = employee.StartDate;
             /*
             Here we should set password, but since no decryption/encryption algorithm is ready,
             this won't be taken into account right now.
@@ -40,29 +42,11 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         private void formToEmployee()
         {
-            var newEntry = employee == null ? true : false;
             var database = new Database.databaseEntities();
-            if(employee == null)
-            {
-                employee = new Database.Employee();
-                employee.Person = new Database.Person();
-            }
-
-            employee.Person.Name = name.Text;
-            employee.Person.LastName = lastName.Text;
             employee.Person.Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString() ;
-            employee.Person.BirthDate = birthDate.RealText;
-            employee.Person.Email = email.Text;
-            employee.Person.Phone = phone.Text;
-            employee.Username = username.Text;
-            employee.StartDate = startDate.Text;
-            /*
-                Once again, here we're supposed to encrypt password.
-                We're saving it as the database will complain when password
-                field is left empty/null. 
-            */
             employee.Password = password.Password.ToString(); 
-            if (newEntry)
+
+            if (isNewEntry)
             {
                 database.Employees.Add(employee);
             }
@@ -97,12 +81,17 @@ namespace Neumaticos_del_Cibao.Apps.Employees
             /*
                 Placeholder class works fine when it's about 
             */
-            if(employee != null)
+            if(employee == null)
             {
-                //Fill fields with employee data.
-                this.employee = employee;
-                employeeToForm();
+                isNewEntry = true;
+                this.employee = new Database.Employee();
             }
+            else
+            {
+                this.employee = employee;
+            }
+
+            bindEmployee();
         }
 
         private void saveChanges_Click(object sender, RoutedEventArgs e)
