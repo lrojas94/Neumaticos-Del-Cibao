@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Neumaticos_del_Cibao"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="500" Width="650">
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Compradores">
@@ -14,7 +14,13 @@
             <TabItem Header="Vendedores">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-        </TabControl>
+            <TabItem Header="Empleados">
+                <Grid Background="#FFE5E5E5" Margin="-4,2,4,-3">
+                    <Frame x:Name="UserFrame" Content="To be replaced by EmployeeReader" ClipToBounds="True"  Margin="0,-4,-6,0" Background="#95a5a6"/>
 
+                </Grid>
+            </TabItem>
+        </TabControl>
+        
     </Grid>
 </Window>

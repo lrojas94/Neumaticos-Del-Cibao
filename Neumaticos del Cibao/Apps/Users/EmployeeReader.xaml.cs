@@ -1,6 +1,4 @@
-﻿using Neumaticos_del_Cibao.CRUD_Permissions;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,15 +15,13 @@ using System.Windows.Shapes;
 namespace Neumaticos_del_Cibao
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserInfoReader.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmployeeReader : Page
     {
-        public MainWindow()
+        public EmployeeReader()
         {
             InitializeComponent();
-            UserFrame.Content = new UserInfoReader();
-            
         }
     }
 }

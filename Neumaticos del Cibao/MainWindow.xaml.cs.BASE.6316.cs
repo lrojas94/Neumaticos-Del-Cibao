@@ -24,8 +24,9 @@ namespace Neumaticos_del_Cibao
         public MainWindow()
         {
             InitializeComponent();
-            UserFrame.Content = new UserInfoReader();
-            
+            Content = new Apps.Employees.AddEmployee();
         }
+
+
     }
 }

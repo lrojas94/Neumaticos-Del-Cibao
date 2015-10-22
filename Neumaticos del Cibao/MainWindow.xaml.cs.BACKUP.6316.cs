@@ -24,8 +24,12 @@ namespace Neumaticos_del_Cibao
         public MainWindow()
         {
             InitializeComponent();
+<<<<<<< HEAD
+            Content = new Apps.Employees.EmployeePermissions();
+=======
             UserFrame.Content = new UserInfoReader();
             
+>>>>>>> IR-17: Created the interface to search and see User Information
         }
     }
 }
