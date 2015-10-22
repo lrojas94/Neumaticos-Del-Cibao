@@ -102,9 +102,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Apps\Users\ViewAllEmployees.xaml.cs">
-      <DependentUpon>ViewAllEmployees.xaml</DependentUpon>
-    </Compile>
     <Page Include="Apps\Employees\AddEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,9 +114,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Apps\Users\EmployeeReader.xaml.cs">
-      <DependentUpon>EmployeeReader.xaml</DependentUpon>
+<<<<<<< HEAD
+    <Page Include="Apps\Employees\EmployeePermissions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+=======
+    <Compile Include="Apps\Users\UserInfoReader.xaml.cs">
+      <DependentUpon>UserInfoReader.xaml</DependentUpon>
     </Compile>
+>>>>>>> IR-17: Created the interface to search and see User Information
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,11 +156,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Apps\Users\EmployeeReader.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Apps\Users\ViewAllEmployees.xaml">
+    <Page Include="Apps\Users\UserInfoReader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
