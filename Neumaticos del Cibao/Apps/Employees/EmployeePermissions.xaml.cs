@@ -52,24 +52,8 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         private void searchTimer_Tick(object sender, EventArgs e)
         {
-            var toSearch = searchBox.RealText.ToLower();
-            if (toSearch != "")
-            {
-                var searchEmployees = database.Employees.Where(
-                    employee => employee.Username.ToLower().Contains(toSearch)
-                    || employee.Person.Name.ToLower().Contains(toSearch)
-                    || employee.Person.LastName.ToLower().Contains(toSearch)
-                ).ToList();
-                employees.ItemsSource = searchEmployees;
-            }
-            else
-            {
-                employees.ItemsSource = database.Employees.ToList();
-            }
-
+            employees.ItemsSource = database.EmployeeSearchByName(searchBox.RealText);
             searchTimer.Stop();
-
-            
         }
 
         private void employees_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -70,6 +70,7 @@ namespace Neumaticos_del_Cibao.Apps.Employees
             try
             {
                 database.SaveChangesAsync();
+                NavigationService.Navigate(new ListEmployee());
             }
             catch (System.Data.Entity.Validation.DbEntityValidationException e)
             {

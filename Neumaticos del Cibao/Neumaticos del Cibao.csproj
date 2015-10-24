@@ -86,6 +86,9 @@
     <Compile Include="Apps\Employees\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Employees\ListEmployee.xaml.cs">
+      <DependentUpon>ListEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CRUD Permissions\ViewAllPermissions.xaml.cs">
       <DependentUpon>ViewAllPermissions.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Page Include="Apps\Employees\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\Employees\ListEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -139,7 +146,8 @@
     <Compile Include="Database\Employee.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\ModelAddons.cs" />
+    <Compile Include="Database\DatabaseAddons.cs" />
+    <Compile Include="Database\EmployeeAddons.cs" />
     <Compile Include="Database\Permission.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

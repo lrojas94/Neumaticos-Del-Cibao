@@ -30,6 +30,13 @@
         <Style x:Key="BaseGrid" TargetType="Grid">
             <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"></Setter>
         </Style>
+        <ControlTemplate x:Key="BaseControlTemplate" TargetType="{x:Type ContentControl}">
+            <Grid Style="{StaticResource BaseGrid}" >
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ContentPresenter></ContentPresenter>
+                </ScrollViewer>
+            </Grid>
+        </ControlTemplate>
         <MathConverter:MathConverter x:Key="mathConverter"/>
         <Style x:Key="InputHeader" TargetType="Label">
             <Setter Property="FontWeight" Value="Bold"></Setter>
