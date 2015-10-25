@@ -5,13 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\Elainer Toribio\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ClassView">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ShoppingOptionsId" Type="integer" Nullable="false" />
-        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -51,18 +44,6 @@
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
-        <Association Name="FK_ClassView_0_0">
-          <End Role="ShoppingOptions" Type="Self.ShoppingOptions" Multiplicity="1" />
-          <End Role="ClassView" Type="Self.ClassView" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ShoppingOptions">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ClassView">
-              <PropertyRef Name="ShoppingOptionsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -76,15 +57,10 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="databaseModelStoreContainer">
-          <EntitySet Name="ClassView" EntityType="Self.ClassView" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
           <EntitySet Name="ShoppingOptions" EntityType="Self.ShoppingOptions" store:Type="Tables" />
-          <AssociationSet Name="FK_ClassView_0_0" Association="Self.FK_ClassView_0_0">
-            <End Role="ShoppingOptions" EntitySet="ShoppingOptions" />
-            <End Role="ClassView" EntitySet="ClassView" />
-          </AssociationSet>
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Employees" EntitySet="Employees" />
@@ -106,12 +82,7 @@
             <End Role="Permission" EntitySet="Permissions" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <EntitySet Name="ClassViews" EntityType="databaseModel.ClassView" />
           <EntitySet Name="ShoppingOptions" EntityType="databaseModel.ShoppingOption" />
-          <AssociationSet Name="FK_ClassView_0_0" Association="databaseModel.FK_ClassView_0_0">
-            <End Role="ShoppingOption" EntitySet="ShoppingOptions" />
-            <End Role="ClassView" EntitySet="ClassViews" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -165,34 +136,13 @@
           <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
           <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
         </Association>
-        <EntityType Name="ClassView">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ShoppingOptionsId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="ShoppingOption" Relationship="databaseModel.FK_ClassView_0_0" FromRole="ClassView" ToRole="ShoppingOption" />
-        </EntityType>
         <EntityType Name="ShoppingOption">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ClassViews" Relationship="databaseModel.FK_ClassView_0_0" FromRole="ShoppingOption" ToRole="ClassView" />
         </EntityType>
-        <Association Name="FK_ClassView_0_0">
-          <End Type="databaseModel.ShoppingOption" Role="ShoppingOption" Multiplicity="1" />
-          <End Type="databaseModel.ClassView" Role="ClassView" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ShoppingOption">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ClassView">
-              <PropertyRef Name="ShoppingOptionsId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -230,14 +180,6 @@
               <MappingFragment StoreEntitySet="Permissions">
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ClassViews">
-            <EntityTypeMapping TypeName="databaseModel.ClassView">
-              <MappingFragment StoreEntitySet="ClassView">
-                <ScalarProperty Name="ShoppingOptionsId" ColumnName="ShoppingOptionsId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
