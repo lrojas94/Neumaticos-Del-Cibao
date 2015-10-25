@@ -16,7 +16,7 @@
             <Label x:Name="descriptionLabel" FontWeight="Bold" Content="Descripcion" Margin="10,134,192,0" Height="27" VerticalAlignment="Top"></Label>
             <TextBox x:Name="description" Margin="10,161,10,48" TextWrapping="Wrap"/>
 
-            <Button x:Name="BtnCreate" Content="Aceptar" Margin="0,0,10,17" HorizontalAlignment="Right" Width="82" Height="26" VerticalAlignment="Bottom" Click="BtnCreate_Click"></Button>
+            <Button x:Name="btnCreate" Content="Aceptar" Margin="0,0,10,17" HorizontalAlignment="Right" Width="82" Height="26" VerticalAlignment="Bottom" Click="btnCreate_Click"></Button>
 
             <!-- falta poner que cuando se da al boton crear, agregar a la base de datos el nombre y la descripcion -->
             <!--como acceder a esta interfaz?-->

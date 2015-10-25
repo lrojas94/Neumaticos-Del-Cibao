@@ -48,7 +48,7 @@ namespace Neumaticos_del_Cibao.CRUD_Permissions
 
         }
 
-        private void BtnCreate_Click(object sender, RoutedEventArgs e)
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             if(newEntry == true)
             {
@@ -56,6 +56,7 @@ namespace Neumaticos_del_Cibao.CRUD_Permissions
                 
             }
             database.SaveChanges();
+            
 
 
         }
