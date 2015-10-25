@@ -32,7 +32,6 @@ namespace Neumaticos_del_Cibao.Apps.Employees
             phone.SetBinding(TextBox.TextProperty, employee.Person.Phone) ;
             username.SetBinding(TextBox.TextProperty,employee.Username);
             startDate.SetBinding(TextBox.TextProperty,employee.StartDate);
-
             sex.SelectedIndex = employee.Person.Sex == "Masculino" ? 0 : 1;
             /*
             Here we should set password, but since no decryption/encryption algorithm is ready,
