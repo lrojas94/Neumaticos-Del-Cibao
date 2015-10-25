@@ -18,24 +18,9 @@ using System;
 public partial class ShoppingOption
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public ShoppingOption()
-    {
-
-        this.ClassViews = new HashSet<ClassView>();
-
-    }
-
-
     public long Id { get; set; }
 
     public string Title { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<ClassView> ClassViews { get; set; }
 
 }
 
