@@ -63,12 +63,12 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEmployee());
+            NavigationService.Navigate(new AddEmployee(database));
         }
 
         private void btnModifyEmployee_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEmployee(database.Employees.Single(emp=> emp.Id == selectedEmployee.Id)));
+            NavigationService.Navigate(new AddEmployee(database,selectedEmployee));
         }
 
         private void btnDeleteEmployee_Click(object sender, RoutedEventArgs e)

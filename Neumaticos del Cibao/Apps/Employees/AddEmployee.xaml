@@ -25,25 +25,25 @@
                 <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Content="Agregar Nuevo Usuario" Style="{StaticResource TitleBase}"  VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0,0" Padding="5"/>
                 <Label x:Name="personalInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información Personal" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
                 <Label x:Name="nameLabel" Grid.Row="1" Grid.Column="0" Content="Nombres" Margin="10,46,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <TextBox x:Name="name" Grid.Row="1" Grid.Column="0" Height="25" Margin="10,72,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
+                <TextBox x:Name="name" Grid.Row="1" Text="{Binding Person.Name}" Grid.Column="0" Height="25" Margin="10,72,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
                 <Label x:Name="lastNameLabel" Grid.Row="1" Grid.Column="1" Content="Apellidos" Margin="10,47,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <TextBox x:Name="lastName" Grid.Row="1" Grid.Column="1" Height="25" Margin="10,72,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
+                <TextBox x:Name="lastName" Grid.Row="1" Text="{Binding Person.LastName}" Grid.Column="1" Height="25" Margin="10,72,10,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
                 <Label x:Name="sexLabel" Grid.Row="1" Grid.Column="0" Content="Sexo" Margin="10,102,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
                 <ComboBox x:Name="sex" Grid.Row="1" Grid.Column="0" Margin="10,128,10,0" VerticalAlignment="Top" RenderTransformOrigin="0.492,0.591" Height="25">
                     <ComboBoxItem Content="Masculino"></ComboBoxItem>
                     <ComboBoxItem Content="Femenino"></ComboBoxItem>
                 </ComboBox>
                 <Label x:Name="birthDateLabel" Grid.Row="1" Grid.Column="1" Content="Fecha de Nacimiento" Margin="10,102,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <common:NoWatermarkDatePicker Grid.Row="1" Grid.Column="1" PlaceholderText="Seleccione Fecha de Nacimiento" x:Name="birthDate" Margin="10,128,10,0" VerticalAlignment="Top" Height="25" Foreground="Black"/>
+                <common:NoWatermarkDatePicker Grid.Row="1" Grid.Column="1" PlaceholderText="Seleccione Fecha de Nacimiento" Text="{Binding Person.BirthDate}" x:Name="birthDate" Margin="10,128,10,0" VerticalAlignment="Top" Height="25" Foreground="Black"/>
                 <Label x:Name="emailLabel" Grid.Row="1" Grid.Column="0" Content="Correo Electrónico" Margin="10,158,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <TextBox x:Name="email" Grid.Row="1" Grid.Column="0" Height="25" Margin="10,184,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"  RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
+                <TextBox x:Name="email" Grid.Row="1" Grid.Column="0" Height="25" Margin="10,184,10,0" TextWrapping="Wrap" Text="{Binding Person.Email}" VerticalAlignment="Top"  RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
                 <Label x:Name="phoneLabel" Grid.Row="1" Grid.Column="1" Content="Número de Teléfono o Celular" Margin="10,158,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <TextBox x:Name="phone" Grid.Row="1" Grid.Column="1" Height="25" Margin="10,184,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
+                <TextBox x:Name="phone" Grid.Row="1" Grid.Column="1" Height="25" Margin="10,184,10,0" TextWrapping="Wrap" Text="{Binding Person.Phone}" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
                 <Label x:Name="userInfo" Grid.Row="2" Grid.ColumnSpan="2"  Content="Informaciones de Empleado" Margin="10,0,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="#FF95A5A6" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
                 <Label x:Name="usernameLabel" Grid.Row="2" Content="Nombre de Usuario" Margin="10,32,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <TextBox Grid.Row="2" x:Name="username" Height="25" Margin="10,58,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
+                <TextBox Grid.Row="2" x:Name="username" Height="25" Margin="10,58,10,0" TextWrapping="Wrap" Text="{Binding Username}" VerticalAlignment="Top" RenderTransformOrigin="0.59,0.455" Foreground="Black"/>
                 <Label x:Name="startDateLabel" Grid.Row="2"  Grid.Column="1" Content="Fecha de Inicio de Trabajo" Margin="10,32,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                <common:NoWatermarkDatePicker Grid.Row="2" Grid.Column="1" PlaceholderText="Inicio de Trabajo" x:Name="startDate" Margin="10,58,10,0" VerticalAlignment="Top" Height="25" Foreground="Black"/>
+                <common:NoWatermarkDatePicker Grid.Row="2" Text="{Binding StartDate}"  Grid.Column="1" PlaceholderText="Inicio de Trabajo" x:Name="startDate" Margin="10,58,10,0" VerticalAlignment="Top" Height="25" Foreground="Black"/>
                 <Label x:Name="passwordLabel" Grid.Row="2" Content="Contraseña" Margin="10,88,10,0" VerticalAlignment="Top" FontWeight="Bold"/>
                 <PasswordBox x:Name="password" Grid.Row="2" Margin="10,114,10,0" VerticalAlignment="Top" Height="25" Foreground="Black"/>
                 <Label x:Name="passwordConfirmLabel" Grid.Row="2" Grid.Column="1" Content="Confirmar Contraseña" Margin="10,88,10,0" VerticalAlignment="Top"  FontWeight="Bold"/>

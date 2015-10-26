@@ -22,26 +22,26 @@ namespace Neumaticos_del_Cibao.Apps.Employees
     {
         private Database.Employee employee;
         private bool isNewEntry = false;
+        private Database.databaseEntities database;
 
         private void bindEmployee()
         {
-            name.SetBinding(TextBox.TextProperty,employee.Person.Name);
-            lastName.SetBinding(TextBox.TextProperty, employee.Person.LastName);
-            birthDate.SetBinding(DatePicker.TextProperty, employee.Person.BirthDate);
-            email.SetBinding(TextBox.TextProperty,employee.Person.Email);
-            phone.SetBinding(TextBox.TextProperty, employee.Person.Phone) ;
-            username.SetBinding(TextBox.TextProperty,employee.Username);
-            startDate.SetBinding(TextBox.TextProperty,employee.StartDate);
-            sex.SelectedIndex = employee.Person.Sex == "Masculino" ? 0 : 1;
             /*
-            Here we should set password, but since no decryption/encryption algorithm is ready,
-            this won't be taken into account right now.
+                Most part of binding takes place in XAML, but some stuff is to be done
+            */
+            if(employee.Person != null && sex != null)
+            {
+                sex.SelectedIndex = employee.Person.Sex == "Masculino" ? 0 : 1;
+                DataContext = employee;
+            }
+            /*
+                Here we should set password, but since no decryption/encryption algorithm is ready,
+                this won't be taken into account right now.
             */
         }
 
         private void formToEmployee()
         {
-            var database = new Database.databaseEntities();
             employee.Person.Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString() ;
             employee.Password = password.Password.ToString(); 
 
@@ -76,21 +76,45 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         public AddEmployee(Database.Employee employee = null)
         {
+            this.employee = employee;
+            if (employee == null)
+            {
+                isNewEntry = true;
+                this.employee = new Database.Employee();
+                this.employee.Person = new Database.Person();
+            }
+            else
+            {
+                bindEmployee();
+            }
+            
+
+        }
+
+        public AddEmployee(Database.databaseEntities context = null,Database.Employee employee = null) : this(employee)
+        {
+            /*
+                Something really important learned here:
+                When using databaseEntities, creating a new instance when another one is already active,
+                will create different context. This means that saving data in one of them, does NOT affect
+                the real data, but the data in the new context (Which is not the db context itself). If passing data
+                from other places, remember to pass the database context like done here.
+            */
             InitializeComponent();
             /*
                 Placeholder class works fine when it's about 
             */
-            if(employee == null)
+
+            database = context;
+
+            if (context == null)
             {
-                isNewEntry = true;
-                this.employee = new Database.Employee();
-            }
-            else
-            {
-                this.employee = employee;
+                database = new Database.databaseEntities();
             }
 
             bindEmployee();
+
+
         }
 
         private void saveChanges_Click(object sender, RoutedEventArgs e)
