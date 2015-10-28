@@ -22,6 +22,12 @@ public partial class ShoppingOption
 
     public string Title { get; set; }
 
+    public string OptionTitle { get; set; }
+
+    public string OptionType { get; set; }
+
+    public string ClassView { get; set; }
+
 }
 
 }

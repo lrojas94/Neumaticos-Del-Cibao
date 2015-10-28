@@ -42,7 +42,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="OptionTitle" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="OptionType" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ClassView" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
@@ -142,6 +144,9 @@
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -187,7 +192,9 @@
           <EntitySetMapping Name="ShoppingOptions">
             <EntityTypeMapping TypeName="databaseModel.ShoppingOption">
               <MappingFragment StoreEntitySet="ShoppingOptions">
-                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ClassView" ColumnName="ClassView" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="OptionTitle" ColumnName="OptionTitle" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
