@@ -1,6 +1,8 @@
 BEGIN TRANSACTION;
 CREATE TABLE "ShoppingOptions" (
 	`Id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-	`Title`	TEXT
+	`OptionTitle`	TEXT,
+	`OptionType`	TEXT,
+	`ClassView`	TEXT
 );
 COMMIT;
