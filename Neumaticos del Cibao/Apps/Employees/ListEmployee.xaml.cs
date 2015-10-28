@@ -81,6 +81,7 @@ namespace Neumaticos_del_Cibao.Apps.Employees
         private void btnViewDetails_Click(object sender, RoutedEventArgs e)
         {
             //View Employee details here.
+            NavigationService.Navigate(new ShowEmployee(selectedEmployee));
         }
     }
 }

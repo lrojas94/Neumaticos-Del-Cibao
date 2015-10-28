@@ -89,6 +89,9 @@
     <Compile Include="Apps\Employees\ListEmployee.xaml.cs">
       <DependentUpon>ListEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Employees\ShowEmployee.xaml.cs">
+      <DependentUpon>ShowEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CRUD Permissions\ViewAllPermissions.xaml.cs">
       <DependentUpon>ViewAllPermissions.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\Employees\ListEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\Employees\ShowEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
