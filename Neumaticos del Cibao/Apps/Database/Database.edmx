@@ -5,6 +5,25 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;D:\Universidad\Ingenieria de Software\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="RNC" Type="integer" />
+          <Property Name="NCF" Type="integer" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreditLimit" Type="integer" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,6 +41,23 @@
           </Key>
           <Property Name="EmployeeId" Type="integer" Nullable="false" />
           <Property Name="PermissionId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OptionPermissions">
+          <Key>
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="OptionId" Type="integer" Nullable="false" />
+          <Property Name="PermissionId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionTitle" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="OptionType" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ClassView" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Permissions">
           <Key>
@@ -44,23 +80,8 @@
           <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativeName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativePhone" Type="nvarchar" MaxLength="2147483647" />
-        </EntityType>
-        <EntityType Name="ShoppingOptionPermissions">
-          <Key>
-            <PropertyRef Name="ShoppingOptionId" />
-            <PropertyRef Name="PermissionId" />
-          </Key>
-          <Property Name="ShoppingOptionId" Type="integer" Nullable="false" />
-          <Property Name="PermissionId" Type="integer" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ShoppingOptions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OptionTitle" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="OptionType" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ClassView" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="IdentityDocument" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Address" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
@@ -98,40 +119,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-<<<<<<< HEAD
-=======
-        <Association Name="FK_ShoppingOptionPermissions_0_0">
+        <Association Name="FK_OptionPermissions_0_0">
           <End Role="Permissions" Type="Self.Permissions" Multiplicity="1" />
-          <End Role="ShoppingOptionPermissions" Type="Self.ShoppingOptionPermissions" Multiplicity="*" />
+          <End Role="OptionPermissions" Type="Self.OptionPermissions" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Permissions">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ShoppingOptionPermissions">
+            <Dependent Role="OptionPermissions">
               <PropertyRef Name="PermissionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ShoppingOptionPermissions_1_0">
-          <End Role="ShoppingOptions" Type="Self.ShoppingOptions" Multiplicity="1" />
-          <End Role="ShoppingOptionPermissions" Type="Self.ShoppingOptionPermissions" Multiplicity="*" />
+        <Association Name="FK_OptionPermissions_1_0">
+          <End Role="Options" Type="Self.Options" Multiplicity="1" />
+          <End Role="OptionPermissions" Type="Self.OptionPermissions" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ShoppingOptions">
+            <Principal Role="Options">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="ShoppingOptionPermissions">
-              <PropertyRef Name="ShoppingOptionId" />
+            <Dependent Role="OptionPermissions">
+              <PropertyRef Name="OptionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
->>>>>>> IR-40. Associations weren't created, but now they are
         <EntityContainer Name="databaseModelStoreContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
+          <EntitySet Name="OptionPermissions" EntityType="Self.OptionPermissions" store:Type="Tables" />
+          <EntitySet Name="Options" EntityType="Self.Options" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
-          <EntitySet Name="ShoppingOptionPermissions" EntityType="Self.ShoppingOptionPermissions" store:Type="Tables" />
-          <EntitySet Name="ShoppingOptions" EntityType="Self.ShoppingOptions" store:Type="Tables" />
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Employees" EntitySet="Employees" />
@@ -144,17 +163,14 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Employees_Permissions" EntitySet="Employees_Permissions" />
           </AssociationSet>
-<<<<<<< HEAD
-=======
-          <AssociationSet Name="FK_ShoppingOptionPermissions_0_0" Association="Self.FK_ShoppingOptionPermissions_0_0">
+          <AssociationSet Name="FK_OptionPermissions_0_0" Association="Self.FK_OptionPermissions_0_0">
             <End Role="Permissions" EntitySet="Permissions" />
-            <End Role="ShoppingOptionPermissions" EntitySet="ShoppingOptionPermissions" />
+            <End Role="OptionPermissions" EntitySet="OptionPermissions" />
           </AssociationSet>
-          <AssociationSet Name="FK_ShoppingOptionPermissions_1_0" Association="Self.FK_ShoppingOptionPermissions_1_0">
-            <End Role="ShoppingOptions" EntitySet="ShoppingOptions" />
-            <End Role="ShoppingOptionPermissions" EntitySet="ShoppingOptionPermissions" />
+          <AssociationSet Name="FK_OptionPermissions_1_0" Association="Self.FK_OptionPermissions_1_0">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="OptionPermissions" EntitySet="OptionPermissions" />
           </AssociationSet>
->>>>>>> IR-40. Associations weren't created, but now they are
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -162,9 +178,9 @@
       <Schema Namespace="databaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="databaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="databaseModel.Employee" />
+          <EntitySet Name="Options" EntityType="databaseModel.Option" />
           <EntitySet Name="Permissions" EntityType="databaseModel.Permission" />
           <EntitySet Name="Persons" EntityType="databaseModel.Person" />
-          <EntitySet Name="ShoppingOptions" EntityType="databaseModel.ShoppingOption" />
           <AssociationSet Name="FK_Employees_0_0" Association="databaseModel.FK_Employees_0_0">
             <End Role="Person" EntitySet="Persons" />
             <End Role="Employee" EntitySet="Employees" />
@@ -173,13 +189,11 @@
             <End Role="Permission" EntitySet="Permissions" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-<<<<<<< HEAD
-=======
-          <AssociationSet Name="ShoppingOptionPermissions" Association="databaseModel.ShoppingOptionPermissions">
+          <AssociationSet Name="OptionPermissions" Association="databaseModel.OptionPermissions">
             <End Role="Permission" EntitySet="Permissions" />
-            <End Role="ShoppingOption" EntitySet="ShoppingOptions" />
+            <End Role="Option" EntitySet="Options" />
           </AssociationSet>
->>>>>>> IR-40. Associations weren't created, but now they are
+          <EntitySet Name="Clients" EntityType="databaseModel.Client" />
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -193,6 +207,16 @@
           <NavigationProperty Name="Person" Relationship="databaseModel.FK_Employees_0_0" FromRole="Employee" ToRole="Person" />
           <NavigationProperty Name="Permissions" Relationship="databaseModel.Employees_Permissions" FromRole="Employee" ToRole="Permission" />
         </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Permissions" Relationship="databaseModel.OptionPermissions" FromRole="Option" ToRole="Permission" />
+        </EntityType>
         <EntityType Name="Permission">
           <Key>
             <PropertyRef Name="Id" />
@@ -201,10 +225,7 @@
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="databaseModel.Employees_Permissions" FromRole="Permission" ToRole="Employee" />
-<<<<<<< HEAD
-=======
-          <NavigationProperty Name="ShoppingOptions" Relationship="databaseModel.ShoppingOptionPermissions" FromRole="Permission" ToRole="ShoppingOption" />
->>>>>>> IR-40. Associations weren't created, but now they are
+          <NavigationProperty Name="Options" Relationship="databaseModel.OptionPermissions" FromRole="Permission" ToRole="Option" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -219,20 +240,9 @@
           <Property Name="Email" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactRelativeName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactRelativePhone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="IdentityDocument" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="databaseModel.FK_Employees_0_0" FromRole="Person" ToRole="Employee" />
-        </EntityType>
-        <EntityType Name="ShoppingOption">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-<<<<<<< HEAD
-=======
-          <NavigationProperty Name="Permissions" Relationship="databaseModel.ShoppingOptionPermissions" FromRole="ShoppingOption" ToRole="Permission" />
->>>>>>> IR-40. Associations weren't created, but now they are
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Type="databaseModel.Person" Role="Person" Multiplicity="1" />
@@ -250,13 +260,29 @@
           <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
           <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
         </Association>
-<<<<<<< HEAD
-=======
-        <Association Name="ShoppingOptionPermissions">
+        <Association Name="OptionPermissions">
           <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
-          <End Type="databaseModel.ShoppingOption" Role="ShoppingOption" Multiplicity="*" />
+          <End Type="databaseModel.Option" Role="Option" Multiplicity="*" />
         </Association>
->>>>>>> IR-40. Associations weren't created, but now they are
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="RNC" Type="Int64" />
+          <Property Name="NCF" Type="Int64" />
+          <Property Name="Credit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="Int64" />
+          <Property Name="Adress" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactExt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -274,6 +300,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="databaseModel.Option">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="ClassView" ColumnName="ClassView" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="OptionTitle" ColumnName="OptionTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Permissions">
             <EntityTypeMapping TypeName="databaseModel.Permission">
               <MappingFragment StoreEntitySet="Permissions">
@@ -286,6 +322,8 @@
           <EntitySetMapping Name="Persons">
             <EntityTypeMapping TypeName="databaseModel.Person">
               <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IdentityDocument" ColumnName="IdentityDocument" />
                 <ScalarProperty Name="ContactRelativePhone" ColumnName="ContactRelativePhone" />
                 <ScalarProperty Name="ContactRelativeName" ColumnName="ContactRelativeName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -298,16 +336,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ShoppingOptions">
-            <EntityTypeMapping TypeName="databaseModel.ShoppingOption">
-              <MappingFragment StoreEntitySet="ShoppingOptions">
-                <ScalarProperty Name="ClassView" ColumnName="ClassView" />
-                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
-                <ScalarProperty Name="OptionTitle" ColumnName="OptionTitle" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="Employees_Permissions" TypeName="databaseModel.Employees_Permissions" StoreEntitySet="Employees_Permissions">
             <EndProperty Name="Employee">
               <ScalarProperty Name="Id" ColumnName="EmployeeId" />
@@ -316,17 +344,34 @@
               <ScalarProperty Name="Id" ColumnName="PermissionId" />
             </EndProperty>
           </AssociationSetMapping>
-<<<<<<< HEAD
-=======
-          <AssociationSetMapping Name="ShoppingOptionPermissions" TypeName="databaseModel.ShoppingOptionPermissions" StoreEntitySet="ShoppingOptionPermissions">
-            <EndProperty Name="ShoppingOption">
-              <ScalarProperty Name="Id" ColumnName="ShoppingOptionId" />
+          <AssociationSetMapping Name="OptionPermissions" TypeName="databaseModel.OptionPermissions" StoreEntitySet="OptionPermissions">
+            <EndProperty Name="Option">
+              <ScalarProperty Name="Id" ColumnName="OptionId" />
             </EndProperty>
             <EndProperty Name="Permission">
               <ScalarProperty Name="Id" ColumnName="PermissionId" />
             </EndProperty>
           </AssociationSetMapping>
->>>>>>> IR-40. Associations weren't created, but now they are
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="databaseModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ContactCharge" ColumnName="ContactCharge" />
+                <ScalarProperty Name="ContactExt" ColumnName="ContactExt" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

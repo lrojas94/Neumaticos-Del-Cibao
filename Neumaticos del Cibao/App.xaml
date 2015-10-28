@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Neumaticos_del_Cibao"
              xmlns:MathConverter ="clr-namespace:IKriv.Wpf"
              xmlns:Database="clr-namespace:Neumaticos_del_Cibao.Database"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginWindow.xaml">
     <Application.Resources>
 
         <SolidColorBrush x:Key="PeterRiver" Color="#FF3498DB"/>
