@@ -143,7 +143,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
