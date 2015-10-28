@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Apps\Common\Encryption.cs" />
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
     <Compile Include="Apps\Common\OptionGrid.cs" />
@@ -165,6 +166,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="loginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -196,6 +201,9 @@
     </Compile>
     <Compile Include="Database\Person.cs">
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loginWindow.xaml.cs">
+      <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
