@@ -5,18 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Neumaticos_del_Cibao"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Neumaticos del Cibao" Height="350" Width="525">
     <Grid>
+
         <TabControl x:Name="tabControl">
             <TabItem Header="Compradores">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="121*"/>
+                        <ColumnDefinition Width="390*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Background="#2980b9" HorizontalAlignment="Left" Height="47" VerticalAlignment="Top" Width="511" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="132*"/>
+                            <ColumnDefinition Width="379*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="Compradores" Content="Compradores"  Foreground="#FFDDF0E8" HorizontalAlignment="Left" Margin="21,0,0,-11" VerticalAlignment="Top" Height="58" Width="172" FontSize="26.667" Grid.Column="1"/>
+                    </Grid>
+                </Grid>
+
             </TabItem>
+
             <TabItem Header="Vendedores">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid Background="#2980b9" HorizontalAlignment="Left" Height="47" VerticalAlignment="Top" Width="511">
+                        <Label x:Name="Vendedores" Content="Vendedores" Foreground="#FFDDF0E8" HorizontalAlignment="Left" Margin="169,0,0,-11" VerticalAlignment="Top" Height="58" Width="172" FontSize="26.667"/>
+                    </Grid>
+                </Grid>
+
             </TabItem>
-            <TabItem Header="Empleados">
-                <Frame Name="employeesFrame" Background="#FFE5E5E5"/>
-            </TabItem>
+
         </TabControl>
 
     </Grid>
