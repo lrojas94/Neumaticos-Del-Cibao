@@ -32,11 +32,11 @@ namespace Neumaticos_del_Cibao
         // It's consider that the password is saved in the
         // database as a result of this function.
         
-        private void Entrar_Click(object sender, RoutedEventArgs e) 
+        private void Login(object sender, RoutedEventArgs e) 
         {
             var user = texboxUsuario.Text.ToLower();
             var password = passwordBox.Password;
-            var en = new Encryption();
+            var encrypt = new Encryption();
             
             if (user.Equals("") || password.Equals(""))
             {
@@ -46,14 +46,14 @@ namespace Neumaticos_del_Cibao
             {
                 var employee = database.Employees.Where(u => u.Username.ToLower() == (user.ToLower())).ToList();
                 
-                if (!employee.Any() || !en.EncriptingPassWord(password).Contains(employee[0].Password))
+                if (!employee.Any() || !encrypt.EncriptingPassWord(password).Contains(employee[0].Password))
                 {
                     MessageBox.Show("Usuario o Contraseña incorrecta");
                 }
                 else
                 {
-                    var w = new MainWindow();
-                    w.Show();
+                    var home = new MainWindow();
+                    home.Show();
                     this.Close();
                 }
                 
