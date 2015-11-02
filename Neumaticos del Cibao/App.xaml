@@ -11,7 +11,12 @@
         <SolidColorBrush x:Key="BelizeHole" Color="#FF2980B9"/>
         <SolidColorBrush x:Key="Concrete" Color="#FF95A5A6"/>
         <SolidColorBrush x:Key="BackgroundBrush" Color="#FFECF0F1"/>
-
+        <!-- IMAGES -->
+        <BitmapImage x:Key="GoBack" UriSource="Assets/Images/appbar.arrow.left.png"></BitmapImage>
+        <Image x:Key="GoBackImage" Source="{StaticResource GoBack}"></Image>
+        <BitmapImage x:Key="GoForward" UriSource="Assets/Images/appbar.arrow.right.png"></BitmapImage>
+        <Image x:Key="GoForwardImage" Source="{StaticResource GoForward}"></Image>
+        
         <Style x:Key="TitleBase" TargetType="Label">
             <Setter Property="Background" Value="{DynamicResource PeterRiver}"></Setter>
             <Setter Property="BorderBrush" Value="{DynamicResource BelizeHole}"></Setter>
@@ -30,6 +35,25 @@
         <Style x:Key="BaseGrid" TargetType="Grid">
             <Setter Property="Background" Value="{DynamicResource BackgroundBrush}"></Setter>
         </Style>
+        <ControlTemplate x:Key="BaseFrame" TargetType="Frame">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40">
+                    </RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Content="{StaticResource GoBackImage}" Height="30" Width="30" Grid.Row="0" Margin="0,5,0,5"
+                        Command="{x:Static NavigationCommands.BrowseBack}" IsEnabled="{TemplateBinding CanGoBack}"
+                        BorderBrush="{DynamicResource BelizeHole}" Background="{DynamicResource PeterRiver}" 
+                        HorizontalAlignment="Left"/>
+                <Button Content="{StaticResource GoForwardImage}" Grid.Row="0" Height="30" Width="30" Margin="35,5,0,5"
+                        Command="{x:Static NavigationCommands.BrowseForward}" IsEnabled="{TemplateBinding CanGoForward}"
+                        Background="{DynamicResource PeterRiver}" BorderBrush="{DynamicResource BelizeHole}" 
+                        HorizontalAlignment="Left"/>
+                
+                <ContentPresenter Grid.Row="1" Grid.ColumnSpan="4" />
+            </Grid>
+        </ControlTemplate>
         <ControlTemplate x:Key="BaseControlTemplate" TargetType="{x:Type ContentControl}">
             <Grid Style="{StaticResource BaseGrid}" >
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
