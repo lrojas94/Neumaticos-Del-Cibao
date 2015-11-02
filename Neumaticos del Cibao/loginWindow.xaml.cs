@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Neumaticos_del_Cibao.Apps.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,47 +19,36 @@ namespace Neumaticos_del_Cibao
     /// <summary>
     /// Interaction logic for loginWindow.xaml
     /// </summary>
-    public partial class loginWindow : Window
+
+    public partial class loginWindow :  Window
     {
         private Database.databaseEntities database = new Database.databaseEntities();
         public loginWindow()
         {
             InitializeComponent();
-
+            
         }
 
         // It's consider that the password is saved in the
         // database as a result of this function.
-
-        private String EncriptingPassWord(String password) 
-        {
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
-            data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            String hash = System.Text.Encoding.ASCII.GetString(data);
- 
-            return hash;
-        }
-
-        private void Entrar_Click(object sender, RoutedEventArgs e)
+        
+        private void Entrar_Click(object sender, RoutedEventArgs e) 
         {
             var user = texboxUsuario.Text.ToLower();
-            var password = passwordBox;
+            var password = passwordBox.Password;
+            var en = new Encryption();
+            
             if (user.Equals("") || password.Equals(""))
             {
                 MessageBox.Show("Usuario o Contraseña vacios. Favor llenarlos");
             }
             else
             {
-                var employee = database.Employees.Where(u => u.Username.ToLower().Contains(user.ToLower())).ToList();
-
-                Console.WriteLine(employee); 
-                if (employee == null)
+                var employee = database.Employees.Where(u => u.Username.ToLower() == (user.ToLower())).ToList();
+                
+                if (!employee.Any() || !en.EncriptingPassWord(password).Contains(employee[0].Password))
                 {
-                    MessageBox.Show("Usuario no registrado");
-                }
-                else if(employee.ElementAt(0).Password.CompareTo(EncriptingPassWord(password.ToString())) == 0)
-                {
-                    MessageBox.Show("Contraseña no es correcta");
+                    MessageBox.Show("Usuario o Contraseña incorrecta");
                 }
                 else
                 {
@@ -66,6 +56,7 @@ namespace Neumaticos_del_Cibao
                     w.Show();
                     this.Close();
                 }
+                
             }
         }
     }
