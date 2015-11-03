@@ -10,6 +10,8 @@
         <AssociationConnector Association="databaseModel.FK_Employees_0_01" />
         <EntityTypeShape EntityType="databaseModel.Permission" Width="1.5" PointX="0.75" PointY="4.75" />
         <AssociationConnector Association="databaseModel.Employees_Permissions" />
+        <EntityTypeShape EntityType="databaseModel.ShoppingOption" Width="1.5" PointX="3" PointY="4.75" />
+        <AssociationConnector Association="databaseModel.ShoppingOptionPermissions" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
