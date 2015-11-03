@@ -38,6 +38,8 @@ public partial class databaseEntities : DbContext
 
     public virtual DbSet<Permission> Permissions { get; set; }
 
+    public virtual DbSet<ShoppingOption> ShoppingOptions { get; set; }
+
 }
 
 }

@@ -15,35 +15,31 @@ namespace Neumaticos_del_Cibao.Database
 using System;
     using System.Collections.Generic;
     
-public partial class Permission
+public partial class ShoppingOption
 {
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Permission()
+    public ShoppingOption()
     {
 
-        this.Employees = new HashSet<Employee>();
-
-        this.ShoppingOptions = new HashSet<ShoppingOption>();
+        this.Permissions = new HashSet<Permission>();
 
     }
 
 
     public long Id { get; set; }
 
-    public string Name { get; set; }
+    public string OptionTitle { get; set; }
 
-    public string Description { get; set; }
+    public string OptionType { get; set; }
+
+    public string ClassView { get; set; }
 
 
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Employee> Employees { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
-    public virtual ICollection<ShoppingOption> ShoppingOptions { get; set; }
+    public virtual ICollection<Permission> Permissions { get; set; }
 
 }
 

@@ -45,6 +45,23 @@
           <Property Name="ContactRelativeName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativePhone" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
+        <EntityType Name="ShoppingOptionPermissions">
+          <Key>
+            <PropertyRef Name="ShoppingOptionId" />
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="ShoppingOptionId" Type="integer" Nullable="false" />
+          <Property Name="PermissionId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShoppingOptions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionTitle" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="OptionType" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ClassView" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -81,11 +98,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShoppingOptionPermissions_0_0">
+          <End Role="Permissions" Type="Self.Permissions" Multiplicity="1" />
+          <End Role="ShoppingOptionPermissions" Type="Self.ShoppingOptionPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permissions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingOptionPermissions">
+              <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingOptionPermissions_1_0">
+          <End Role="ShoppingOptions" Type="Self.ShoppingOptions" Multiplicity="1" />
+          <End Role="ShoppingOptionPermissions" Type="Self.ShoppingOptionPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingOptions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingOptionPermissions">
+              <PropertyRef Name="ShoppingOptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="databaseModelStoreContainer">
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
+          <EntitySet Name="ShoppingOptionPermissions" EntityType="Self.ShoppingOptionPermissions" store:Type="Tables" />
+          <EntitySet Name="ShoppingOptions" EntityType="Self.ShoppingOptions" store:Type="Tables" />
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Employees" EntitySet="Employees" />
@@ -97,6 +140,14 @@
           <AssociationSet Name="FK_Employees_Permissions_1_0" Association="Self.FK_Employees_Permissions_1_0">
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Employees_Permissions" EntitySet="Employees_Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingOptionPermissions_0_0" Association="Self.FK_ShoppingOptionPermissions_0_0">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="ShoppingOptionPermissions" EntitySet="ShoppingOptionPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShoppingOptionPermissions_1_0" Association="Self.FK_ShoppingOptionPermissions_1_0">
+            <End Role="ShoppingOptions" EntitySet="ShoppingOptions" />
+            <End Role="ShoppingOptionPermissions" EntitySet="ShoppingOptionPermissions" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -114,6 +165,11 @@
           <AssociationSet Name="Employees_Permissions" Association="databaseModel.Employees_Permissions">
             <End Role="Permission" EntitySet="Permissions" />
             <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <EntitySet Name="ShoppingOptions" EntityType="databaseModel.ShoppingOption" />
+          <AssociationSet Name="ShoppingOptionPermissions" Association="databaseModel.ShoppingOptionPermissions">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="ShoppingOption" EntitySet="ShoppingOptions" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Employee">
@@ -163,10 +219,25 @@
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="databaseModel.Employees_Permissions" FromRole="Permission" ToRole="Employee" />
+          <NavigationProperty Name="ShoppingOptions" Relationship="databaseModel.ShoppingOptionPermissions" FromRole="Permission" ToRole="ShoppingOption" />
         </EntityType>
         <Association Name="Employees_Permissions">
           <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
           <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ShoppingOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Permissions" Relationship="databaseModel.ShoppingOptionPermissions" FromRole="ShoppingOption" ToRole="Permission" />
+        </EntityType>
+        <Association Name="ShoppingOptionPermissions">
+          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
+          <End Type="databaseModel.ShoppingOption" Role="ShoppingOption" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -212,6 +283,24 @@
           <AssociationSetMapping Name="Employees_Permissions" TypeName="databaseModel.Employees_Permissions" StoreEntitySet="Employees_Permissions">
             <EndProperty Name="Employee">
               <ScalarProperty Name="Id" ColumnName="EmployeeId" />
+            </EndProperty>
+            <EndProperty Name="Permission">
+              <ScalarProperty Name="Id" ColumnName="PermissionId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="ShoppingOptions">
+            <EntityTypeMapping TypeName="databaseModel.ShoppingOption">
+              <MappingFragment StoreEntitySet="ShoppingOptions">
+                <ScalarProperty Name="ClassView" ColumnName="ClassView" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="OptionTitle" ColumnName="OptionTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ShoppingOptionPermissions" TypeName="databaseModel.ShoppingOptionPermissions" StoreEntitySet="ShoppingOptionPermissions">
+            <EndProperty Name="ShoppingOption">
+              <ScalarProperty Name="Id" ColumnName="ShoppingOptionId" />
             </EndProperty>
             <EndProperty Name="Permission">
               <ScalarProperty Name="Id" ColumnName="PermissionId" />
