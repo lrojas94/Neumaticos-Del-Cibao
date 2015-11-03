@@ -104,6 +104,12 @@
       <DependentUpon>EmployeePermissions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\MathConverter.cs" />
+    <Compile Include="CRUD_Clients\ViewClient.xaml.cs">
+      <DependentUpon>ViewClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Client.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\Employees\EmployeePermissions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CRUD_Clients\ViewClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
