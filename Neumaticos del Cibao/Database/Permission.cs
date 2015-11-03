@@ -24,6 +24,8 @@ public partial class Permission
 
         this.Employees = new HashSet<Employee>();
 
+        this.ShoppingOptions = new HashSet<ShoppingOption>();
+
     }
 
 
@@ -38,6 +40,10 @@ public partial class Permission
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Employee> Employees { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<ShoppingOption> ShoppingOptions { get; set; }
 
 }
 
