@@ -8,7 +8,9 @@ CREATE TABLE "Persons" (
 	`Phone`	TEXT,
 	`Email`	TEXT,
 	`ContactRelativeName`	TEXT,
-	`ContactRelativePhone`	TEXT
+	`ContactRelativePhone`	TEXT,
+	`IdentityDocument`	TEXT,
+	`Address`	TEXT
 );
 CREATE TABLE "Employees_Permissions" (
 	`EmployeeId`	INTEGER NOT NULL,
