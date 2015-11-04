@@ -27,5 +27,6 @@ namespace Neumaticos_del_Cibao.Database
         public Nullable<long> ContactEmail { get; set; }
         public Nullable<long> ContactPhone { get; set; }
         public Nullable<long> ContactExt { get; set; }
+        public string ContactCharge { get; set; }
     }
 }

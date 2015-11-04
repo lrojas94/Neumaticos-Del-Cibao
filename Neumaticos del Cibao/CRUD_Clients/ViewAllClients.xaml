@@ -19,8 +19,8 @@
             </Grid.RowDefinitions>
             <Label Style="{StaticResource TitleBase}" Content="Clientes Registrados" Grid.Row="0"></Label>
             <Label Style="{StaticResource InputHeader}" x:Name="ourCLientsLabel" Content="Nuestros Clientes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
-            <common:PlaceholderTextBox x:Name="filter" PlaceholderText="Nombre Cliente" VerticalContentAlignment="Center" Height="25" Margin="10,36,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <ListBox x:Name="listBox" Margin="10,69,9.667,10" Grid.Row="1"/>
+            <common:PlaceholderTextBox x:Name="searchBox" PlaceholderText="Nombre Cliente" VerticalContentAlignment="Center" Height="25" Margin="10,36,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="searchBox_TextChanged"/>
+            <ListBox x:Name="clientsListBox" Style="{StaticResource ClientsListBox}"  Margin="10,69,9.667,10" Grid.Row="1" SelectionChanged="clientsListBox_SelectionChanged"/>
             <Grid Height="25" Grid.Row="2" Margin="0,0.333,-10,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="149*"></ColumnDefinition>
@@ -29,10 +29,10 @@
                     <ColumnDefinition Width="46*"></ColumnDefinition>
                     <ColumnDefinition Width="105*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnAddClient" Content="Anadir Cliente" Margin="10,0,9.333,0" VerticalAlignment="Top" Height="25"/>
-                <Button x:Name="btnViewClient" IsEnabled="False" Content="Ver Cliente" Grid.Column="1" Margin="10.667,0,10.333,0" VerticalAlignment="Top" Height="25"/>
-                <Button x:Name="btnModifyClient" IsEnabled="False" Content="Editar Cliente" Grid.Column="2" Margin="9.667,0" VerticalAlignment="Top" Height="25"/>
-                <Button x:Name="btnDeleteClient" IsEnabled="False" Content="EliminarCliente" Grid.Column="3" Margin="10.333,0,20,0" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2"/>
+                <Button x:Name="btnAddClient" Content="Anadir Cliente" Margin="10,0,9,0" Click="btnAddClient_Click"/>
+                <Button x:Name="btnViewClient" IsEnabled="False" Content="Ver Cliente" Grid.Column="1" Margin="10.667,0,10.333,0" VerticalAlignment="Top" Height="25" Click="btnViewClient_Click"/>
+                <Button x:Name="btnModifyClient" IsEnabled="False" Content="Editar Cliente" Grid.Column="2" Margin="9.667,0" VerticalAlignment="Top" Height="25" Click="btnModifyClient_Click"/>
+                <Button x:Name="btnDeleteClient" IsEnabled="False" Content="EliminarCliente" Grid.Column="3" Margin="10,0,20,0" Grid.ColumnSpan="2" Click="btnDeleteClient_Click"/>
 
             </Grid>
         </Grid>
