@@ -17,11 +17,12 @@
           <Property Name="CreditLimit" Type="integer" />
           <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactPhone" Type="integer" />
           <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactEmail" Type="integer" />
-          <Property Name="ContactPhone" Type="integer" />
           <Property Name="ContactExt" Type="integer" />
+          <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Employees">
           <Key>
@@ -229,6 +230,7 @@
           <Property Name="ContactEmail" Type="Int64" />
           <Property Name="ContactPhone" Type="Int64" />
           <Property Name="ContactExt" Type="Int64" />
+          <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -294,6 +296,7 @@
           <EntitySetMapping Name="Clients">
             <EntityTypeMapping TypeName="databaseModel.Client">
               <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ContactCharge" ColumnName="ContactCharge" />
                 <ScalarProperty Name="ContactExt" ColumnName="ContactExt" />
                 <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
                 <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
