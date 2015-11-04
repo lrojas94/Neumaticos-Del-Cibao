@@ -68,7 +68,9 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         private void btnModifyEmployee_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEmployee(database,selectedEmployee));
+            var targetView = new AddEmployee(database, selectedEmployee);
+            targetView.title.Content = string.Format("Editando a {0}", selectedEmployee.FullName);
+            NavigationService.Navigate(targetView);
         }
 
         private void btnDeleteEmployee_Click(object sender, RoutedEventArgs e)
