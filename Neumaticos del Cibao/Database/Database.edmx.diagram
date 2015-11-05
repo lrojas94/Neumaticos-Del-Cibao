@@ -11,7 +11,6 @@
         <EntityTypeShape EntityType="databaseModel.ShoppingOption" Width="1.5" PointX="2.75" PointY="4.75" />
         <AssociationConnector Association="databaseModel.FK_Employees_0_0" />
         <AssociationConnector Association="databaseModel.Employees_Permissions" />
-        <EntityTypeShape EntityType="databaseModel.ShoppingOption" Width="1.5" PointX="3" PointY="4.75" />
         <AssociationConnector Association="databaseModel.ShoppingOptionPermissions" />
       </Diagram>
     </edmx:Diagrams>

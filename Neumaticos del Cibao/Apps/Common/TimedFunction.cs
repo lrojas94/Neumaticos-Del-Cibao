@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace Neumaticos_del_Cibao.Apps.Common
 {
-    class SimpleSearchFilter
+    class TimedFunction
     {
         private Action action;
         private DispatcherTimer timer;
@@ -26,7 +26,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             }
         }
 
-        public SimpleSearchFilter(Action action,DispatcherTimer timer = null)
+        public TimedFunction(Action action,DispatcherTimer timer = null)
         {
             this.action = action;
             this.timer = timer;
@@ -47,7 +47,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             timer.Stop();
         }
 
-        public void Search()
+        public void Run()
         {
             if (!timer.IsEnabled)
             {
