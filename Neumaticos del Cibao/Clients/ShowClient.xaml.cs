@@ -13,16 +13,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.CRUD_Clients
+namespace Neumaticos_del_Cibao.Clients
 {
     /// <summary>
     /// Interaction logic for ShowClient.xaml
     /// </summary>
     public partial class ShowClient : Page
     {
-        public ShowClient()
+        Database.Client client;
+        public ShowClient(Database.Client client)
         {
             InitializeComponent();
+            this.client = client;
+            DataContext = this.client;
+            
+        }
+
+        private void btnModify_Click(object sender, RoutedEventArgs e)
+        {
+            Database.databaseEntities db = null;
+            NavigationService.Navigate(new AddClient(db, client));
         }
     }
 }

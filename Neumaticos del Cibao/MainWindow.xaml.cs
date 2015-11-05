@@ -24,7 +24,7 @@ namespace Neumaticos_del_Cibao
         public MainWindow()
         {
             InitializeComponent();
-            employeesFrame.Content = new CRUD_Clients.ViewAllClients();
+            employeesFrame.Content = new Apps.Employees.ListEmployee();
 
         }
 

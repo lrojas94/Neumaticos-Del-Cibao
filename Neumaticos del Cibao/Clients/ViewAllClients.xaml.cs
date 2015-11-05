@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Neumaticos_del_Cibao.CRUD_Clients
+namespace Neumaticos_del_Cibao.Clients
 {
     /// <summary>
     /// Interaction logic for ViewAllClients.xaml
@@ -60,23 +60,26 @@ namespace Neumaticos_del_Cibao.CRUD_Clients
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
         {
             //abrir ventana anadir cliente
+            NavigationService.Navigate(new AddClient(database));
         }
 
         private void btnViewClient_Click(object sender, RoutedEventArgs e)
         {
             //abrir pestana ver cliente
+            NavigationService.Navigate(new ShowClient(selectedClient));
         }
 
         private void btnModifyClient_Click(object sender, RoutedEventArgs e)
         {
             //abrir ventana modificar
+            NavigationService.Navigate(new AddClient(database,selectedClient));
         }
 
         private void btnDeleteClient_Click(object sender, RoutedEventArgs e)
         {
             database.Clients.Remove(selectedClient);
             database.SaveChangesAsync();
-            clientsListBox.ItemsSource = database.EmployeeSearchByName(searchBox.RealText);
+            clientsListBox.ItemsSource = database.ClientSearchByName(searchBox.RealText);
         }
     }
 }
