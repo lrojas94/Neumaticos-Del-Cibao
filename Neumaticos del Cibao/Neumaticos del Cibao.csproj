@@ -83,6 +83,7 @@
     </ApplicationDefinition>
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
+    <Compile Include="Apps\Common\TimedFunction.cs" />
     <Compile Include="Apps\Employees\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
