@@ -22,11 +22,11 @@ namespace Neumaticos_del_Cibao.Database
         public Nullable<long> CreditLimit { get; set; }
         public string Adress { get; set; }
         public string Email { get; set; }
-        public string ContactName { get; set; }
         public string Phone { get; set; }
-        public Nullable<long> ContactEmail { get; set; }
-        public Nullable<long> ContactPhone { get; set; }
-        public Nullable<long> ContactExt { get; set; }
+        public string ContactPhone { get; set; }
+        public string ContactName { get; set; }
+        public string ContactEmail { get; set; }
+        public string ContactExt { get; set; }
         public string ContactCharge { get; set; }
     }
 }

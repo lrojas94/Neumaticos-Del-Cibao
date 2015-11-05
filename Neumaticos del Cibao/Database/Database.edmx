@@ -17,11 +17,11 @@
           <Property Name="CreditLimit" Type="integer" />
           <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactPhone" Type="integer" />
-          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactEmail" Type="integer" />
-          <Property Name="ContactExt" Type="integer" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Employees">
@@ -225,11 +225,11 @@
           <Property Name="CreditLimit" Type="Int64" />
           <Property Name="Adress" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactEmail" Type="Int64" />
-          <Property Name="ContactPhone" Type="Int64" />
-          <Property Name="ContactExt" Type="Int64" />
+          <Property Name="ContactPhone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactExt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
@@ -298,10 +298,10 @@
               <MappingFragment StoreEntitySet="Clients">
                 <ScalarProperty Name="ContactCharge" ColumnName="ContactCharge" />
                 <ScalarProperty Name="ContactExt" ColumnName="ContactExt" />
-                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
                 <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Adress" ColumnName="Adress" />
                 <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
