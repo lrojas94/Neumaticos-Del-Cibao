@@ -7,7 +7,7 @@ using System.Windows.Threading;
 
 namespace Neumaticos_del_Cibao.Apps.Common
 {
-    class TimedFunction
+    public class TimedFunction
     {
         private Action action;
         private DispatcherTimer timer;
@@ -22,19 +22,20 @@ namespace Neumaticos_del_Cibao.Apps.Common
             set
             {
                 TimerInterval = value;
-                this.timer.Interval = TimerInterval;
+                timer.Interval = TimerInterval;
             }
         }
 
         public TimedFunction(Action action,DispatcherTimer timer = null)
         {
+            if(action == null)
+                throw new ArgumentNullException("Action cannot be null");
+
             this.action = action;
             this.timer = timer;
 
             if (this.timer == null)
-            {
                 this.timer = new DispatcherTimer();
-            }
 
             this.timer.Interval = new TimeSpan(0, 0, 0, 0, 50);
             this.timer.Tick += timer_Tick;
@@ -50,9 +51,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
         public void Run()
         {
             if (!timer.IsEnabled)
-            {
                 timer.Start();
-            }
         }   
     }
 }
