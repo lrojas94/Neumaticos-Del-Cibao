@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Neumaticos_del_Cibao"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Neumaticos del Cibao" Height="400" Width="600">
     <Grid>
         <TabControl x:Name="tabControl">
             <TabItem Header="Compradores">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="Vendedores">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                </Grid>
             </TabItem>
             <TabItem Header="Empleados">
-                <Frame Name="employeesFrame" Background="#FFE5E5E5"/>
+                <Frame Name="employeesFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
             </TabItem>
         </TabControl>
 

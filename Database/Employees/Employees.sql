@@ -1,4 +1,4 @@
-BEGIN TRANSACTION;
+
 CREATE TABLE "Persons" (
 	`Id`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	`Name`	TEXT NOT NULL,
@@ -8,7 +8,9 @@ CREATE TABLE "Persons" (
 	`Phone`	TEXT,
 	`Email`	TEXT,
 	`ContactRelativeName`	TEXT,
-	`ContactRelativePhone`	TEXT
+	`ContactRelativePhone`	TEXT,
+	`IdentityDocument`	TEXT,
+	`Address`	TEXT
 );
 CREATE TABLE "Employees_Permissions" (
 	`EmployeeId`	INTEGER NOT NULL,
@@ -25,4 +27,3 @@ CREATE TABLE "Employees" (
 	`PersonId`	INTEGER NOT NULL UNIQUE,
 	FOREIGN KEY(`PersonId`) REFERENCES Persons ( Id )
 );
-COMMIT;

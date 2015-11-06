@@ -34,7 +34,11 @@ namespace Neumaticos_del_Cibao
         
         private void Login(object sender, RoutedEventArgs e) 
         {
+<<<<<<< HEAD
             var user = texboxUsuario.Text.ToLower();
+=======
+            var user = UsuarioTexbox.Text.ToLower();
+>>>>>>> 9c91ba3309b7028eaafcca89c18d234a78790024
             var password = passwordBox.Password;
             var encrypt = new Encryption();
             

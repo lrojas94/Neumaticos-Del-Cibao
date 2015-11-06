@@ -23,33 +23,25 @@ namespace Neumaticos_del_Cibao.Apps.Employees
     {
         private Database.databaseEntities database = new Database.databaseEntities();
         private Database.Employee selectedEmployee = null;
-        private DispatcherTimer searchBoxTimer;
+        private Common.TimedFunction searchBoxFilter;
 
         public ListEmployee()
         {
             InitializeComponent();
 
-            searchBoxTimer = new DispatcherTimer();
-            searchBoxTimer.Tick += searchBox_Tick;
-            searchBoxTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
+            Action search = () =>
+            {
+                employeeListBox.ItemsSource = database.EmployeeSearchByName(searchBox.RealText);
+            };
+
+            searchBoxFilter = new Common.TimedFunction(search);
 
             employeeListBox.ItemsSource = database.Employees.ToList();
         }
         
-
-
-        private void searchBox_Tick(object sender, object e)
-        {
-            employeeListBox.ItemsSource = database.EmployeeSearchByName(searchBox.RealText);
-            searchBoxTimer.Stop();
-        }
-
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!searchBoxTimer.IsEnabled)
-            {
-                searchBoxTimer.Start();
-            }
+            searchBoxFilter.Run();
         }
 
         private void employeeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -63,12 +55,14 @@ namespace Neumaticos_del_Cibao.Apps.Employees
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEmployee());
+            NavigationService.Navigate(new AddEmployee(database));
         }
 
         private void btnModifyEmployee_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddEmployee(database.Employees.Single(emp=> emp.Id == selectedEmployee.Id)));
+            var targetView = new AddEmployee(database, selectedEmployee);
+            targetView.title.Content = string.Format("Editando a {0}", selectedEmployee.FullName);
+            NavigationService.Navigate(targetView);
         }
 
         private void btnDeleteEmployee_Click(object sender, RoutedEventArgs e)
@@ -81,6 +75,7 @@ namespace Neumaticos_del_Cibao.Apps.Employees
         private void btnViewDetails_Click(object sender, RoutedEventArgs e)
         {
             //View Employee details here.
+            NavigationService.Navigate(new ShowEmployee(selectedEmployee));
         }
     }
 }

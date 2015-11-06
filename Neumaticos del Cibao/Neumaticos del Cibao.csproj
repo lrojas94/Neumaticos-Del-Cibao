@@ -81,13 +81,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Apps\Common\Encryption.cs" />
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
+    <Compile Include="Apps\Common\TimedFunction.cs" />
     <Compile Include="Apps\Employees\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\Employees\ListEmployee.xaml.cs">
       <DependentUpon>ListEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\Employees\ShowEmployee.xaml.cs">
+      <DependentUpon>ShowEmployee.xaml</DependentUpon>
     </Compile>
     <Compile Include="CRUD Permissions\ViewAllPermissions.xaml.cs">
       <DependentUpon>ViewAllPermissions.xaml</DependentUpon>
@@ -100,6 +105,18 @@
       <DependentUpon>EmployeePermissions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\MathConverter.cs" />
+    <Compile Include="Clients\ShowClient.xaml.cs">
+      <DependentUpon>ShowClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\ViewAllClients.xaml.cs">
+      <DependentUpon>ViewAllClients.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\AddClient.xaml.cs">
+      <DependentUpon>AddClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Client.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\Employees\ListEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\Employees\ShowEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,6 +145,22 @@
     <Page Include="Apps\Employees\EmployeePermissions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clients\ShowClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clients\ViewAllClients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Clients\AddClient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="loginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +190,12 @@
     </Compile>
     <Compile Include="Database\Person.cs">
       <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ShoppingOption.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="loginWindow.xaml.cs">
+      <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -201,6 +244,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Images\appbar.arrow.left.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Images\appbar.arrow.right.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Database\Database.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Database.edmx</DependentUpon>

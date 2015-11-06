@@ -1,0 +1,40 @@
+﻿<Page x:Class="Neumaticos_del_Cibao.Clients.ViewAllClients"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Neumaticos_del_Cibao.Clients"
+      xmlns:common="clr-namespace:Neumaticos_del_Cibao.Apps.Common"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="ViewAllClients">
+
+    <ContentControl Template="{StaticResource BaseControlTemplate}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Style="{StaticResource TitleBase}" Content="Clientes Registrados" Grid.Row="0"></Label>
+            <Label Style="{StaticResource InputHeader}" x:Name="ourCLientsLabel" Content="Nuestros Clientes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
+            <common:PlaceholderTextBox x:Name="searchBox" PlaceholderText="Nombre Cliente" VerticalContentAlignment="Center" Height="25" Margin="10,36,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="searchBox_TextChanged"/>
+            <ListBox x:Name="clientsListBox" Style="{StaticResource ClientsListBox}"  Margin="10,69,9.667,10" Grid.Row="1" SelectionChanged="clientsListBox_SelectionChanged"/>
+            <Grid Height="25" Grid.Row="2" Margin="0,0.333,-10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="149*"></ColumnDefinition>
+                    <ColumnDefinition Width="150*"></ColumnDefinition>
+                    <ColumnDefinition Width="149*"></ColumnDefinition>
+                    <ColumnDefinition Width="46*"></ColumnDefinition>
+                    <ColumnDefinition Width="105*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnAddClient" Content="Añadir Cliente" Margin="10,0,9,0" Click="btnAddClient_Click"/>
+                <Button x:Name="btnViewClient" IsEnabled="False" Content="Ver Cliente" Grid.Column="1" Margin="10.667,0,10.333,0" VerticalAlignment="Top" Height="25" Click="btnViewClient_Click"/>
+                <Button x:Name="btnModifyClient" IsEnabled="False" Content="Editar Cliente" Grid.Column="2" Margin="9.333,0,10,0" Click="btnModifyClient_Click"/>
+                <Button x:Name="btnDeleteClient" IsEnabled="False" Content="EliminarCliente" Grid.Column="3" Margin="10,0,20,0" Grid.ColumnSpan="2" Click="btnDeleteClient_Click"/>
+
+            </Grid>
+        </Grid>
+    </ContentControl>
+</Page>

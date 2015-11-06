@@ -5,13 +5,22 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="cbc84ee3f9454a118917bda40b95bdf3" Name="Base" ZoomLevel="95">
+<<<<<<< HEAD
         <EntityTypeShape EntityType="databaseModel.Employee" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="databaseModel.Permission" Width="1.5" PointX="0.75" PointY="5.5" />
         <EntityTypeShape EntityType="databaseModel.Person" Width="1.5" PointX="0.75" PointY="1" />
         <EntityTypeShape EntityType="databaseModel.ShoppingOption" Width="1.5" PointX="2.75" PointY="4.75" />
         <AssociationConnector Association="databaseModel.FK_Employees_0_0" />
         <AssociationConnector Association="databaseModel.Employees_Permissions" />
-        <EntityTypeShape EntityType="databaseModel.Client" Width="1.5" PointX="5.375" PointY="0.75" />
+=======
+        <EntityTypeShape EntityType="databaseModel.Employee" Width="1.5" PointX="3" PointY="2.5" />
+        <EntityTypeShape EntityType="databaseModel.Permission" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="databaseModel.Person" Width="1.5" PointX="0.75" PointY="7.125" />
+        <EntityTypeShape EntityType="databaseModel.ShoppingOption" Width="1.5" PointX="3" PointY="5.75" />
+        <AssociationConnector Association="databaseModel.FK_Employees_0_0" />
+        <AssociationConnector Association="databaseModel.Employees_Permissions" />
+        <AssociationConnector Association="databaseModel.ShoppingOptionPermissions" />
+>>>>>>> IR-40. Associations weren't created, but now they are
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
