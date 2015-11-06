@@ -34,11 +34,7 @@ namespace Neumaticos_del_Cibao
         
         private void Login(object sender, RoutedEventArgs e) 
         {
-<<<<<<< HEAD
-            var user = texboxUsuario.Text.ToLower();
-=======
-            var user = UsuarioTexbox.Text.ToLower();
->>>>>>> 9c91ba3309b7028eaafcca89c18d234a78790024
+            var user = usernameTexbox.Text.ToLower();
             var password = passwordBox.Password;
             var encrypt = new Encryption();
             
@@ -50,7 +46,7 @@ namespace Neumaticos_del_Cibao
             {
                 var employee = database.Employees.Where(u => u.Username.ToLower() == (user.ToLower())).ToList();
                 
-                if (!employee.Any() || !encrypt.EncriptingPassWord(password).Contains(employee[0].Password))
+                if (!employee.Any() || !encrypt.EncriptingPassword(password).Contains(employee[0].Password))
                 {
                     MessageBox.Show("Usuario o Contraseña incorrecta");
                 }

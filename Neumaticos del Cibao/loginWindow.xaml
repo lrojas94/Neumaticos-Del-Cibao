@@ -10,21 +10,12 @@
         <Grid Background="#FFDDDDDD" Margin="148,145,148,106"/>
         <Grid Background="#2980b9" Margin="0,0,0,409"/>
 
-<<<<<<< HEAD
-        <TextBox x:Name="texboxUsuario" FontSize="18.667" Margin="212,194,202,240" TextWrapping="Wrap"  FontFamily="Segoe UI Semilight" BorderThickness="1"/>
-        <Label x:Name="labelUser" FontSize="16" Content="Usuario" Margin="263,159,249,275" RenderTransformOrigin="0.468,0.601" FontWeight="Bold"/>
-        <PasswordBox x:Name="passwordBox" Margin="212,262,202,172" TextOptions.TextHintingMode="Animated" BorderThickness="1"/>
-        <Label x:Name="labelPassword" Content="Contraseña" Margin="252,229,236,203" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="labelCompanyName" Content="Neumaticos del Cibao" HorizontalAlignment="Right" Margin="0,0,37,368" Width="451" FontSize="40" Foreground="#FFDDF0E8"/>
-        <Button x:Name="labelLogin" Content="Entrar" Margin="148,317,148,106" Click="Login" FontSize="26.667" Background="#2980b9" BorderThickness="1" FontFamily="Segoe UI Semibold"/>
-=======
-        <TextBox x:Name="UsuarioTexbox" FontSize="18.667" Margin="212,194,202,240" TextWrapping="Wrap"  FontFamily="Segoe UI Semilight" BorderThickness="1"/>
+        <TextBox x:Name="usernameTexbox" FontSize="18.667" Margin="212,194,202,240" TextWrapping="Wrap"  FontFamily="Segoe UI Semilight" BorderThickness="1"/>
         <Label x:Name="userLabel" FontSize="16" Content="Usuario" Margin="263,159,249,275" RenderTransformOrigin="0.468,0.601" FontWeight="Bold"/>
         <PasswordBox x:Name="passwordBox" Margin="212,262,202,172" TextOptions.TextHintingMode="Animated" BorderThickness="1"/>
-        <Label x:Name="PasswordLabel" Content="Contraseña" Margin="252,229,236,203" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="passwordLabel" Content="Contraseña" Margin="252,229,236,203" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="companyNameLabel" Content="Neumaticos del Cibao" HorizontalAlignment="Right" Margin="0,0,37,368" Width="451" FontSize="40" Foreground="#FFDDF0E8"/>
         <Button x:Name="btnLogin" Content="Entrar" Margin="148,317,148,106" Click="Login" FontSize="26.667" Background="#2980b9" BorderThickness="1" FontFamily="Segoe UI Semibold"/>
->>>>>>> 9c91ba3309b7028eaafcca89c18d234a78790024
         <Border BorderBrush="Black" BorderThickness="2" Margin="148,145,148,106"/>
 
     </Grid>
