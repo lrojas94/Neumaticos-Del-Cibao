@@ -17,7 +17,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
 {
     class Encryption  
     {
-        public String EncriptingPassword(String password)
+        public String EncryptSHA256(String password)
         {
             byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
