@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using FluentAssertions;
 using System.Timers;
-using Neumaticos_del_Cibao;
+using Neumaticos_del_Cibao.Apps.Common;
 
 namespace Neumaticos_del_Cibao_Tests
 {
@@ -17,7 +17,7 @@ namespace Neumaticos_del_Cibao_Tests
         [Test]
         public void TimedFunction_InitializedWithNullAction_ShouldThrowException()
         {
-            Action action = () => { new Neumaticos_del_Cibao.Apps.Common.TimedFunction(null); };
+            Action action = () => { new TimedFunction(null); };
             action.ShouldThrow<ArgumentNullException>();
         }
     }
