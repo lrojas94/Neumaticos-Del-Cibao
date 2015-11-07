@@ -83,6 +83,7 @@
     </ApplicationDefinition>
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
+    <Compile Include="Apps\Common\OptionGrid.cs" />
     <Compile Include="Apps\Common\TimedFunction.cs" />
     <Compile Include="Apps\Employees\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
@@ -92,6 +93,9 @@
     </Compile>
     <Compile Include="Apps\Employees\ShowEmployee.xaml.cs">
       <DependentUpon>ShowEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\ShoppingOptions\ShoppingOptions.xaml.cs">
+      <DependentUpon>ShoppingOptions.xaml</DependentUpon>
     </Compile>
     <Compile Include="CRUD Permissions\ViewAllPermissions.xaml.cs">
       <DependentUpon>ViewAllPermissions.xaml</DependentUpon>
@@ -130,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\Employees\ShowEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\ShoppingOptions\ShoppingOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,13 +188,13 @@
     </Compile>
     <Compile Include="Database\DatabaseAddons.cs" />
     <Compile Include="Database\EmployeeAddons.cs" />
+    <Compile Include="Database\Option.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Permission.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Person.cs">
-      <DependentUpon>Database.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\ShoppingOption.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

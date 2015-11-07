@@ -1,5 +1,4 @@
-﻿using Neumaticos_del_Cibao.CRUD_Permissions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,18 +16,13 @@ using System.Windows.Shapes;
 namespace Neumaticos_del_Cibao
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ShoppingOptions.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ShoppingOptions : Page
     {
-        public MainWindow()
+        public ShoppingOptions()
         {
             InitializeComponent();
-            shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
-            employeesFrame.Content = new Apps.Employees.ListEmployee();
-
         }
-
-
     }
 }

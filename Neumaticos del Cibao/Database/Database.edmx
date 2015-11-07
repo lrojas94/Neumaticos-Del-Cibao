@@ -42,6 +42,23 @@
           <Property Name="EmployeeId" Type="integer" Nullable="false" />
           <Property Name="PermissionId" Type="integer" Nullable="false" />
         </EntityType>
+        <EntityType Name="OptionPermissions">
+          <Key>
+            <PropertyRef Name="OptionId" />
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="OptionId" Type="integer" Nullable="false" />
+          <Property Name="PermissionId" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptionTitle" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="OptionType" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ClassView" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
         <EntityType Name="Permissions">
           <Key>
             <PropertyRef Name="Id" />
@@ -65,15 +82,6 @@
           <Property Name="ContactRelativePhone" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="IdentityDocument" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Address" Type="nvarchar" MaxLength="2147483647" />
-        </EntityType>
-        <EntityType Name="ShoppingOptions">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OptionTitle" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="OptionType" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ClassView" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
@@ -111,13 +119,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_OptionPermissions_0_0">
+          <End Role="Permissions" Type="Self.Permissions" Multiplicity="1" />
+          <End Role="OptionPermissions" Type="Self.OptionPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permissions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OptionPermissions">
+              <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OptionPermissions_1_0">
+          <End Role="Options" Type="Self.Options" Multiplicity="1" />
+          <End Role="OptionPermissions" Type="Self.OptionPermissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OptionPermissions">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="databaseModelStoreContainer">
           <EntitySet Name="Clients" EntityType="Self.Clients" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
+          <EntitySet Name="OptionPermissions" EntityType="Self.OptionPermissions" store:Type="Tables" />
+          <EntitySet Name="Options" EntityType="Self.Options" store:Type="Tables" />
           <EntitySet Name="Permissions" EntityType="Self.Permissions" store:Type="Tables" />
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
-          <EntitySet Name="ShoppingOptions" EntityType="Self.ShoppingOptions" store:Type="Tables" />
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Employees" EntitySet="Employees" />
@@ -130,6 +163,14 @@
             <End Role="Employees" EntitySet="Employees" />
             <End Role="Employees_Permissions" EntitySet="Employees_Permissions" />
           </AssociationSet>
+          <AssociationSet Name="FK_OptionPermissions_0_0" Association="Self.FK_OptionPermissions_0_0">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="OptionPermissions" EntitySet="OptionPermissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OptionPermissions_1_0" Association="Self.FK_OptionPermissions_1_0">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="OptionPermissions" EntitySet="OptionPermissions" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -137,9 +178,9 @@
       <Schema Namespace="databaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="databaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Employees" EntityType="databaseModel.Employee" />
+          <EntitySet Name="Options" EntityType="databaseModel.Option" />
           <EntitySet Name="Permissions" EntityType="databaseModel.Permission" />
           <EntitySet Name="Persons" EntityType="databaseModel.Person" />
-          <EntitySet Name="ShoppingOptions" EntityType="databaseModel.ShoppingOption" />
           <AssociationSet Name="FK_Employees_0_0" Association="databaseModel.FK_Employees_0_0">
             <End Role="Person" EntitySet="Persons" />
             <End Role="Employee" EntitySet="Employees" />
@@ -147,6 +188,10 @@
           <AssociationSet Name="Employees_Permissions" Association="databaseModel.Employees_Permissions">
             <End Role="Permission" EntitySet="Permissions" />
             <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="OptionPermissions" Association="databaseModel.OptionPermissions">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Option" EntitySet="Options" />
           </AssociationSet>
           <EntitySet Name="Clients" EntityType="databaseModel.Client" />
         </EntityContainer>
@@ -162,6 +207,16 @@
           <NavigationProperty Name="Person" Relationship="databaseModel.FK_Employees_0_0" FromRole="Employee" ToRole="Person" />
           <NavigationProperty Name="Permissions" Relationship="databaseModel.Employees_Permissions" FromRole="Employee" ToRole="Permission" />
         </EntityType>
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Permissions" Relationship="databaseModel.OptionPermissions" FromRole="Option" ToRole="Permission" />
+        </EntityType>
         <EntityType Name="Permission">
           <Key>
             <PropertyRef Name="Id" />
@@ -170,6 +225,7 @@
           <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="databaseModel.Employees_Permissions" FromRole="Permission" ToRole="Employee" />
+          <NavigationProperty Name="Options" Relationship="databaseModel.OptionPermissions" FromRole="Permission" ToRole="Option" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -184,18 +240,9 @@
           <Property Name="Email" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactRelativeName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactRelativePhone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employees" Relationship="databaseModel.FK_Employees_0_0" FromRole="Person" ToRole="Employee" />
           <Property Name="IdentityDocument" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="ShoppingOption">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OptionTitle" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="OptionType" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ClassView" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="databaseModel.FK_Employees_0_0" FromRole="Person" ToRole="Employee" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Type="databaseModel.Person" Role="Person" Multiplicity="1" />
@@ -212,6 +259,10 @@
         <Association Name="Employees_Permissions">
           <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
           <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+        <Association Name="OptionPermissions">
+          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
+          <End Type="databaseModel.Option" Role="Option" Multiplicity="*" />
         </Association>
         <EntityType Name="Client">
           <Key>
@@ -249,6 +300,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="databaseModel.Option">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="ClassView" ColumnName="ClassView" />
+                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
+                <ScalarProperty Name="OptionTitle" ColumnName="OptionTitle" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Permissions">
             <EntityTypeMapping TypeName="databaseModel.Permission">
               <MappingFragment StoreEntitySet="Permissions">
@@ -275,19 +336,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ShoppingOptions">
-            <EntityTypeMapping TypeName="databaseModel.ShoppingOption">
-              <MappingFragment StoreEntitySet="ShoppingOptions">
-                <ScalarProperty Name="ClassView" ColumnName="ClassView" />
-                <ScalarProperty Name="OptionType" ColumnName="OptionType" />
-                <ScalarProperty Name="OptionTitle" ColumnName="OptionTitle" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="Employees_Permissions" TypeName="databaseModel.Employees_Permissions" StoreEntitySet="Employees_Permissions">
             <EndProperty Name="Employee">
               <ScalarProperty Name="Id" ColumnName="EmployeeId" />
+            </EndProperty>
+            <EndProperty Name="Permission">
+              <ScalarProperty Name="Id" ColumnName="PermissionId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="OptionPermissions" TypeName="databaseModel.OptionPermissions" StoreEntitySet="OptionPermissions">
+            <EndProperty Name="Option">
+              <ScalarProperty Name="Id" ColumnName="OptionId" />
             </EndProperty>
             <EndProperty Name="Permission">
               <ScalarProperty Name="Id" ColumnName="PermissionId" />

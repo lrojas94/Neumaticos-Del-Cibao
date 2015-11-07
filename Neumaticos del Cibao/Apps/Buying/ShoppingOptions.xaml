@@ -1,0 +1,34 @@
+﻿<Page x:Class="Neumaticos_del_Cibao.ShoppingOptions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Neumaticos_del_Cibao"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="ShoppingOptions">
+
+    <Grid Style="{StaticResource BaseGrid}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="0*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="title" Style="{StaticResource TitleBase}" Grid.Row="0" Grid.ColumnSpan="2" Content="Compras" VerticalAlignment="Top"/>
+                    <Button Name="btnReceipt" IsEnabled="False"  Grid.Row="1" Content="Factura" Margin="5,5" Height="25"/>
+                    <Button Name="btnBuys" Grid.Column="1" Grid.Row="1" Content="Compras" Margin="5,5" Height="25" />
+                    <Button Name="btnInventary" Grid.Row="2" Content="Inventario" Margin="5,5" Height="25" />
+                    <Button Name="btnClients" IsEnabled="False" Grid.Column="1" Grid.Row="2" Content="Clientes" Margin="5,5" Height="25" />
+            </Grid>
+        </ScrollViewer>
+        
+    </Grid>
+</Page>
