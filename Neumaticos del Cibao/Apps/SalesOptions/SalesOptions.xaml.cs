@@ -1,5 +1,4 @@
-﻿using Neumaticos_del_Cibao.CRUD_Permissions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,22 +13,21 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao
+namespace Neumaticos_del_Cibao.Apps.SalesOptions
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SalesOptions.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SalesOptions : Page
     {
-        public MainWindow()
+        Database.databaseEntities database;
+        public SalesOptions()
         {
             InitializeComponent();
-            shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
-            salesFrame.Content = new Apps.SalesOptions.SalesOptions();
-            employeesFrame.Content = new Apps.Employees.ListEmployee();
-
+            database = new Database.databaseEntities();
+            var options = database.Options.Where(o => o.OptionType == "Sales").ToList();
+            grid.ParentPage = this;
+            grid.BuildOptionGrid(options);
         }
-
-
     }
 }

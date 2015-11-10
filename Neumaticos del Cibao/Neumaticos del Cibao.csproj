@@ -95,6 +95,9 @@
     <Compile Include="Apps\Employees\ShowEmployee.xaml.cs">
       <DependentUpon>ShowEmployee.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\SalesOptions\SalesOptions.xaml.cs">
+      <DependentUpon>SalesOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Apps\ShoppingOptions\ShoppingOptions.xaml.cs">
       <DependentUpon>ShoppingOptions.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\Employees\ShowEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\SalesOptions\SalesOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,8 +12,7 @@
                 <Frame Name="shoppingFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
             </TabItem>
             <TabItem Header="Vendedores">
-                <Grid Background="#FFE5E5E5">
-                </Grid>
+                <Frame Name="salesFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
             </TabItem>
             <TabItem Header="Empleados">
                 <Frame Name="employeesFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>

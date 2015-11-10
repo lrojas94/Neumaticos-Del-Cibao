@@ -4,26 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;D:\Universidad\Ingenieria de Software\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="RNC" Type="integer" />
-          <Property Name="NCF" Type="integer" />
-          <Property Name="Credit" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="CreditLimit" Type="integer" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactPhone" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactEmail" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
-        </EntityType>
+    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\Elainer Toribio\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -80,8 +61,6 @@
           <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativeName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativePhone" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="IdentityDocument" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="Address" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
@@ -144,7 +123,6 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="databaseModelStoreContainer">
-          <EntitySet Name="Clients" EntityType="Self.Clients" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
           <EntitySet Name="OptionPermissions" EntityType="Self.OptionPermissions" store:Type="Tables" />
@@ -322,8 +300,6 @@
           <EntitySetMapping Name="Persons">
             <EntityTypeMapping TypeName="databaseModel.Person">
               <MappingFragment StoreEntitySet="Persons">
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="IdentityDocument" ColumnName="IdentityDocument" />
                 <ScalarProperty Name="ContactRelativePhone" ColumnName="ContactRelativePhone" />
                 <ScalarProperty Name="ContactRelativeName" ColumnName="ContactRelativeName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -352,26 +328,6 @@
               <ScalarProperty Name="Id" ColumnName="PermissionId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Clients">
-            <EntityTypeMapping TypeName="databaseModel.Client">
-              <MappingFragment StoreEntitySet="Clients">
-                <ScalarProperty Name="ContactCharge" ColumnName="ContactCharge" />
-                <ScalarProperty Name="ContactExt" ColumnName="ContactExt" />
-                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
-                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
-                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Adress" ColumnName="Adress" />
-                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
-                <ScalarProperty Name="Credit" ColumnName="Credit" />
-                <ScalarProperty Name="NCF" ColumnName="NCF" />
-                <ScalarProperty Name="RNC" ColumnName="RNC" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
