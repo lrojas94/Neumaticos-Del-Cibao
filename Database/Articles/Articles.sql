@@ -1,8 +1,7 @@
 BEGIN TRANSACTION;
-CREATE TABLE "Article" (
+CREATE TABLE "Articles" (
 	`Id`	TEXT NOT NULL UNIQUE,
 	`Name`	TEXT NOT NULL,
-	`Price`	INTEGER,
 	`MeasureUnit`	TEXT,
 	`Measure`	REAL,
 	`Description`	TEXT,
