@@ -5,6 +5,25 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\Elainer Toribio\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="RNC" Type="integer" />
+          <Property Name="NCF" Type="integer" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreditLimit" Type="integer" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -61,6 +80,8 @@
           <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativeName" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactRelativePhone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="IdentityDocument" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Address" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
@@ -123,6 +144,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="databaseModelStoreContainer">
+          <EntitySet Name="Clients" EntityType="Self.Clients" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
           <EntitySet Name="OptionPermissions" EntityType="Self.OptionPermissions" store:Type="Tables" />
@@ -158,11 +180,6 @@
           <EntitySet Name="Employees" EntityType="databaseModel.Employee" />
           <EntitySet Name="Options" EntityType="databaseModel.Option" />
           <EntitySet Name="Permissions" EntityType="databaseModel.Permission" />
-          <EntitySet Name="Persons" EntityType="databaseModel.Person" />
-          <AssociationSet Name="FK_Employees_0_0" Association="databaseModel.FK_Employees_0_0">
-            <End Role="Person" EntitySet="Persons" />
-            <End Role="Employee" EntitySet="Employees" />
-          </AssociationSet>
           <AssociationSet Name="Employees_Permissions" Association="databaseModel.Employees_Permissions">
             <End Role="Permission" EntitySet="Permissions" />
             <End Role="Employee" EntitySet="Employees" />
@@ -172,6 +189,11 @@
             <End Role="Option" EntitySet="Options" />
           </AssociationSet>
           <EntitySet Name="Clients" EntityType="databaseModel.Client" />
+          <EntitySet Name="Persons" EntityType="databaseModel.Person" />
+          <AssociationSet Name="FK_Employees_0_0" Association="databaseModel.FK_Employees_0_0">
+            <End Role="Person" EntitySet="Persons" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Employee">
           <Key>
@@ -182,8 +204,8 @@
           <Property Name="Password" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="StartDate" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="PersonId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="Person" Relationship="databaseModel.FK_Employees_0_0" FromRole="Employee" ToRole="Person" />
           <NavigationProperty Name="Permissions" Relationship="databaseModel.Employees_Permissions" FromRole="Employee" ToRole="Permission" />
+          <NavigationProperty Name="Person" Relationship="databaseModel.FK_Employees_0_0" FromRole="Employee" ToRole="Person" />
         </EntityType>
         <EntityType Name="Option">
           <Key>
@@ -204,6 +226,33 @@
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Employees" Relationship="databaseModel.Employees_Permissions" FromRole="Permission" ToRole="Employee" />
           <NavigationProperty Name="Options" Relationship="databaseModel.OptionPermissions" FromRole="Permission" ToRole="Option" />
+        </EntityType>
+        <Association Name="Employees_Permissions">
+          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
+          <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
+        </Association>
+        <Association Name="OptionPermissions">
+          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
+          <End Type="databaseModel.Option" Role="Option" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="RNC" Type="Int64" />
+          <Property Name="NCF" Type="Int64" />
+          <Property Name="Credit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="CreditLimit" Type="Int64" />
+          <Property Name="Adress" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPhone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactEmail" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactExt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Person">
           <Key>
@@ -234,33 +283,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Employees_Permissions">
-          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
-          <End Type="databaseModel.Employee" Role="Employee" Multiplicity="*" />
-        </Association>
-        <Association Name="OptionPermissions">
-          <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
-          <End Type="databaseModel.Option" Role="Option" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Client">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="RNC" Type="Int64" />
-          <Property Name="NCF" Type="Int64" />
-          <Property Name="Credit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="CreditLimit" Type="Int64" />
-          <Property Name="Adress" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactPhone" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactName" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactEmail" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactExt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,21 +319,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Persons">
-            <EntityTypeMapping TypeName="databaseModel.Person">
-              <MappingFragment StoreEntitySet="Persons">
-                <ScalarProperty Name="ContactRelativePhone" ColumnName="ContactRelativePhone" />
-                <ScalarProperty Name="ContactRelativeName" ColumnName="ContactRelativeName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="Employees_Permissions" TypeName="databaseModel.Employees_Permissions" StoreEntitySet="Employees_Permissions">
             <EndProperty Name="Employee">
               <ScalarProperty Name="Id" ColumnName="EmployeeId" />
@@ -328,6 +335,43 @@
               <ScalarProperty Name="Id" ColumnName="PermissionId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="databaseModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ContactCharge" ColumnName="ContactCharge" />
+                <ScalarProperty Name="ContactExt" ColumnName="ContactExt" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persons">
+            <EntityTypeMapping TypeName="databaseModel.Person">
+              <MappingFragment StoreEntitySet="Persons">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IdentityDocument" ColumnName="IdentityDocument" />
+                <ScalarProperty Name="ContactRelativePhone" ColumnName="ContactRelativePhone" />
+                <ScalarProperty Name="ContactRelativeName" ColumnName="ContactRelativeName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -26,7 +26,10 @@ namespace Neumaticos_del_Cibao
         public loginWindow()
         {
             InitializeComponent();
-            
+            var home = new MainWindow();
+            home.Show();
+            this.Close();
+
         }
 
         // It's consider that the password is saved in the

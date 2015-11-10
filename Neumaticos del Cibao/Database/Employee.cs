@@ -39,11 +39,11 @@ public partial class Employee
 
 
 
-    public virtual Person Person { get; set; }
-
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Permission> Permissions { get; set; }
+
+    public virtual Person Person { get; set; }
 
 }
 

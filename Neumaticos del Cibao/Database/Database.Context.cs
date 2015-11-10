@@ -38,9 +38,9 @@ public partial class databaseEntities : DbContext
 
     public virtual DbSet<Permission> Permissions { get; set; }
 
-    public virtual DbSet<Person> Persons { get; set; }
-
     public virtual DbSet<Client> Clients { get; set; }
+
+    public virtual DbSet<Person> Persons { get; set; }
 
 }
 

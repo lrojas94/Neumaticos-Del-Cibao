@@ -27,6 +27,8 @@ namespace Neumaticos_del_Cibao.Apps.SalesOptions
             database = new Database.databaseEntities();
             var options = database.Options.Where(o => o.OptionType == "Sales").ToList();
             grid.ParentPage = this;
+            grid.ColumnCount = 3;
+            grid.ButtonHeight = 35;
             grid.BuildOptionGrid(options);
         }
     }
