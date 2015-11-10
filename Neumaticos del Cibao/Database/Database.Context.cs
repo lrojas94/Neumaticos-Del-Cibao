@@ -30,5 +30,6 @@ namespace Neumaticos_del_Cibao.Database
         public virtual DbSet<Permission> Permissions { get; set; }
         public virtual DbSet<Person> Persons { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
+        public virtual DbSet<Article> Articles { get; set; }
     }
 }
