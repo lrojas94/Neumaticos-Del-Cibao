@@ -23,15 +23,15 @@ namespace Neumaticos_del_Cibao.Apps.Articles
         private Database.Article article;
         private bool isNewEntry = false;
         private Database.databaseEntities database;
+
         public AddArticle(Database.databaseEntities context = null, Database.Article article = null)
         {
             InitializeComponent();
             database = context;
 
             if (context == null)
-            {
                 database = new Database.databaseEntities();
-            }
+
 
             bindArticle(article);
 
@@ -39,14 +39,11 @@ namespace Neumaticos_del_Cibao.Apps.Articles
 
         private void bindArticle(Database.Article article)
         {
-            if (article == null)
+            this.article = article;
+            if(article==null)
             {
-                isNewEntry = true;
                 this.article = new Database.Article();
-            }
-            else
-            {
-                this.article = article;
+                isNewEntry = true;
             }
             DataContext = this.article;
 
@@ -55,10 +52,10 @@ namespace Neumaticos_del_Cibao.Apps.Articles
         private void btnAccept_Click(object sender, RoutedEventArgs e)
         {
             if (isNewEntry == true)
-            {
                 database.Articles.Add(article);
-            }
+
             database.SaveChangesAsync();
+
             //NavigationService.Navigate(new ViewAllArticles());
         }
 
