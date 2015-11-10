@@ -21,16 +21,16 @@
         <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Content="Mostar Artículo" Style="{StaticResource TitleBase}"  VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0,0" Padding="5"/>
         <Label x:Name="articleInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información del Artículo" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
         <Label x:Name="nameLabel" Style="{StaticResource InputHeader}" FontWeight="Bold" Content="Nombre" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="name" Content="temp nombre" Margin="10,73,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="name" Content="{Binding Name}" Margin="10,73,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="idLabel" Content="Código" Style="{StaticResource InputHeader}" FontWeight="Bold" Grid.Column="1" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="id" Content="temp id" Grid.Column="1" Margin="10,73,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="id" Content="{Binding Id}" Grid.Column="1" Margin="10,73,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="measureLabel" Content="Tamaño" FontWeight="Bold" Style="{StaticResource InputHeader}" Margin="10,104,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="measure" Content="temp tamano" Margin="10,135,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="measure" Content="{Binding Measure}" Margin="10,135,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="measureUnitLabel" Style="{StaticResource InputHeader}" Content="Unidad" FontWeight="Bold" Grid.Column="1" Margin="10,104,10,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="measureUnit" Content="temp Measure unit" Grid.Column="1" Margin="10,135,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="measureUnit" Content="{Binding MeasureUnit}" Grid.Column="1" Margin="10,135,10,0" Grid.Row="1" VerticalAlignment="Top"/>
 
         <Label x:Name="descriptionLabel" Content="Descripción" FontWeight="Bold" Style="{StaticResource InputHeader}" Margin="10,167,10,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label x:Name="description" Content="temp description" Margin="10,199,10,0" Height="50" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="description" Content="{Binding Description}" Margin="10,199,10,0" Height="50" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
 
         <Button x:Name="btnModifyArticle" Grid.ColumnSpan="2" Content="Modificar Articulo" Margin="10,10,10,10" Grid.Row="2" Click="btnModifyArticle_Click"/>
 

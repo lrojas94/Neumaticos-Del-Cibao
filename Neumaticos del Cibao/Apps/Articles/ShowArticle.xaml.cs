@@ -20,9 +20,20 @@ namespace Neumaticos_del_Cibao.Apps.Articles
     /// </summary>
     public partial class ShowArticle : Page
     {
-        public ShowArticle()
+        Database.Article article;
+
+        public ShowArticle(Database.Article article)
         {
             InitializeComponent();
+            this.article = article;
+            DataContext = this.article;
+        }
+
+        private void btnModifyArticle_Click(object sender, RoutedEventArgs e)
+        {
+            Database.databaseEntities db = null;
+            NavigationService.Navigate(new AddArticle(db, article));
+
         }
     }
 }
