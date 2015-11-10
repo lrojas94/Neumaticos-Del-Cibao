@@ -66,18 +66,7 @@ namespace Neumaticos_del_Cibao.Clients
                 creditCheckBox.IsChecked = true;
             }
             DataContext = this.client;
-            /*name.SetBinding(TextBox.TextProperty, "Name");
-            email.SetBinding(TextBox.TextProperty, "Email");
-            phone.SetBinding(TextBox.TextProperty, "Phone");
-            rnc.SetBinding(TextBox.TextProperty, "RNC");
-            ncf.SetBinding(TextBox.TextProperty, "NCF");
-            maxCredit.SetBinding(TextBox.TextProperty, "CreditLimit");
-            adress.SetBinding(TextBox.TextProperty, "Adress");
-            contactCharge.SetBinding(TextBox.TextProperty, "ContactCharge");
-            contactEmail.SetBinding(TextBox.TextProperty, "ContactEmail");
-            contactExt.SetBinding(TextBox.TextProperty, "ContactExt");
-            contactName.SetBinding(TextBox.TextProperty, "ContactName");
-            contactPhone.SetBinding(TextBox.TextProperty, "ContactPhone");*/
+
         }
 
         private void btnAccept_Click(object sender, RoutedEventArgs e)

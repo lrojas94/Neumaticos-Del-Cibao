@@ -38,7 +38,7 @@ namespace Neumaticos_del_Cibao
             var password = passwordBox.Password;
             var encrypt = new Encryption();
 
-            /*if (user.Equals("") || password.Equals(""))
+            if (user.Equals("") || password.Equals(""))
             {
                 MessageBox.Show("Usuario o Contraseña vacios. Favor llenarlos");
             }
@@ -57,10 +57,7 @@ namespace Neumaticos_del_Cibao
                     this.Close();
                 }
                 
-            }*/
-            var home = new MainWindow();
-            home.Show();
-            this.Close();
+            }
         }
     }
 }

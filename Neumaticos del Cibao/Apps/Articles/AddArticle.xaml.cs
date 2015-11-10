@@ -20,9 +20,51 @@ namespace Neumaticos_del_Cibao.Apps.Articles
     /// </summary>
     public partial class AddArticle : Page
     {
-        public AddArticle()
+        private Database.Article article;
+        private bool isNewEntry = false;
+        private Database.databaseEntities database;
+        public AddArticle(Database.databaseEntities context = null, Database.Article article = null)
         {
             InitializeComponent();
+            database = context;
+
+            if (context == null)
+            {
+                database = new Database.databaseEntities();
+            }
+
+            bindArticle(article);
+
+        }
+
+        private void bindArticle(Database.Article article)
+        {
+            if (article == null)
+            {
+                isNewEntry = true;
+                this.article = new Database.Article();
+            }
+            else
+            {
+                this.article = article;
+            }
+            DataContext = this.article;
+
+        }
+
+        private void btnAccept_Click(object sender, RoutedEventArgs e)
+        {
+            if (isNewEntry == true)
+            {
+                database.Articles.Add(article);
+            }
+            database.SaveChangesAsync();
+            //NavigationService.Navigate(new ViewAllArticles());
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new ViewAllArticles());
         }
     }
 }
