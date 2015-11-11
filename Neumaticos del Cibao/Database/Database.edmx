@@ -9,10 +9,31 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="MeasureUnit" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Measure" Type="real" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CodeIdentifier" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="RNC" Type="integer" />
+          <Property Name="NCF" Type="integer" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="CreditLimit" Type="integer" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactPhone" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactEmail" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -303,6 +324,17 @@
           <Property Name="ContactExt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="MeasureUnit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Measure" Type="Double" />
+          <Property Name="CodeIdentifier" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -372,9 +404,31 @@
               <ScalarProperty Name="Id" ColumnName="PermissionId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="databaseModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="ContactCharge" ColumnName="ContactCharge" />
+                <ScalarProperty Name="ContactExt" ColumnName="ContactExt" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="databaseModel.Article">
               <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CodeIdentifier" ColumnName="CodeIdentifier" />
                 <ScalarProperty Name="Measure" ColumnName="Measure" />
                 <ScalarProperty Name="MeasureUnit" ColumnName="MeasureUnit" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

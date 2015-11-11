@@ -84,6 +84,9 @@
     <Compile Include="Apps\Articles\AddArticle.xaml.cs">
       <DependentUpon>AddArticle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Articles\ViewAllArticles.xaml.cs">
+      <DependentUpon>ViewAllArticles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Apps\Common\Encryption.cs" />
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
@@ -127,6 +130,7 @@
     <Compile Include="Database\Article.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\ArticlesAddons.cs" />
     <Compile Include="Database\Client.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -136,6 +140,10 @@
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
     <Page Include="Apps\Articles\AddArticle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\Articles\ViewAllArticles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

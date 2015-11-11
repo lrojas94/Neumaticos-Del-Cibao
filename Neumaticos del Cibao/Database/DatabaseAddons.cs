@@ -26,18 +26,34 @@ namespace Neumaticos_del_Cibao.Database
                 return Employees.ToList();
             }
         }
+
         public List<Client> ClientSearchByName(string toSearch)
         {
             if (toSearch != "")
             {
                 return Clients.Where(
-                    client => client.Name.ToLower().Contains(toSearch)
-                    || client.ContactName.ToLower().Contains(toSearch)
+                    client => client.Name.ToLower().Contains(toSearch) ||
+                    client.ContactName.ToLower().Contains(toSearch)
                     ).ToList();
             }
             else
             {
                 return Clients.ToList();
+            }
+        }
+
+        public List<Article> ArticleSearchByName(string toSearch)
+        {
+            if (toSearch != "")
+            {
+                return Articles.Where(
+                    Article => Article.Name.ToLower().Contains(toSearch) ||
+                    Article.CodeIdentifier.ToLower().Contains(toSearch)
+                    ).ToList();
+            }
+            else
+            {
+                return Articles.ToList();
             }
         }
     }
