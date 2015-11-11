@@ -30,12 +30,11 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"/>
+
                 </Grid.ColumnDefinitions>
                 <Button x:Name="btnAddArticle" Content="Añadir Artículo" Margin="10,0,10,0" Height="25" VerticalAlignment="Bottom" Click="btnAddArticle_Click" />
-                <Button x:Name="btnViewArticle" IsEnabled="False" Content="Ver Artículo" Grid.Column="1" Margin="10,0,10,0" VerticalAlignment="Bottom" Height="25" Click="btnViewArticle_Click" />
-                <Button x:Name="btnModifyArticle" IsEnabled="False" Content="Editar Artículo" Grid.Column="2" Margin="10,0,10,0" Height="25" VerticalAlignment="Bottom" Click="btnModifyArticle_Click" />
-                <Button x:Name="btnDeleteArticle" IsEnabled="False" Content="Eliminar Artículo" Grid.Column="3" Margin="10,0,10,0" Height="25" VerticalAlignment="Bottom" Click="btnDeleteArticle_Click" />
+                <Button x:Name="btnModifyArticle" IsEnabled="False" Content="Editar Artículo" Grid.Column="1" Margin="10,0,10,0" Height="25" VerticalAlignment="Bottom" Click="btnModifyArticle_Click" />
+                <Button x:Name="btnDeleteArticle" IsEnabled="False" Content="Eliminar Artículo" Grid.Column="2" Margin="10,0,10,0" Height="25" VerticalAlignment="Bottom" Click="btnDeleteArticle_Click" />
 
             </Grid>
 

@@ -8,11 +8,19 @@ namespace Neumaticos_del_Cibao.Database
 {
     public partial class Article
     {
-        public string Information
+        public string ArticleTemplateSize
         {
             get
             {
-                return String.Format("{0} - ({1} {2}) - {3}", Id, Measure, MeasureUnit, Description);
+                return String.Format("Medida: {0} {1}",  Measure, MeasureUnit);
+            }
+        }
+
+        public string ArticleTemplateTitle
+        {
+            get
+            {
+                return string.Format("[{0}] - {1}",CodeIdentifier,Name);
             }
         }
 

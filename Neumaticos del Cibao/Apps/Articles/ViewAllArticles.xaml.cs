@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Neumaticos_del_Cibao.Apps.Common;
 
 namespace Neumaticos_del_Cibao.Apps.Articles
 {
@@ -22,11 +23,21 @@ namespace Neumaticos_del_Cibao.Apps.Articles
     {
         private Database.Article selectedArticle;
         private Database.databaseEntities database = new Database.databaseEntities();
+        private TimedFunction searchFuntion;
 
         public ViewAllArticles()
         {
             InitializeComponent();
             articlesListBox.ItemsSource = database.Articles.ToList();
+
+            Action search = () =>
+            {
+                articlesListBox.ItemsSource = database.ArticleSearchByName(searchBox.RealText);
+            };
+
+            searchFuntion = new Common.TimedFunction(search);
+
+
         }
 
         private void btnAddArticle_Click(object sender, RoutedEventArgs e)
@@ -34,10 +45,6 @@ namespace Neumaticos_del_Cibao.Apps.Articles
             NavigationService.Navigate(new AddArticle(database));
         }
 
-        private void btnViewArticle_Click(object sender, RoutedEventArgs e)
-        {
-            //NavigationService.Navigate(new ShowArticle(selectedArticle));
-        }
 
         private void btnModifyArticle_Click(object sender, RoutedEventArgs e)
         {
@@ -55,13 +62,12 @@ namespace Neumaticos_del_Cibao.Apps.Articles
         {
             btnDeleteArticle.IsEnabled = true;
             btnModifyArticle.IsEnabled = true;
-            btnViewArticle.IsEnabled = true;
             selectedArticle = (sender as ListBox).SelectedItem as Database.Article;
         }
 
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            searchFuntion.Run();
         }
     }
 }

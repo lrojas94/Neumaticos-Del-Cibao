@@ -106,8 +106,9 @@
                 <Setter.Value>
                     <DataTemplate DataType="Database:Employee">
                         <StackPanel Orientation="Vertical">
-                            <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=Name}"></Label>
-                            <TextBlock Text="{Binding Path=Information}" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="5,0,0,0"></TextBlock>
+                            <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=ArticleTemplateTitle}" Padding="5,0,0,0"></Label>
+                            <Label FontWeight="Thin" Content="{Binding Path=ArticleTemplateSize}" VerticalContentAlignment="Top" Height="15" FontSize="12" Padding="20,0,0,0"/>
+                            <TextBlock Text="{Binding Path=Description}" Height="12" FontSize="10" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="20,0,0,0"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </Setter.Value>
