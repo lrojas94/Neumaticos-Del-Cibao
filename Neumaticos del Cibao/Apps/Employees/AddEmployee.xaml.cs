@@ -43,7 +43,7 @@ namespace Neumaticos_del_Cibao.Apps.Employees
         private void formToEmployee()
         {
             employee.Person.Sex = (sex.SelectedItem as ComboBoxItem).Content.ToString() ;
-            employee.Password = password.Password.ToString(); 
+            employee.SetPassword(password.Password.ToString()); 
 
             if (isNewEntry)
             {

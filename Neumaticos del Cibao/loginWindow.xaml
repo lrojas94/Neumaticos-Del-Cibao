@@ -7,16 +7,15 @@
         mc:Ignorable="d"
         Title="Inicio de Sesion" Height="500" Width="600">
     <Grid Background="#ecf0f1">
-        <Grid Background="#FFDDDDDD" Margin="148,145,148,106"/>
-        <Grid Background="#2980b9" Margin="0,0,0,409"/>
 
-        <TextBox x:Name="usernameTextbox" FontSize="18.667" Margin="212,194,202,240" TextWrapping="Wrap"  FontFamily="Segoe UI Semilight" BorderThickness="1"/>
-        <Label x:Name="userLabel" FontSize="16" Content="Usuario" Margin="263,159,249,275" RenderTransformOrigin="0.468,0.601" FontWeight="Bold"/>
-        <PasswordBox x:Name="passwordBox" Margin="212,262,202,172" TextOptions.TextHintingMode="Animated" BorderThickness="1"/>
-        <Label x:Name="passwordLabel" Content="Contraseña" Margin="252,229,236,203" FontSize="16" FontWeight="Bold"/>
-        <Label x:Name="companyNameLabel" Content="Neumaticos del Cibao" HorizontalAlignment="Right" Margin="0,0,37,368" Width="451" FontSize="40" Foreground="#FFDDF0E8"/>
-        <Button x:Name="btnLogin" Content="Entrar" Margin="148,317,148,106" Click="Login" FontSize="26.667" Background="#2980b9" BorderThickness="1" FontFamily="Segoe UI Semibold"/>
-        <Border BorderBrush="Black" BorderThickness="2" Margin="148,145,148,106"/>
+        <Grid Background="#FFDDDDDD" Margin="148,145,148,106"/>
+        <Border BorderBrush="{StaticResource Concrete}" BorderThickness="1" Margin="148,145,148,106"/>
+        <Label x:Name="companyNameLabel" Content="Neumaticos del Cibao" Style="{StaticResource TitleBase}" Foreground="#FFDDF0E8" VerticalAlignment="Top" FontSize="26.667"/>
+        <Label x:Name="userLabel" FontSize="16" Content="Usuario" Margin="148,154,148,0" RenderTransformOrigin="0.468,0.601" FontWeight="Bold" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center" Width="296" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="usernameTextbox" FontSize="18.667" Margin="158,194,158,0" TextWrapping="Wrap"  FontFamily="Segoe UI Semilight" BorderThickness="1" KeyDown="enterPressed" Height="35" VerticalAlignment="Top"/>
+        <Label x:Name="passwordLabel" Content="Contraseña" Margin="211,234,203,0" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" Height="37" VerticalAlignment="Top" Width="178" HorizontalContentAlignment="Center"/>
+        <PasswordBox x:Name="passwordBox" Margin="158,276,158,0" TextOptions.TextHintingMode="Animated" BorderThickness="1" KeyDown="enterPressed" Height="35" VerticalAlignment="Top"/>
+        <Button x:Name="btnLogin" Content="Entrar" Margin="148,0,148,106" Click="login" Foreground="White" Background="{StaticResource PeterRiver}" BorderThickness="1" BorderBrush="{StaticResource BelizeHole}" FontSize="21.333" VerticalContentAlignment="Top" Height="35" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

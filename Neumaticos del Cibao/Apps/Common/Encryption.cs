@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 
 namespace Neumaticos_del_Cibao.Apps.Common
 {
-    class Encryption  
+    public class Encryption  
     {
-        public String EncryptSHA256(String password)
+        public string EncryptSHA256(string password)
         {
-            byte[] data = System.Text.Encoding.ASCII.GetBytes(password);
+            byte[] data = Encoding.ASCII.GetBytes(password);
             data = new System.Security.Cryptography.SHA256Managed().ComputeHash(data);
-            String hash = System.Text.Encoding.ASCII.GetString(data);
+            string hash = Encoding.ASCII.GetString(data);
 
             return hash;
         }

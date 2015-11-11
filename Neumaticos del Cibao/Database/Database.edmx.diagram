@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cbc84ee3f9454a118917bda40b95bdf3" Name="Base" ZoomLevel="95">
+      <Diagram DiagramId="cbc84ee3f9454a118917bda40b95bdf3" Name="Base" ZoomLevel="109">
         <AssociationConnector Association="databaseModel.FK_Employees_0_0" />
         <EntityTypeShape EntityType="databaseModel.Employee" Width="1.5" PointX="3" PointY="2.5" />
         <EntityTypeShape EntityType="databaseModel.Option" Width="1.5" PointX="3" PointY="5.75" />
@@ -12,8 +12,8 @@
         <EntityTypeShape EntityType="databaseModel.Person" Width="1.5" PointX="0.75" PointY="7" />
         <AssociationConnector Association="databaseModel.Employees_Permissions" />
         <AssociationConnector Association="databaseModel.OptionPermissions" />
-        <EntityTypeShape EntityType="databaseModel.Client" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="databaseModel.Article" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="databaseModel.Client" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -23,40 +24,64 @@ namespace Neumaticos_del_Cibao
     public partial class loginWindow :  Window
     {
         private Database.databaseEntities database = new Database.databaseEntities();
+
         public loginWindow()
         {
             InitializeComponent();
+            
             
         }
 
         // It's consider that the password is saved in the
         // database as a result of this function.
         
-        private void Login(object sender, RoutedEventArgs e) 
+        private void login(object sender, RoutedEventArgs e) 
         {
-            var user = usernameTextbox.Text.ToLower();
-            var password = passwordBox.Password;
-            var encrypt = new Encryption();
+            btnLogin.Content = "Entrando...";
+            var thread = new Thread(loginThread);
+            thread.Start();
+        }
 
-            if (user.Equals("") || password.Equals(""))
+        private void loginThread()
+        {
+            Dispatcher.Invoke(() => 
             {
-                MessageBox.Show("Usuario o Contraseña vacios. Favor llenarlos");
-            }
-            else
-            {
-                var employee = database.Employees.Where(u => u.Username.ToLower() == (user.ToLower())).ToList();
-                
-                if (!employee.Any() || !encrypt.EncryptSHA256(password).Contains(employee[0].Password))
+                var user = usernameTextbox.Text.ToLower();
+                var password = passwordBox.Password;
+
+                if (user.Equals("") || password.Equals(""))
                 {
-                    MessageBox.Show("Usuario o Contraseña incorrecta");
+                    MessageBox.Show("Ha dejado el campo de Usuario o Contraseña vacio.\nFavor completar los campos.", "Error!");
+                    btnLogin.Content = "Entrar";
                 }
                 else
                 {
-                    var home = new MainWindow();
-                    home.Show();
-                    this.Close();
+                    var employee = database.Employees.FirstOrDefault(u => u.Username.ToLower() == user);
+
+                    if (employee == null || !employee.Login(password))
+                    {
+                        MessageBox.Show("Usuario o Contraseña incorrecta", "Error!");
+                        btnLogin.Content = "Entrar";
+                    }
+                    else
+                    {
+                        var home = new MainWindow();
+                        home.Show();
+                        Close();
+                    }
+
                 }
-                
+            });
+            
+        }
+
+        private void enterPressed(object sender, KeyEventArgs e)
+        {
+            if (passwordBox.Password != "" && usernameTextbox.Text != "" && e.Key == Key.Enter)
+            {
+                btnLogin.Content = "Entrando...";
+                VisualStateManager.GoToState(btnLogin, "Pressed", true);
+                btnLogin.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Primitives.ButtonBase.ClickEvent));
             }
         }
     }
