@@ -29,7 +29,7 @@ namespace Neumaticos_del_Cibao.Apps.Articles
             InitializeComponent();
             database = context;
 
-            if (context == null)
+            if (database == null)
                 database = new Database.databaseEntities();
 
 
@@ -56,12 +56,12 @@ namespace Neumaticos_del_Cibao.Apps.Articles
 
             database.SaveChangesAsync();
 
-            //NavigationService.Navigate(new ViewAllArticles());
+            NavigationService.Navigate(new ViewAllArticles());
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new ViewAllArticles());
+            NavigationService.Navigate(new ViewAllArticles());
         }
     }
 }

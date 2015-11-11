@@ -23,7 +23,7 @@
             <Label Style="{StaticResource InputHeader}" x:Name="ourArticlesLabel" Content="Nuestros Artículos" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
 
             <common:PlaceholderTextBox x:Name="searchBox" PlaceholderText="Nombre Artículo" VerticalContentAlignment="Center" Height="25" Margin="10,36,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="searchBox_TextChanged"/>
-            <ListBox x:Name="articlesListBox" Margin="10,66,9.667,10" Grid.Row="1" SelectionChanged="listBox_SelectionChanged"/>
+            <ListBox x:Name="articlesListBox" Style="{StaticResource ArticlesListBox}" Margin="10,66,9.667,10" Grid.Row="1" SelectionChanged="listBox_SelectionChanged"/>
 
             <Grid Grid.Row="2" Height="25">
                 <Grid.ColumnDefinitions>

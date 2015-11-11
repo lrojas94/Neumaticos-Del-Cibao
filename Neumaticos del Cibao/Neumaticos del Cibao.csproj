@@ -127,6 +127,7 @@
     <Compile Include="Database\Article.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\ArticlesAddons.cs" />
     <Compile Include="Database\Client.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

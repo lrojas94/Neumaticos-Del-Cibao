@@ -26,6 +26,7 @@ namespace Neumaticos_del_Cibao.Apps.Articles
         public ViewAllArticles()
         {
             InitializeComponent();
+            articlesListBox.ItemsSource = database.Articles.ToList();
         }
 
         private void btnAddArticle_Click(object sender, RoutedEventArgs e)
