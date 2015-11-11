@@ -40,5 +40,17 @@ namespace Neumaticos_del_Cibao.Database
                 return Clients.ToList();
             }
         }
+        public List<Article> ArticleSearchByName(string toSearch)
+        {
+            if (toSearch != "")
+            {
+                return Articles.Where(
+                    Article => Article.Name.ToLower().Contains(toSearch)
+                    || Article.Id.ToLower().Contains(toSearch)
+                    ).ToList();
+            }
+            else
+                return Articles.ToList();
+        }
     }
 }
