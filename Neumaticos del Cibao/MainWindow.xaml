@@ -17,6 +17,9 @@
             <TabItem Header="Empleados">
                 <Frame Name="employeesFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
             </TabItem>
+            <TabItem Header="Clientes">
+                <Frame Name="clientsFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
+            </TabItem>
         </TabControl>
 
     </Grid>

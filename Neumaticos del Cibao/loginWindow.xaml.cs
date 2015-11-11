@@ -25,10 +25,8 @@ namespace Neumaticos_del_Cibao
         private Database.databaseEntities database = new Database.databaseEntities();
         public loginWindow()
         {
+
             InitializeComponent();
-            var home = new MainWindow();
-            home.Show();
-            this.Close();
 
         }
 
