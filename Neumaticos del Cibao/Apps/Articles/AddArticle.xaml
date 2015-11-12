@@ -22,14 +22,18 @@
         <Label x:Name="articleInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información del Artículo" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
         <Label x:Name="nameLabel" Content="Nombre" FontWeight="Bold" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="name" Height="25" Text="{Binding Name}" Margin="10,73,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label x:Name="idLabel" Content="ID" FontWeight="Bold" Grid.Column="1" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="idLabel" Content="Código" FontWeight="Bold" Grid.Column="1" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="id" Grid.Column="1" Height="25" Text="{Binding Id}" Margin="10,73,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="measurelabel" Content="Tamaño" FontWeight="Bold" Margin="10,103,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="measure" Height="25" Text="{Binding Measure}" Margin="10,134,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="unitLabel" Content="Unidad" FontWeight="Bold" Grid.Column="1" Margin="10,103,10,0" Grid.Row="1" VerticalAlignment="Top"/>
         <TextBox x:Name="unit" Grid.Column="1" Height="25" Text="{Binding MeasureUnit}" Margin="10,134,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button x:Name="btnAccept" Height="25" Content="Aceptar" Margin="10,0" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Click="btnAccept_Click"/>
-        <Button x:Name="btnCancel" Height="25" Content="Cancelar" Margin="10,0" Grid.Row="2" VerticalAlignment="Top" Click="btnCancel_Click"/>
+        <Label x:Name="descriptionLabel" Content="Descripción" Margin="10,164,10,0" Grid.Row="1" FontWeight="Bold" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="description" Height="50" Margin="10,195,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button x:Name="btnAccept" Height="25" Content="Aceptar" Margin="10,10" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Click="btnAccept_Click"/>
+        <Button x:Name="btnCancel" Height="25" Content="Cancelar" Margin="10,10" Grid.Row="2" VerticalAlignment="Top" Click="btnCancel_Click"/>
+        
+
 
     </Grid>
 </Page>

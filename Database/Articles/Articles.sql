@@ -4,6 +4,7 @@ CREATE TABLE "Articles" (
 	`Name`	TEXT NOT NULL,
 	`MeasureUnit`	TEXT,
 	`Measure`	REAL,
+	`Description`	TEXT,
 	PRIMARY KEY(Id)
 );
 COMMIT;
