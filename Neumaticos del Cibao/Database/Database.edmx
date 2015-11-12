@@ -13,6 +13,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="MeasureUnit" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Measure" Type="real" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="CodeIdentifier" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Clients">
@@ -304,6 +305,7 @@
           <Property Name="MeasureUnit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Measure" Type="Double" />
           <Property Name="CodeIdentifier" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -397,6 +399,7 @@
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="databaseModel.Article">
               <MappingFragment StoreEntitySet="Articles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="CodeIdentifier" ColumnName="CodeIdentifier" />
                 <ScalarProperty Name="Measure" ColumnName="Measure" />
                 <ScalarProperty Name="MeasureUnit" ColumnName="MeasureUnit" />

@@ -19,5 +19,6 @@ namespace Neumaticos_del_Cibao.Database
         public string MeasureUnit { get; set; }
         public Nullable<double> Measure { get; set; }
         public string CodeIdentifier { get; set; }
+        public string Description { get; set; }
     }
 }
