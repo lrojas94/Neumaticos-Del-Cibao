@@ -4,16 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Edward\Documents\Projects\Neumaticos-Del-Cibao\Database\database.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Desktop\Documents\Projects\Neumaticos-Del-Cibao\Database\database.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="MeasureUnit" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Measure" Type="real" />
-          <Property Name="Description" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="CodeIdentifier" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
         <EntityType Name="Clients">
@@ -300,11 +299,10 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="MeasureUnit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="Measure" Type="Double" />
-          <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="CodeIdentifier" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
@@ -400,7 +398,6 @@
             <EntityTypeMapping TypeName="databaseModel.Article">
               <MappingFragment StoreEntitySet="Articles">
                 <ScalarProperty Name="CodeIdentifier" ColumnName="CodeIdentifier" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Measure" ColumnName="Measure" />
                 <ScalarProperty Name="MeasureUnit" ColumnName="MeasureUnit" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

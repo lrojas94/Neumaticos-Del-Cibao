@@ -55,7 +55,7 @@ namespace Neumaticos_del_Cibao.Apps.Articles
         {
             database.Articles.Remove(selectedArticle);
             database.SaveChangesAsync();
-            articlesListBox.ItemsSource = database.ClientSearchByName(searchBox.RealText);
+            articlesListBox.ItemsSource = database.ArticleSearchByName(searchBox.RealText);
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

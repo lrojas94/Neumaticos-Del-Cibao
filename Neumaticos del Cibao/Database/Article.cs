@@ -14,11 +14,10 @@ namespace Neumaticos_del_Cibao.Database
     
     public partial class Article
     {
-        public string Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string MeasureUnit { get; set; }
         public Nullable<double> Measure { get; set; }
-        public string Description { get; set; }
         public string CodeIdentifier { get; set; }
     }
 }
