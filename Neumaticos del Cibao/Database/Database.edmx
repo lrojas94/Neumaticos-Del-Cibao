@@ -35,25 +35,6 @@
           <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
-        <EntityType Name="Clients">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="RNC" Type="integer" />
-          <Property Name="NCF" Type="integer" />
-          <Property Name="Credit" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="CreditLimit" Type="integer" />
-          <Property Name="Adress" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="Email" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactPhone" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactName" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactEmail" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
-          <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
-        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -296,15 +277,6 @@
           <End Type="databaseModel.Permission" Role="Permission" Multiplicity="*" />
           <End Type="databaseModel.Option" Role="Option" Multiplicity="*" />
         </Association>
-        <EntityType Name="Article">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="MeasureUnit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="Measure" Type="Double" />
-        </EntityType>
         <EntityType Name="Client">
           <Key>
             <PropertyRef Name="Id" />
