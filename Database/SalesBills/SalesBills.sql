@@ -1,0 +1,19 @@
+BEGIN TRANSACTION;
+CREATE TABLE "SalesBills" (
+	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`BillCode`	TEXT,
+	`ClientId`	INTEGER,
+	`Date`	TEXT,
+	`ITBIS`	REAL,
+	`TotalArticles`	INTEGER,
+	FOREIGN KEY(`ClientId`) REFERENCES Clients
+);
+CREATE TABLE "SalesBillArticles" (
+	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+	`ArticleId`	TEXT,
+	`Quantity`	INTEGER NOT NULL,
+	`SalesBillId`	INTEGER,
+	FOREIGN KEY(`ArticleId`) REFERENCES Articles,
+	FOREIGN KEY(`SalesBillId`) REFERENCES SalesBills
+);
+COMMIT;
