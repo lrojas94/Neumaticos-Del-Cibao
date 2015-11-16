@@ -19,6 +19,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
     public class PlaceholderTextBox : TextBox,IPlaceholder
     {
         private string placeholderText;
+        private Brush brush;
         public string PlaceholderText
 
         {
@@ -46,7 +47,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             set
             {
                 Text = value;
-                Foreground.Opacity = 1;
+                brush.Opacity = 1;
             }
         }
 
@@ -68,12 +69,13 @@ namespace Neumaticos_del_Cibao.Apps.Common
         public void initPlaceholder(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
+            brush = new SolidColorBrush(Colors.Black);
+            textBox.Foreground = brush;
+            brush.Opacity = 0.5;
+
             if (textBox.Text == "")
             //Text may be initialized before calling placeHolderText, so, better this way.
-            {
                 textBox.Text = placeholderText;
-                textBox.Foreground = new SolidColorBrush(Colors.Black) { Opacity = 0.5 };
-            }
             
         }
 
@@ -84,7 +86,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             {
                 textBox.Text = "";
             }
-            textBox.Foreground.Opacity = 1;
+            brush.Opacity = 1;
         }
 
         public void lostFocus(object sender, EventArgs e)
@@ -93,7 +95,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             if(textBox.Text == "")
             {
                 textBox.Text = placeholderText;
-                textBox.Foreground.Opacity = 0.5;
+                brush.Opacity = 0.5;
             }
         }
     }

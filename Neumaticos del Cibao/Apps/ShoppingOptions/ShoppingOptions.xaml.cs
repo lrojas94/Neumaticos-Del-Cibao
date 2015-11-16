@@ -18,6 +18,13 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
     /// <summary>
     /// Interaction logic for ShoppingOptions.xaml
     /// </summary>
+    ///
+
+    public interface IBillDelegate
+    {
+
+    }
+            
     public partial class ShoppingOptions : Page
     {
         Database.databaseEntities database;

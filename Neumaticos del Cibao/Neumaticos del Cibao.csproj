@@ -88,6 +88,7 @@
       <DependentUpon>ViewAllArticles.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\Common\Encryption.cs" />
+    <Compile Include="Apps\Common\ExtensionMethods.cs" />
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
     <Compile Include="Apps\Common\OptionGrid.cs" />
@@ -103,6 +104,9 @@
     </Compile>
     <Compile Include="Apps\SalesOptions\SalesOptions.xaml.cs">
       <DependentUpon>SalesOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\ShoppingOptions\BasicBills.xaml.cs">
+      <DependentUpon>BasicBills.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\ShoppingOptions.xaml.cs">
       <DependentUpon>ShoppingOptions.xaml</DependentUpon>
@@ -163,6 +167,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Apps\ShoppingOptions\BasicBills.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Apps\ShoppingOptions\ShoppingOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,6 +226,9 @@
     </Compile>
     <Compile Include="Database\DatabaseAddons.cs" />
     <Compile Include="Database\EmployeeAddons.cs" />
+    <Compile Include="Database\Inventory.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Option.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -227,6 +238,13 @@
     <Compile Include="Database\Person.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\ShoppingBill.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ShoppingBillsArticle.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ShoppingBillsArticlesAddons.cs" />
     <Compile Include="loginWindow.xaml.cs">
       <DependentUpon>loginWindow.xaml</DependentUpon>
     </Compile>
@@ -259,6 +277,7 @@
     </EntityDeploy>
     <None Include="Database\Database.edmx.diagram">
       <DependentUpon>Database.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Database\database.db">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

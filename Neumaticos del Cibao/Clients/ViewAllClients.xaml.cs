@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Neumaticos_del_Cibao.Apps.Common;
 
 namespace Neumaticos_del_Cibao.Clients
 {
@@ -21,8 +22,19 @@ namespace Neumaticos_del_Cibao.Clients
     /// </summary>
     public partial class ViewAllClients : Page
     {
+
+
         private Database.databaseEntities database = new Database.databaseEntities();
         private Database.Client selectedClient = null;
+
+        public Database.Client SelectedClient
+        {
+            get
+            {
+                return selectedClient;
+            }
+        }
+
         private DispatcherTimer searchBoxTimer;
         public ViewAllClients()
         {
@@ -55,6 +67,11 @@ namespace Neumaticos_del_Cibao.Clients
             btnModifyClient.IsEnabled = true;
             btnViewClient.IsEnabled = true;
             selectedClient = (sender as ListBox).SelectedItem as Database.Client;
+
+            if (ExtensionMethods.IsModal(Application.Current.MainWindow))
+            {
+                Application.Current.MainWindow.Close();
+            }
         }
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
