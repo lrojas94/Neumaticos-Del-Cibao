@@ -1,20 +1,20 @@
 BEGIN TRANSACTION;
-CREATE TABLE "BuyingBills" (
+CREATE TABLE "SalesBills" (
 	`Id`	INTEGER,
 	`BillCode`	TEXT,
-	`Provider`	INTEGER,
+	`Client`	INTEGER,
 	`Date`	TEXT,
-	`ITBIS`	INTEGER,
+	`ITBIS`	REAL,
 	`TotalArticles`	INTEGER,
 	PRIMARY KEY(Id),
-	FOREIGN KEY(`Provider`) REFERENCES Clients
+	FOREIGN KEY(`Client`) REFERENCES Clients
 );
-CREATE TABLE "BuyingBillArticles" (
+CREATE TABLE "SalesBillArticles" (
 	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
 	`ArticleId`	TEXT,
 	`Quantity`	INTEGER NOT NULL,
-	`BuyingBillId`	INTEGER,
+	`SalesBillId`	INTEGER,
 	FOREIGN KEY(`ArticleId`) REFERENCES Articles,
-	FOREIGN KEY(`BuyingBillId`) REFERENCES BuyingBills
+	FOREIGN KEY(`SalesBillId`) REFERENCES SalesBills
 );
 COMMIT;
