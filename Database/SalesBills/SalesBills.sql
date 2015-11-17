@@ -1,12 +1,11 @@
 BEGIN TRANSACTION;
 CREATE TABLE "SalesBills" (
-	`Id`	INTEGER,
+	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
 	`BillCode`	TEXT,
 	`Client`	INTEGER,
 	`Date`	TEXT,
 	`ITBIS`	REAL,
 	`TotalArticles`	INTEGER,
-	PRIMARY KEY(Id),
 	FOREIGN KEY(`Client`) REFERENCES Clients
 );
 CREATE TABLE "SalesBillArticles" (
