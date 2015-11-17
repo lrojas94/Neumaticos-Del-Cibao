@@ -16,11 +16,11 @@ namespace Neumaticos_del_Cibao.Database
     {
         public long ShoppingBillId { get; set; }
         public long ArticleId { get; set; }
-        public Nullable<double> ArticlePrice { get; set; }
-        public Nullable<double> ArticleCount { get; set; }
+        public double ArticlePrice { get; set; }
+        public double ArticleCount { get; set; }
         public long Id { get; set; }
     
-        public virtual ShoppingBill ShoppingBill { get; set; }
         public virtual Article Article { get; set; }
+        public virtual ShoppingBill ShoppingBill { get; set; }
     }
 }

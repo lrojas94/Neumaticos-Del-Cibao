@@ -13,24 +13,24 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
+namespace Neumaticos_del_Cibao.Apps
 {
     /// <summary>
-    /// Interaction logic for ShoppingOptions.xaml
+    /// Interaction logic for GeneralOptios.xaml
     /// </summary>
-    ///
-            
-    public partial class ShoppingOptions : Page
+    public partial class GeneralOptions : Page
     {
-        Database.databaseEntities database;
-        public ShoppingOptions()
+        private Database.databaseEntities database;
+        
+        public GeneralOptions(Database.databaseEntities context = null)
         {
             InitializeComponent();
-            database = new Database.databaseEntities();
-            var options = database.Options.Where(o => o.OptionType == "Shopping").ToList();
+            database = context;
+            if(database == null)
+                database = new Database.databaseEntities();
+            var options = database.Options.Where(o => o.OptionType == "General").ToList();
             grid.ParentPage = this;
             grid.BuildOptionGrid(options);
         }
-        
     }
 }

@@ -14,6 +14,12 @@ namespace Neumaticos_del_Cibao.Database
     
     public partial class Client
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Client()
+        {
+            this.ShoppingBills = new HashSet<ShoppingBill>();
+        }
+    
         public long Id { get; set; }
         public string Name { get; set; }
         public Nullable<long> RNC { get; set; }
@@ -28,5 +34,8 @@ namespace Neumaticos_del_Cibao.Database
         public string ContactEmail { get; set; }
         public string ContactExt { get; set; }
         public string ContactCharge { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ShoppingBill> ShoppingBills { get; set; }
     }
 }

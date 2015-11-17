@@ -15,6 +15,7 @@ namespace Neumaticos_del_Cibao.Database
        {
             if (toSearch != "")
             {
+                toSearch = toSearch.ToLower();
                 return Employees.Where(
                     employee => employee.Username.ToLower().Contains(toSearch)
                     || employee.Person.Name.ToLower().Contains(toSearch)
@@ -31,6 +32,7 @@ namespace Neumaticos_del_Cibao.Database
         {
             if (toSearch != "")
             {
+                toSearch = toSearch.ToLower();
                 return Clients.Where(
                     client => client.Name.ToLower().Contains(toSearch) ||
                     client.ContactName.ToLower().Contains(toSearch)
@@ -46,6 +48,7 @@ namespace Neumaticos_del_Cibao.Database
         {
             if (toSearch != "")
             {
+                toSearch = toSearch.ToLower();
                 return Articles.Where(
                     Article => Article.Name.ToLower().Contains(toSearch) ||
                     Article.CodeIdentifier.ToLower().Contains(toSearch)
@@ -55,6 +58,24 @@ namespace Neumaticos_del_Cibao.Database
             {
                 return Articles.ToList();
             }
+        }
+
+        public List<ShoppingBill> ShoppingBillSearch(string toSearch)
+        {
+            if (toSearch != "")
+            {
+                toSearch = toSearch.ToLower();
+                var noLeadingZeros = 0;
+                int.TryParse(toSearch,out noLeadingZeros);
+                var noLeadingString = noLeadingZeros.ToString();
+                return ShoppingBills.Where(
+                    bill => bill.Date.Contains(toSearch)
+                    || bill.Id.ToString().Contains(noLeadingString)
+                    || bill.Client.Name.Contains(toSearch)
+                    ).ToList();
+            }
+            else
+                return ShoppingBills.ToList();
         }
     }
 }

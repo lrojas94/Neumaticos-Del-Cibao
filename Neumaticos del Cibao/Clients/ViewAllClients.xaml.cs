@@ -24,7 +24,7 @@ namespace Neumaticos_del_Cibao.Clients
     {
 
 
-        private Database.databaseEntities database = new Database.databaseEntities();
+        private Database.databaseEntities database;
         private Database.Client selectedClient = null;
 
         public Database.Client SelectedClient
@@ -36,15 +36,22 @@ namespace Neumaticos_del_Cibao.Clients
         }
 
         private DispatcherTimer searchBoxTimer;
-        public ViewAllClients()
+
+        public ViewAllClients(Database.databaseEntities context = null)
         {
             InitializeComponent();
+
+            database = context;
+            if (database == null)
+                database = new Database.databaseEntities();
 
             searchBoxTimer = new DispatcherTimer();
             searchBoxTimer.Tick += searchBox_Tick;
             searchBoxTimer.Interval = new TimeSpan(0, 0, 0, 0, 50);
             clientsListBox.ItemsSource = database.Clients.ToList();
         }
+
+        public ViewAllClients() : this(null) { }
 
         private void searchBox_Tick(object sender, object e)
         {
@@ -69,9 +76,7 @@ namespace Neumaticos_del_Cibao.Clients
             selectedClient = (sender as ListBox).SelectedItem as Database.Client;
 
             if (ExtensionMethods.IsModal(Application.Current.MainWindow))
-            {
                 Application.Current.MainWindow.Close();
-            }
         }
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)

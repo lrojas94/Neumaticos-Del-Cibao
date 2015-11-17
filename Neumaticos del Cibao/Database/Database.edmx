@@ -117,8 +117,8 @@
           </Key>
           <Property Name="ShoppingBillId" Type="integer" Nullable="false" />
           <Property Name="ArticleId" Type="integer" Nullable="false" />
-          <Property Name="ArticlePrice" Type="real" />
-          <Property Name="ArticleCount" Type="real" />
+          <Property Name="ArticlePrice" Type="real" Nullable="false" />
+          <Property Name="ArticleCount" Type="real" Nullable="false" />
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <Association Name="FK_Employees_0_0">
@@ -193,6 +193,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShoppingBills_0_0">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="0..1" />
+          <End Role="ShoppingBills" Type="Self.ShoppingBills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingBills">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ShoppingBillsArticles_0_0">
           <End Role="Articles" Type="Self.Articles" Multiplicity="1" />
           <End Role="ShoppingBillsArticles" Type="Self.ShoppingBillsArticles" Multiplicity="*" />
@@ -253,6 +265,10 @@
             <End Role="Options" EntitySet="Options" />
             <End Role="OptionPermissions" EntitySet="OptionPermissions" />
           </AssociationSet>
+          <AssociationSet Name="FK_ShoppingBills_0_0" Association="Self.FK_ShoppingBills_0_0">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="ShoppingBills" EntitySet="ShoppingBills" />
+          </AssociationSet>
           <AssociationSet Name="FK_ShoppingBillsArticles_0_0" Association="Self.FK_ShoppingBillsArticles_0_0">
             <End Role="Articles" EntitySet="Articles" />
             <End Role="ShoppingBillsArticles" EntitySet="ShoppingBillsArticles" />
@@ -284,23 +300,27 @@
             <End Role="Option" EntitySet="Options" />
           </AssociationSet>
           <EntitySet Name="Clients" EntityType="databaseModel.Client" />
-          <EntitySet Name="ShoppingBills" EntityType="databaseModel.ShoppingBill" />
-          <EntitySet Name="ShoppingBillsArticles" EntityType="databaseModel.ShoppingBillsArticle" />
-          <AssociationSet Name="FK_ShoppingBillsArticles_1_0" Association="databaseModel.FK_ShoppingBillsArticles_1_0">
-            <End Role="ShoppingBill" EntitySet="ShoppingBills" />
-            <End Role="ShoppingBillsArticle" EntitySet="ShoppingBillsArticles" />
-          </AssociationSet>
           <EntitySet Name="Inventories" EntityType="databaseModel.Inventory" />
           <EntitySet Name="Articles" EntityType="databaseModel.Article" />
           <AssociationSet Name="FK_Inventory_0_0" Association="databaseModel.FK_Inventory_0_0">
             <End Role="Article" EntitySet="Articles" />
             <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
+          <EntitySet Name="ShoppingBills" EntityType="databaseModel.ShoppingBill" />
+          <AssociationSet Name="FK_ShoppingBills_0_0" Association="databaseModel.FK_ShoppingBills_0_0">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="ShoppingBill" EntitySet="ShoppingBills" />
+          </AssociationSet>
+          <EntitySet Name="ShoppingBillsArticles" EntityType="databaseModel.ShoppingBillsArticle" />
           <AssociationSet Name="FK_ShoppingBillsArticles_0_0" Association="databaseModel.FK_ShoppingBillsArticles_0_0">
             <End Role="Article" EntitySet="Articles" />
             <End Role="ShoppingBillsArticle" EntitySet="ShoppingBillsArticles" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK_ShoppingBillsArticles_1_0" Association="databaseModel.FK_ShoppingBillsArticles_1_0">
+            <End Role="ShoppingBill" EntitySet="ShoppingBills" />
+            <End Role="ShoppingBillsArticle" EntitySet="ShoppingBillsArticles" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="Id" />
@@ -388,40 +408,8 @@
           <Property Name="ContactEmail" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactExt" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="ContactCharge" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ShoppingBills" Relationship="databaseModel.FK_ShoppingBills_0_0" FromRole="Client" ToRole="ShoppingBill" />
         </EntityType>
-        <EntityType Name="ShoppingBill">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Company" Type="Int64" />
-          <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ShoppingBillsArticles" Relationship="databaseModel.FK_ShoppingBillsArticles_1_0" FromRole="ShoppingBill" ToRole="ShoppingBillsArticle" />
-        </EntityType>
-        <EntityType Name="ShoppingBillsArticle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="ShoppingBillId" Type="Int64" Nullable="false" />
-          <Property Name="ArticleId" Type="Int64" Nullable="false" />
-          <Property Name="ArticlePrice" Type="Double" />
-          <Property Name="ArticleCount" Type="Double" />
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="ShoppingBill" Relationship="databaseModel.FK_ShoppingBillsArticles_1_0" FromRole="ShoppingBillsArticle" ToRole="ShoppingBill" />
-          <NavigationProperty Name="Article" Relationship="databaseModel.FK_ShoppingBillsArticles_0_0" FromRole="ShoppingBillsArticle" ToRole="Article" />
-        </EntityType>
-        <Association Name="FK_ShoppingBillsArticles_1_0">
-          <End Type="databaseModel.ShoppingBill" Role="ShoppingBill" Multiplicity="1" />
-          <End Type="databaseModel.ShoppingBillsArticle" Role="ShoppingBillsArticle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ShoppingBill">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="ShoppingBillsArticle">
-              <PropertyRef Name="ShoppingBillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Inventory">
           <Key>
             <PropertyRef Name="Id" />
@@ -457,6 +445,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="ShoppingBill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Company" Type="Int64" />
+          <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="databaseModel.FK_ShoppingBills_0_0" FromRole="ShoppingBill" ToRole="Client" />
+          <NavigationProperty Name="ShoppingBillsArticles" Relationship="databaseModel.FK_ShoppingBillsArticles_1_0" FromRole="ShoppingBill" ToRole="ShoppingBillsArticle" />
+        </EntityType>
+        <Association Name="FK_ShoppingBills_0_0">
+          <End Type="databaseModel.Client" Role="Client" Multiplicity="0..1" />
+          <End Type="databaseModel.ShoppingBill" Role="ShoppingBill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingBill">
+              <PropertyRef Name="Company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShoppingBillsArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="ShoppingBillId" Type="Int64" Nullable="false" />
+          <Property Name="ArticleId" Type="Int64" Nullable="false" />
+          <Property Name="ArticlePrice" Type="Double" Nullable="false" />
+          <Property Name="ArticleCount" Type="Double" Nullable="false" />
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Article" Relationship="databaseModel.FK_ShoppingBillsArticles_0_0" FromRole="ShoppingBillsArticle" ToRole="Article" />
+          <NavigationProperty Name="ShoppingBill" Relationship="databaseModel.FK_ShoppingBillsArticles_1_0" FromRole="ShoppingBillsArticle" ToRole="ShoppingBill" />
+        </EntityType>
         <Association Name="FK_ShoppingBillsArticles_0_0">
           <End Type="databaseModel.Article" Role="Article" Multiplicity="1" />
           <End Type="databaseModel.ShoppingBillsArticle" Role="ShoppingBillsArticle" Multiplicity="*" />
@@ -466,6 +488,18 @@
             </Principal>
             <Dependent Role="ShoppingBillsArticle">
               <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShoppingBillsArticles_1_0">
+          <End Type="databaseModel.ShoppingBill" Role="ShoppingBill" Multiplicity="1" />
+          <End Type="databaseModel.ShoppingBillsArticle" Role="ShoppingBillsArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingBill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShoppingBillsArticle">
+              <PropertyRef Name="ShoppingBillId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -558,26 +592,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ShoppingBills">
-            <EntityTypeMapping TypeName="databaseModel.ShoppingBill">
-              <MappingFragment StoreEntitySet="ShoppingBills">
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ShoppingBillsArticles">
-            <EntityTypeMapping TypeName="databaseModel.ShoppingBillsArticle">
-              <MappingFragment StoreEntitySet="ShoppingBillsArticles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ArticleCount" ColumnName="ArticleCount" />
-                <ScalarProperty Name="ArticlePrice" ColumnName="ArticlePrice" />
-                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
-                <ScalarProperty Name="ShoppingBillId" ColumnName="ShoppingBillId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Inventories">
             <EntityTypeMapping TypeName="databaseModel.Inventory">
               <MappingFragment StoreEntitySet="Inventory">
@@ -597,6 +611,26 @@
                 <ScalarProperty Name="MeasureUnit" ColumnName="MeasureUnit" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingBills">
+            <EntityTypeMapping TypeName="databaseModel.ShoppingBill">
+              <MappingFragment StoreEntitySet="ShoppingBills">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoppingBillsArticles">
+            <EntityTypeMapping TypeName="databaseModel.ShoppingBillsArticle">
+              <MappingFragment StoreEntitySet="ShoppingBillsArticles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ArticleCount" ColumnName="ArticleCount" />
+                <ScalarProperty Name="ArticlePrice" ColumnName="ArticlePrice" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="ShoppingBillId" ColumnName="ShoppingBillId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -77,6 +77,18 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ShoppingBillsListBox" TargetType="ListBox">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate DataType="Database:ShoppingBill">
+                        <StackPanel Orientation="Vertical">
+                            <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=ShoppingBillTitle}"></Label>
+                            <TextBlock Text="{Binding Path=ShoppingBillSubtitle}" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="5,0,0,0"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="PermissionListBox" TargetType="ListBox">
             <Setter Property="ItemTemplate">
                 <Setter.Value>
