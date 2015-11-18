@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
-using System.Globalization;
+
 
 namespace Neumaticos_del_Cibao.Apps.SalesBills
 {
@@ -24,13 +24,12 @@ namespace Neumaticos_del_Cibao.Apps.SalesBills
     {
         Database.databaseEntities database = new Database.databaseEntities();
         Database.Client selectedClient;
-        DateTime today = new DateTime();
+        
         
         public AddSalesBills()
         {
             InitializeComponent();
-            
-            
+
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -52,9 +51,6 @@ namespace Neumaticos_del_Cibao.Apps.SalesBills
             
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
     }
 }
