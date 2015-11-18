@@ -26,34 +26,45 @@ namespace Neumaticos_del_Cibao.Database
                 return Employees.ToList();
             }
         }
+       public List<Option> OptionSearchByTitle(string toSearch)
+       //Basic OptionSearch function. For more complex searching use LINQ.
+       {
+           if (toSearch != "")
+           {
+               return Options.Where(
+                   options => options.OptionTitle.ToLower().Contains(toSearch)).ToList();
+           }
+           else
+           {
+               return Options.ToList();
+           }
+       }
+       public List<Permission> PermissionSearchByName(string toSearch)
+       //Basic PermissionSearch function. For more complex searching use LINQ.
+       {
+           if (toSearch != "")
+           {
 
+               return Permissions.Where(
+                   permissions => permissions.Name.ToLower().Contains(toSearch)).ToList();
+           }
+           else
+           {
+               return Permissions.ToList();
+           }
+       }
         public List<Client> ClientSearchByName(string toSearch)
         {
             if (toSearch != "")
             {
                 return Clients.Where(
-                    client => client.Name.ToLower().Contains(toSearch) ||
-                    client.ContactName.ToLower().Contains(toSearch)
+                    client => client.Name.ToLower().Contains(toSearch)
+                    || client.ContactName.ToLower().Contains(toSearch)
                     ).ToList();
             }
             else
             {
                 return Clients.ToList();
-            }
-        }
-
-        public List<Article> ArticleSearchByName(string toSearch)
-        {
-            if (toSearch != "")
-            {
-                return Articles.Where(
-                    Article => Article.Name.ToLower().Contains(toSearch) ||
-                    Article.CodeIdentifier.ToLower().Contains(toSearch)
-                    ).ToList();
-            }
-            else
-            {
-                return Articles.ToList();
             }
         }
     }
