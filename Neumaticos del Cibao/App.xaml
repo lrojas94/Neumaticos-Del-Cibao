@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Neumaticos_del_Cibao"
              xmlns:MathConverter ="clr-namespace:IKriv.Wpf"
              xmlns:Database="clr-namespace:Neumaticos_del_Cibao.Database"
-             StartupUri="LoginWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
 
         <SolidColorBrush x:Key="PeterRiver" Color="#FF3498DB"/>
@@ -108,19 +108,6 @@
                         <StackPanel Orientation="Vertical">
                             <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=Name}"></Label>
                             <TextBlock Text="{Binding Path=Adress}" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="5,0,0,0"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="ArticlesListBox" TargetType="ListBox">
-            <Setter Property="ItemTemplate">
-                <Setter.Value>
-                    <DataTemplate DataType="Database:Employee">
-                        <StackPanel Orientation="Vertical">
-                            <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=ArticleTemplateTitle}" Padding="5,0,0,0"></Label>
-                            <Label FontWeight="Thin" Content="{Binding Path=ArticleTemplateSize}" VerticalContentAlignment="Top" Height="15" FontSize="12" Padding="20,0,0,0"/>
-                            <TextBlock Text="{Binding Path=Description}" Height="12" FontSize="10" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="20,0,0,0"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </Setter.Value>

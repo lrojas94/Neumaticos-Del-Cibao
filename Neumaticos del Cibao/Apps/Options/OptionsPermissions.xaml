@@ -20,10 +20,10 @@
                         <RowDefinition Height="Auto"></RowDefinition>
                     </Grid.RowDefinitions>
                     <Label x:Name="title" Style="{StaticResource TitleBase}" Grid.Row="0" Content="Permisos de Opciones" VerticalAlignment="Top"/>
-                    <Label x:Name="optionLabel" Content="Opcion" Grid.Row="1" VerticalAlignment="Top" Margin="10,10,10,0" Style="{StaticResource InputHeader}"/>
-                    <Common:PlaceholderTextBox PlaceholderText="Buscar Opcion" Grid.Row="1" x:Name="searchBox" Margin="0,36,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth,ElementName=optionLabel}" HorizontalAlignment="Right" Height="25" VerticalContentAlignment="Center" TextChanged="searchBox_TextChanged"/>
-                    <ListBox x:Name="options" Margin="10,66,10,0"  Style ="{StaticResource OptionListBox}" Grid.Row="1" Height="88" VerticalAlignment="Top" SelectionChanged="options_SelectionChanged"></ListBox>
-                    <Label x:Name="selectedOptionLabel" Grid.Row="1" Style="{StaticResource SubtitleBase}"  Content="Opcion Seleccionado" Margin="10,159,10,0" VerticalAlignment="Top"/>
+                    <Label x:Name="optionLabel" Content="Permiso" Grid.Row="1" VerticalAlignment="Top" Margin="10,10,10,0" Style="{StaticResource InputHeader}"/>
+                    <Common:PlaceholderTextBox PlaceholderText="Buscar Permiso" Grid.Row="1" x:Name="searchBox" Margin="0,36,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth,ElementName=optionLabel}" HorizontalAlignment="Right" Height="25" VerticalContentAlignment="Center" TextChanged="searchBox_TextChanged"/>
+                    <ListBox x:Name="availablePermissions" Margin="10,66,10,0"  Style ="{StaticResource PermissionListBox}" Grid.Row="1" Height="88" VerticalAlignment="Top" SelectionChanged="permissions_SelectionChanged"></ListBox>
+                    <Label x:Name="selectedPermissionLabel" Grid.Row="1" Style="{StaticResource SubtitleBase}"  Content="Permiso Seleccionado" Margin="10,159,10,0" VerticalAlignment="Top"/>
                     <TextBlock x:Name="info" TextWrapping="Wrap" Grid.Row="2" TextAlignment="Justify" Margin="10,0,10,0" Text="Para agregar un permiso a una opcion, seleccione la opcion en la tabla superior, luego doble click al permiso a agregar. Este permiso pasara a la tabla de &quot;Permisos de Opcion&quot;. Para eliminar alguno de los permisos de la Opcion, doble click al permiso en la tabla &quot;Permisos de opcion&quot;." Foreground="{DynamicResource Concrete}"/>
                     <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
@@ -33,16 +33,16 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Label x:Name="availablePermissionsLabel" Content="Permisos Disponibles" Grid.Column="0" Style="{StaticResource InputHeader}" HorizontalAlignment="Left" Width="{Binding ActualWidth,ElementName=optionLabel,Converter={StaticResource mathConverter},ConverterParameter=x/2-5}" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                        <ListBox x:Name="availablePermissions" Style ="{StaticResource PermissionListBox}" Grid.Column="0" Margin="10,36,0,10" HorizontalContentAlignment="Stretch" Width="{Binding ActualWidth, ElementName=availablePermissionsLabel}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" SelectionChanged="availablePermissions_SelectionChanged">
+                        <Label x:Name="availablePermissionsLabel" Content="Opciones Disponibles" Grid.Column="0" Style="{StaticResource InputHeader}" HorizontalAlignment="Left" Width="{Binding ActualWidth,ElementName=optionLabel,Converter={StaticResource mathConverter},ConverterParameter=x/2-5}" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                        <ListBox x:Name="options" Style ="{StaticResource OptionListBox}" Grid.Column="0" Margin="10,36,0,10" HorizontalContentAlignment="Stretch" Width="{Binding ActualWidth, ElementName=availablePermissionsLabel}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left" SelectionChanged="availableOptions_SelectionChanged">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <EventSetter Event="MouseDoubleClick" Handler="availablePermission_MouseDoubleClick"/>
                                 </Style>
                             </ListBox.ItemContainerStyle>
                         </ListBox>
-                        <Label x:Name="optionPermissionsLabel" Content="Permisos de Opcion" Grid.Column="1" Style="{StaticResource InputHeader}" HorizontalAlignment="Right" Width="{Binding ActualWidth, ConverterParameter=x/2-5, Converter={StaticResource mathConverter}, ElementName=optionLabel}" Margin="0,10,10,0" VerticalAlignment="Top"/>
-                        <ListBox x:Name="optionPermissions" Grid.Column="1" Style ="{StaticResource PermissionListBox}" Margin="0,36,10,10" HorizontalContentAlignment="Stretch" Width="{Binding ActualWidth, ElementName=availablePermissionsLabel}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right">
+                        <Label x:Name="optionPermissionsLabel" Content="Opciones de Permiso" Grid.Column="1" Style="{StaticResource InputHeader}" HorizontalAlignment="Right" Width="{Binding ActualWidth, ConverterParameter=x/2-5, Converter={StaticResource mathConverter}, ElementName=optionLabel}" Margin="0,10,10,0" VerticalAlignment="Top"/>
+                        <ListBox x:Name="optionPermissions" Grid.Column="1" Style ="{StaticResource OptionListBox}" Margin="0,36,10,10" HorizontalContentAlignment="Stretch" Width="{Binding ActualWidth, ElementName=availablePermissionsLabel}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right">
                             <ListBox.ItemContainerStyle>
                                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                                     <EventSetter Event="MouseDoubleClick" Handler="optionPermission_MouseDoubleClick"/>
