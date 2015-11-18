@@ -92,6 +92,9 @@
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
     <Compile Include="Apps\Common\OptionGrid.cs" />
     <Compile Include="Apps\Common\TimedFunction.cs" />
+    <Compile Include="Apps\Common\WindowsWithFrame.xaml.cs">
+      <DependentUpon>WindowsWithFrame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Apps\Employees\AddEmployee.xaml.cs">
       <DependentUpon>AddEmployee.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,9 @@
     </Compile>
     <Compile Include="Apps\Employees\ShowEmployee.xaml.cs">
       <DependentUpon>ShowEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\SalesBills\AddSalesBills.xaml.cs">
+      <DependentUpon>AddSalesBills.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\SalesOptions\SalesOptions.xaml.cs">
       <DependentUpon>SalesOptions.xaml</DependentUpon>
@@ -147,6 +153,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Apps\Common\WindowsWithFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Apps\Employees\AddEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\Employees\ShowEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\SalesBills\AddSalesBills.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

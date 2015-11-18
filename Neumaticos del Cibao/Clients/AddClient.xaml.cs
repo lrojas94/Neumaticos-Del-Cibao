@@ -80,7 +80,7 @@ namespace Neumaticos_del_Cibao.Clients
                 database.Clients.Add(client);
             }
             database.SaveChanges();
-            NavigationService.Navigate(new ViewAllClients());
+            NavigationService.Navigate(new ViewAllClients(database));
         }
 
         private void creditCheckBox_Checked(object sender, RoutedEventArgs e)

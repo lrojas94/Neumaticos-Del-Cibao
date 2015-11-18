@@ -20,7 +20,7 @@
             <Label Style="{StaticResource TitleBase}" Content="Clientes Registrados" Grid.Row="0"></Label>
             <Label Style="{StaticResource InputHeader}" x:Name="ourCLientsLabel" Content="Nuestros Clientes" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
             <common:PlaceholderTextBox x:Name="searchBox" PlaceholderText="Nombre Cliente" VerticalContentAlignment="Center" Height="25" Margin="10,36,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="searchBox_TextChanged"/>
-            <ListBox x:Name="clientsListBox" Style="{StaticResource ClientsListBox}"  Margin="10,69,9.667,10" Grid.Row="1" SelectionChanged="clientsListBox_SelectionChanged"/>
+            <ListBox x:Name="clientsListBox" Style="{StaticResource ClientsListBox}"  Margin="10,69,9.667,10" Grid.Row="1" SelectionChanged="clientsListBox_SelectionChanged" MouseDoubleClick="clientsListBox_MouseDoubleClick"/>
             <Grid Height="25" Grid.Row="2" Margin="0,0.333,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
