@@ -20,6 +20,9 @@
             <TabItem Header="Clientes">
                 <Frame Name="clientsFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
             </TabItem>
+            <TabItem Header="Opciones">
+                <Frame Name="optionsFrame" Background="#FFE5E5E5" Template="{StaticResource BaseFrame}"/>
+            </TabItem>
         </TabControl>
 
     </Grid>
