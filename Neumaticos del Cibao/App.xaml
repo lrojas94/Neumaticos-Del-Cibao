@@ -89,6 +89,18 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="OptionListBox" TargetType="ListBox">
+            <Setter Property="ItemTemplate">
+                <Setter.Value>
+                    <DataTemplate DataType="Database:Option">
+                        <StackPanel Orientation="Vertical">
+                            <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=OptionTitle}"></Label>
+                            <TextBlock Text="{Binding Path=OptionType}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="50"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="ClientsListBox" TargetType="ListBox">
             <Setter Property="ItemTemplate">
                 <Setter.Value>
