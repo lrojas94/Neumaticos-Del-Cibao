@@ -35,6 +35,25 @@
           <Property Name="ContactExt" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="ContactCharge" Type="nvarchar" MaxLength="2147483647" />
         </EntityType>
+        <EntityType Name="CreditShoppingBills">
+          <Key>
+            <PropertyRef Name="ShoppingBillId" />
+          </Key>
+          <Property Name="ShoppingBillId" Type="integer" Nullable="false" />
+          <Property Name="Payed" Type="real" />
+          <Property Name="Owed" Type="real" />
+          <Property Name="DonePaying" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
+        <EntityType Name="CreditShoppingBillsRegisters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShoppingBillId" Type="integer" Nullable="false" />
+          <Property Name="Payed" Type="real" />
+          <Property Name="Owed" Type="real" />
+          <Property Name="Date" Type="nvarchar" MaxLength="2147483647" />
+        </EntityType>
         <EntityType Name="Employees">
           <Key>
             <PropertyRef Name="Id" />
@@ -110,6 +129,9 @@
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Company" Type="integer" />
           <Property Name="Date" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="Credit" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ITBIS" Type="nvarchar" MaxLength="2147483647" />
+          <Property Name="ITBISPercent" Type="real" />
         </EntityType>
         <EntityType Name="ShoppingBillsArticles">
           <Key>
@@ -121,6 +143,30 @@
           <Property Name="ArticleCount" Type="real" Nullable="false" />
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
+        <Association Name="FK_CreditShoppingBills_0_0">
+          <End Role="ShoppingBills" Type="Self.ShoppingBills" Multiplicity="1" />
+          <End Role="CreditShoppingBills" Type="Self.CreditShoppingBills" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingBills">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditShoppingBills">
+              <PropertyRef Name="ShoppingBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CreditShoppingBillsRegisters_0_0">
+          <End Role="CreditShoppingBills" Type="Self.CreditShoppingBills" Multiplicity="1" />
+          <End Role="CreditShoppingBillsRegisters" Type="Self.CreditShoppingBillsRegisters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditShoppingBills">
+              <PropertyRef Name="ShoppingBillId" />
+            </Principal>
+            <Dependent Role="CreditShoppingBillsRegisters">
+              <PropertyRef Name="ShoppingBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employees_0_0">
           <End Role="Persons" Type="Self.Persons" Multiplicity="1" />
           <End Role="Employees" Type="Self.Employees" Multiplicity="*" />
@@ -232,6 +278,8 @@
         <EntityContainer Name="databaseModelStoreContainer">
           <EntitySet Name="Articles" EntityType="Self.Articles" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" store:Type="Tables" />
+          <EntitySet Name="CreditShoppingBills" EntityType="Self.CreditShoppingBills" store:Type="Tables" />
+          <EntitySet Name="CreditShoppingBillsRegisters" EntityType="Self.CreditShoppingBillsRegisters" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" store:Type="Tables" />
           <EntitySet Name="Employees_Permissions" EntityType="Self.Employees_Permissions" store:Type="Tables" />
           <EntitySet Name="Inventory" EntityType="Self.Inventory" store:Type="Tables" />
@@ -241,6 +289,14 @@
           <EntitySet Name="Persons" EntityType="Self.Persons" store:Type="Tables" />
           <EntitySet Name="ShoppingBills" EntityType="Self.ShoppingBills" store:Type="Tables" />
           <EntitySet Name="ShoppingBillsArticles" EntityType="Self.ShoppingBillsArticles" store:Type="Tables" />
+          <AssociationSet Name="FK_CreditShoppingBills_0_0" Association="Self.FK_CreditShoppingBills_0_0">
+            <End Role="ShoppingBills" EntitySet="ShoppingBills" />
+            <End Role="CreditShoppingBills" EntitySet="CreditShoppingBills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CreditShoppingBillsRegisters_0_0" Association="Self.FK_CreditShoppingBillsRegisters_0_0">
+            <End Role="CreditShoppingBills" EntitySet="CreditShoppingBills" />
+            <End Role="CreditShoppingBillsRegisters" EntitySet="CreditShoppingBillsRegisters" />
+          </AssociationSet>
           <AssociationSet Name="FK_Employees_0_0" Association="Self.FK_Employees_0_0">
             <End Role="Persons" EntitySet="Persons" />
             <End Role="Employees" EntitySet="Employees" />
@@ -319,6 +375,16 @@
           <AssociationSet Name="FK_ShoppingBillsArticles_1_0" Association="databaseModel.FK_ShoppingBillsArticles_1_0">
             <End Role="ShoppingBill" EntitySet="ShoppingBills" />
             <End Role="ShoppingBillsArticle" EntitySet="ShoppingBillsArticles" />
+          </AssociationSet>
+          <EntitySet Name="CreditShoppingBills" EntityType="databaseModel.CreditShoppingBill" />
+          <AssociationSet Name="FK_CreditShoppingBills_0_0" Association="databaseModel.FK_CreditShoppingBills_0_0">
+            <End Role="ShoppingBill" EntitySet="ShoppingBills" />
+            <End Role="CreditShoppingBill" EntitySet="CreditShoppingBills" />
+          </AssociationSet>
+          <EntitySet Name="CreditShoppingBillsRegisters" EntityType="databaseModel.CreditShoppingBillsRegister" />
+          <AssociationSet Name="FK_CreditShoppingBillsRegisters_0_0" Association="databaseModel.FK_CreditShoppingBillsRegisters_0_0">
+            <End Role="CreditShoppingBill" EntitySet="CreditShoppingBills" />
+            <End Role="CreditShoppingBillsRegister" EntitySet="CreditShoppingBillsRegisters" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Employee">
@@ -454,6 +520,10 @@
           <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Client" Relationship="databaseModel.FK_ShoppingBills_0_0" FromRole="ShoppingBill" ToRole="Client" />
           <NavigationProperty Name="ShoppingBillsArticles" Relationship="databaseModel.FK_ShoppingBillsArticles_1_0" FromRole="ShoppingBill" ToRole="ShoppingBillsArticle" />
+          <Property Name="Credit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" DefaultValue="f" />
+          <Property Name="ITBIS" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" DefaultValue="f" />
+          <Property Name="ITBISPercent" Type="Double" DefaultValue="0" />
+          <NavigationProperty Name="CreditShoppingBill" Relationship="databaseModel.FK_CreditShoppingBills_0_0" FromRole="ShoppingBill" ToRole="CreditShoppingBill" />
         </EntityType>
         <Association Name="FK_ShoppingBills_0_0">
           <End Type="databaseModel.Client" Role="Client" Multiplicity="0..1" />
@@ -499,6 +569,52 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="ShoppingBillsArticle">
+              <PropertyRef Name="ShoppingBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CreditShoppingBill">
+          <Key>
+            <PropertyRef Name="ShoppingBillId" />
+          </Key>
+          <Property Name="ShoppingBillId" Type="Int64" Nullable="false" />
+          <Property Name="Payed" Type="Double" />
+          <Property Name="Owed" Type="Double" />
+          <Property Name="DonePaying" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ShoppingBill" Relationship="databaseModel.FK_CreditShoppingBills_0_0" FromRole="CreditShoppingBill" ToRole="ShoppingBill" />
+          <NavigationProperty Name="CreditShoppingBillsRegisters" Relationship="databaseModel.FK_CreditShoppingBillsRegisters_0_0" FromRole="CreditShoppingBill" ToRole="CreditShoppingBillsRegister" />
+        </EntityType>
+        <Association Name="FK_CreditShoppingBills_0_0">
+          <End Type="databaseModel.ShoppingBill" Role="ShoppingBill" Multiplicity="1" />
+          <End Type="databaseModel.CreditShoppingBill" Role="CreditShoppingBill" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ShoppingBill">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CreditShoppingBill">
+              <PropertyRef Name="ShoppingBillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CreditShoppingBillsRegister">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShoppingBillId" Type="Int64" Nullable="false" />
+          <Property Name="Payed" Type="Double" />
+          <Property Name="Owed" Type="Double" />
+          <NavigationProperty Name="CreditShoppingBill" Relationship="databaseModel.FK_CreditShoppingBillsRegisters_0_0" FromRole="CreditShoppingBillsRegister" ToRole="CreditShoppingBill" />
+          <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_CreditShoppingBillsRegisters_0_0">
+          <End Type="databaseModel.CreditShoppingBill" Role="CreditShoppingBill" Multiplicity="1" />
+          <End Type="databaseModel.CreditShoppingBillsRegister" Role="CreditShoppingBillsRegister" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CreditShoppingBill">
+              <PropertyRef Name="ShoppingBillId" />
+            </Principal>
+            <Dependent Role="CreditShoppingBillsRegister">
               <PropertyRef Name="ShoppingBillId" />
             </Dependent>
           </ReferentialConstraint>
@@ -617,6 +733,9 @@
           <EntitySetMapping Name="ShoppingBills">
             <EntityTypeMapping TypeName="databaseModel.ShoppingBill">
               <MappingFragment StoreEntitySet="ShoppingBills">
+                <ScalarProperty Name="ITBISPercent" ColumnName="ITBISPercent" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="Credit" ColumnName="Credit" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Company" ColumnName="Company" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -631,6 +750,27 @@
                 <ScalarProperty Name="ArticlePrice" ColumnName="ArticlePrice" />
                 <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
                 <ScalarProperty Name="ShoppingBillId" ColumnName="ShoppingBillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditShoppingBills">
+            <EntityTypeMapping TypeName="databaseModel.CreditShoppingBill">
+              <MappingFragment StoreEntitySet="CreditShoppingBills">
+                <ScalarProperty Name="DonePaying" ColumnName="DonePaying" />
+                <ScalarProperty Name="Owed" ColumnName="Owed" />
+                <ScalarProperty Name="Payed" ColumnName="Payed" />
+                <ScalarProperty Name="ShoppingBillId" ColumnName="ShoppingBillId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CreditShoppingBillsRegisters">
+            <EntityTypeMapping TypeName="databaseModel.CreditShoppingBillsRegister">
+              <MappingFragment StoreEntitySet="CreditShoppingBillsRegisters">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Owed" ColumnName="Owed" />
+                <ScalarProperty Name="Payed" ColumnName="Payed" />
+                <ScalarProperty Name="ShoppingBillId" ColumnName="ShoppingBillId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

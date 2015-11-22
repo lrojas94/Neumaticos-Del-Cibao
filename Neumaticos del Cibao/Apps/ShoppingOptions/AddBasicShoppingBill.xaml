@@ -8,13 +8,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="600"
       Title="BasicBills">
-
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisible" />
+    </Page.Resources>
     <ContentControl Template="{StaticResource BaseControlTemplate}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
 
@@ -43,10 +46,30 @@
                     <common:DataGridNumericColumn Width="*" Header="Precio Total" IsReadOnly="True" Binding="{Binding TotalPrice,StringFormat=N2}"></common:DataGridNumericColumn>
                 </DataGrid.Columns>
             </DataGrid>
-            <Label Style="{StaticResource InputHeader}" Content="" Name="finalQuantity"  Grid.Row="3" Grid.Column="1" Margin="10,0" HorizontalContentAlignment="Left"/>
-            <Label Style="{StaticResource InputHeader}" Content="" Name="finalPrice"  Grid.Row="3" Grid.Column="2" Margin="10,0" HorizontalContentAlignment="Left"/>
-            <Button Margin="10" Grid.Row="4" Grid.Column="1" Height="25" Content="Imprimir" Name="btnPrint"></Button>
-            <Button Margin="10" Grid.Row="4" Grid.Column="2" Height="25" Content="Guardar" Name="btnSave" Click="btnSave_Click"></Button>
+            <Grid Grid.Row="3" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="creditBill" Content="Factura a Credito" IsChecked="{Binding IsCredit}" Margin="10,10,10,0" VerticalAlignment="Top" Height="25" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <StackPanel Visibility="{Binding IsCredit,Converter={StaticResource BoolToVisible}}" Height="Auto" Margin="10,40,10,10" VerticalAlignment="Top">
+                    <Label Content="Abono adelantado" Style="{StaticResource InputHeader}"/>
+                    <TextBox x:Name="payedAhead" Height="25" TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <CheckBox x:Name="itbis" Grid.Column="1"  Content="ITBIS" IsChecked="{Binding HasITBIS}" Margin="10,10,10,0" VerticalAlignment="Top" Height="25" FontWeight="Bold" VerticalContentAlignment="Center"/>
+                <StackPanel Grid.Column="1" Visibility="{Binding HasITBIS,Converter={StaticResource BoolToVisible}}" Height="Auto" Margin="10,40,10,10" VerticalAlignment="Top">
+                    <Label Content="Porciento de ITBIS" Style="{StaticResource InputHeader}"/>
+                    <TextBox x:Name="itbisPercent" Height="25" Text="{Binding ITBISPercent,StringFormat={}{0:N2}% }" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Grid>
+            <Label Style="{StaticResource InputHeader}" Content="" Name="finalQuantity"  Grid.Row="4" Grid.Column="1" Margin="10,0" HorizontalContentAlignment="Left"/>
+            <Label Style="{StaticResource InputHeader}" Content="" Name="finalPrice"  Grid.Row="4" Grid.Column="2" Margin="10,0" HorizontalContentAlignment="Left"/>
+            <Button Margin="10" Grid.Row="5" Grid.Column="1" Height="25" Content="Imprimir" Name="btnPrint"></Button>
+            <Button Margin="10" Grid.Row="5" Grid.Column="2" Height="25" Content="Guardar" Name="btnSave" Click="btnSave_Click"></Button>
         </Grid>
 
     </ContentControl>

@@ -34,5 +34,7 @@ namespace Neumaticos_del_Cibao.Database
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<ShoppingBill> ShoppingBills { get; set; }
         public virtual DbSet<ShoppingBillsArticle> ShoppingBillsArticles { get; set; }
+        public virtual DbSet<CreditShoppingBill> CreditShoppingBills { get; set; }
+        public virtual DbSet<CreditShoppingBillsRegister> CreditShoppingBillsRegisters { get; set; }
     }
 }

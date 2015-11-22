@@ -12,27 +12,21 @@ namespace Neumaticos_del_Cibao.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class ShoppingBill
+    public partial class CreditShoppingBill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ShoppingBill()
+        public CreditShoppingBill()
         {
-            this.Credit = "f";
-            this.ITBIS = "f";
-            this.ITBISPercent = 0D;
-            this.ShoppingBillsArticles = new HashSet<ShoppingBillsArticle>();
+            this.CreditShoppingBillsRegisters = new HashSet<CreditShoppingBillsRegister>();
         }
     
-        public long Id { get; set; }
-        public Nullable<long> Company { get; set; }
-        public string Date { get; set; }
-        public string Credit { get; set; }
-        public string ITBIS { get; set; }
-        public Nullable<double> ITBISPercent { get; set; }
+        public long ShoppingBillId { get; set; }
+        public Nullable<double> Payed { get; set; }
+        public Nullable<double> Owed { get; set; }
+        public string DonePaying { get; set; }
     
-        public virtual Client Client { get; set; }
+        public virtual ShoppingBill ShoppingBill { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShoppingBillsArticle> ShoppingBillsArticles { get; set; }
-        public virtual CreditShoppingBill CreditShoppingBill { get; set; }
+        public virtual ICollection<CreditShoppingBillsRegister> CreditShoppingBillsRegisters { get; set; }
     }
 }

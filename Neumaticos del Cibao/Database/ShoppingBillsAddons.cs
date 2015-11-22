@@ -48,5 +48,37 @@ namespace Neumaticos_del_Cibao.Database
                 return string.Format("Monto Total: RD$ {0:N2} | Articulos Comprados: {1}", FinalPrice, FinalQuantity);
             }
         }
+
+        public bool IsCredit
+        {
+            get
+            {
+                return Credit == "t";
+            }
+
+            set
+            {
+                if (value)
+                    Credit = "t";
+                else
+                    Credit = "f";
+            }
+        }
+
+        public bool HasITBIS
+        {
+            get
+            {
+                return ITBIS == "t";
+            }
+
+            set
+            {
+                if (value)
+                    ITBIS = "t";
+                else
+                    ITBIS = "f";
+            }
+        }
     }
 }

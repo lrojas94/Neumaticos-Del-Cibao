@@ -149,6 +149,14 @@
     <Compile Include="Database\Client.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\CreditShoppingBill.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CreditShoppingBillsAddons.cs" />
+    <Compile Include="Database\CreditShoppingBillsRegister.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CreditShoppingBillsRegisterAddons.cs" />
     <Compile Include="Database\Database.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
