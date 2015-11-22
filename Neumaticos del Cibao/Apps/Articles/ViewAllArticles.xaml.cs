@@ -53,6 +53,8 @@ namespace Neumaticos_del_Cibao.Apps.Articles
 
         }
 
+        public ViewAllArticles() : this(null) { }
+
         private void btnAddArticle_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddArticle(database));
