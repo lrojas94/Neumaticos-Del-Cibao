@@ -94,6 +94,7 @@
     <Compile Include="Apps\Common\DataGridNumericColumn.cs" />
     <Compile Include="Apps\Common\Encryption.cs" />
     <Compile Include="Apps\Common\ExtensionMethods.cs" />
+    <Compile Include="Apps\Common\FormattedTextBox.cs" />
     <Compile Include="Apps\Common\IPlaceholder.cs" />
     <Compile Include="Apps\Common\NoWatermarkDatePicker.cs" />
     <Compile Include="Apps\Common\OptionGrid.cs" />

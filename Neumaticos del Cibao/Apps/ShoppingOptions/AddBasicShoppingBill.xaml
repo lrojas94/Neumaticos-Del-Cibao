@@ -57,7 +57,7 @@
                 <CheckBox x:Name="creditBill" Content="Factura a Credito" IsChecked="{Binding IsCredit}" Margin="10,10,10,0" VerticalAlignment="Top" Height="25" FontWeight="Bold" VerticalContentAlignment="Center"/>
                 <StackPanel Visibility="{Binding IsCredit,Converter={StaticResource BoolToVisible}}" Height="Auto" Margin="10,40,10,10" VerticalAlignment="Top">
                     <Label Content="Abono adelantado" Style="{StaticResource InputHeader}"/>
-                    <TextBox x:Name="payedAhead" Height="25" TextWrapping="Wrap"/>
+                    <common:FormattedTextBox x:Name="payedAhead" Formatter="RD${0:N2}" Height="25" TextWrapping="Wrap"/>
                 </StackPanel>
 
                 <CheckBox x:Name="itbis" Grid.Column="1"  Content="ITBIS" IsChecked="{Binding HasITBIS}" Margin="10,10,10,0" VerticalAlignment="Top" Height="25" FontWeight="Bold" VerticalContentAlignment="Center"/>

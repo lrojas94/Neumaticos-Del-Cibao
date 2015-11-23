@@ -25,12 +25,16 @@ namespace Neumaticos_del_Cibao.Database
 
         public void Pay(double ammount,databaseEntities context = null)
         {
+            var shouldSave = false;
             if (context == null)
+            {
                 context = new databaseEntities();
+                shouldSave = true;
+            }
 
             //Create a register:
             this.Owed -= ammount;
-            
+
             var register = new CreditShoppingBillsRegister();
             register.Payed = ammount;
             register.CreditShoppingBill = this;
@@ -43,7 +47,9 @@ namespace Neumaticos_del_Cibao.Database
                 this.IsDonePaying = true;
 
             context.CreditShoppingBillsRegisters.Add(register);
-            context.SaveChangesAsync();
+            if (shouldSave)
+                context.SaveChangesAsync();
+            
         }
     }
 }

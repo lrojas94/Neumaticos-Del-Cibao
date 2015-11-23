@@ -42,6 +42,12 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
                 this.bill.Date = DateTime.Today.ToString();
                 isNewEntry = true;
             }
+            else
+            {
+                //We can't Pay ahead again
+                payedAhead.IsEnabled = false;
+                creditBill.IsEnabled = false;
+            }
 
             DataContext = this.bill;
 
@@ -125,6 +131,19 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
             {
                 if (isNewEntry)
                     database.ShoppingBills.Add(bill);
+                if (bill.IsCredit && bill.CreditShoppingBill == null)
+                {
+                    //Do something
+                    var creditBill = new Database.CreditShoppingBill();
+                    creditBill.ShoppingBill = bill;
+                    creditBill.Owed = bill.FinalPrice;
+                    creditBill.Payed = 0D;
+                    var owed = 0D;
+                    
+                    if (double.TryParse(payedAhead.RealValue, out owed))
+                        creditBill.Pay(owed,database);
+                }
+
                 database.SaveChangesAsync();
                 NavigationService.Navigate(new ShowShoppingBills());
             }

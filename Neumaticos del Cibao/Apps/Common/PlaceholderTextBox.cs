@@ -66,7 +66,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             Loaded += initPlaceholder;
         }
 
-        public void initPlaceholder(object sender, EventArgs e)
+        private void initPlaceholder(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
             brush = new SolidColorBrush(Colors.Black);
@@ -79,7 +79,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             
         }
 
-        public void gotFocus(object sender, EventArgs e)
+        private void gotFocus(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
             if(textBox.Text == placeholderText)
@@ -89,7 +89,7 @@ namespace Neumaticos_del_Cibao.Apps.Common
             brush.Opacity = 1;
         }
 
-        public void lostFocus(object sender, EventArgs e)
+        private void lostFocus(object sender, EventArgs e)
         {
             var textBox = sender as TextBox;
             if(textBox.Text == "")
