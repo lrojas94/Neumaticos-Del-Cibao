@@ -80,5 +80,16 @@ namespace Neumaticos_del_Cibao.Database
                     ITBIS = "f";
             }
         }
+
+        public string Debt
+        {
+            get
+            {
+                if (IsCredit)
+                    return string.Format("Cuentas por Pagar: RD${0}", CreditShoppingBill.Owed);
+                else
+                    return "No existen cuentas por pagar.";
+            }
+        }
     }
 }

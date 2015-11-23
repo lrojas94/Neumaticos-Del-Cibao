@@ -6,16 +6,18 @@
              xmlns:Database="clr-namespace:Neumaticos_del_Cibao.Database"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-
+        <BooleanToVisibilityConverter x:Key="BoolToVis"></BooleanToVisibilityConverter>
         <SolidColorBrush x:Key="PeterRiver" Color="#FF3498DB"/>
         <SolidColorBrush x:Key="BelizeHole" Color="#FF2980B9"/>
         <SolidColorBrush x:Key="Concrete" Color="#FF95A5A6"/>
         <SolidColorBrush x:Key="BackgroundBrush" Color="#FFECF0F1"/>
+        <SolidColorBrush x:Key="Alizarin" Color="#c0392b"/>
+        
         <!-- IMAGES -->
         <BitmapImage x:Key="GoBack" UriSource="Assets/Images/appbar.arrow.left.png"></BitmapImage>
-        <Image x:Key="GoBackImage" Source="{StaticResource GoBack}"></Image>
+        <Image x:Key="GoBackImage" x:Shared="False"  Source="{StaticResource GoBack}"></Image>
         <BitmapImage x:Key="GoForward" UriSource="Assets/Images/appbar.arrow.right.png"></BitmapImage>
-        <Image x:Key="GoForwardImage" Source="{StaticResource GoForward}"></Image>
+        <Image x:Key="GoForwardImage" x:Shared="False" Source="{StaticResource GoForward}"></Image>
         
         <Style x:Key="TitleBase" TargetType="Label">
             <Setter Property="Background" Value="{DynamicResource PeterRiver}"></Setter>
@@ -84,6 +86,7 @@
                         <StackPanel Orientation="Vertical">
                             <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=ShoppingBillTitle}"></Label>
                             <TextBlock Text="{Binding Path=ShoppingBillSubtitle}" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="5,0,0,0"></TextBlock>
+                            <Label Content="{Binding Debt}" Foreground="{StaticResource Alizarin}" Visibility="{Binding IsCredit,Converter={StaticResource BoolToVis}}"></Label>
                         </StackPanel>
                     </DataTemplate>
                 </Setter.Value>
