@@ -167,6 +167,11 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
 
         private void articles_LayoutUpdated(object sender, EventArgs e)
         {
+            if (bill.HasITBIS)
+            {
+                var itbisPrice = bill.ITBISPercent / 100.00 * bill.FinalPrice;
+                ITBISPrice.Content = string.Format("Valor de ITBIS: RD$ {0:N2}",itbisPrice);
+            }
             finalPrice.Content = string.Format("Precio Final: RD$ {0:N2}", bill.FinalPrice);
             finalQuantity.Content = string.Format("Cantidad De Articulos: {0:N0}", bill.FinalQuantity);
         }
