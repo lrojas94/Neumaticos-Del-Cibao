@@ -45,8 +45,8 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
             else
             {
                 //We can't Pay ahead again
-                payedAhead.IsEnabled = false;
-                creditBill.IsEnabled = false;
+                payedAhead.Visibility = Visibility.Hidden;
+                creditBill.Visibility = Visibility.Hidden;
             }
 
             DataContext = this.bill;
@@ -65,7 +65,7 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
 
         private void searchSupplier_Click(object sender, RoutedEventArgs e)
         {
-            var suppliersWindow = createWindowWithFrame();
+            var suppliersWindow = ExtensionMethods.CreateWindowWithFrame();
             var suppliersFrame = new Clients.ViewAllClients(database);
             suppliersWindow.Item2.Content = suppliersFrame;
             suppliersFrame.searchBox.Text = supplier.RealText;
@@ -81,14 +81,7 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
 
         }
 
-        private Tuple<Window,Frame> createWindowWithFrame()
-        {
-            var window = new Window();
-            var frame = new Frame();
-            frame.Template = FindResource("BaseFrame") as ControlTemplate;
-            window.Content = frame;
-            return new Tuple<Window, Frame>(window, frame);
-        }
+        
 
         private void supplier_KeyDown(object sender, KeyEventArgs e)
         {
@@ -108,7 +101,7 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
 
             if(e.Column.DisplayIndex == 0)
             {
-                var articlesWindow = createWindowWithFrame();
+                var articlesWindow = ExtensionMethods.CreateWindowWithFrame();
                 var articlesFrame = new Articles.ViewAllArticles(database);
 
                 articlesFrame.searchBox.Text = cell.Text;

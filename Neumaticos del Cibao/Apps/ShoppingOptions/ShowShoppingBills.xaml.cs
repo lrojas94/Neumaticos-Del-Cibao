@@ -25,6 +25,15 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
         private Database.databaseEntities database;
         private TimedFunction searchFunction;
 
+        public bool SelectCreditBillsOnly { get; set; }
+        public Database.ShoppingBill SelectedBill
+        {
+            get
+            {
+                return selectedBill;
+            }
+        }
+
         public ShowShoppingBills(Database.databaseEntities context = null)
         {
             InitializeComponent();
@@ -48,13 +57,24 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
 
         private void billsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            btnDeleteBill.IsEnabled = true;
-            btnModifyBill.IsEnabled = true;
-            btnViewBill.IsEnabled = true;
+            
             selectedBill = (sender as ListBox).SelectedItem as Database.ShoppingBill;
 
             if (ExtensionMethods.IsModal(Application.Current.MainWindow))
-                Application.Current.MainWindow.Close();
+            {
+                if (SelectCreditBillsOnly && selectedBill.IsCredit && !selectedBill.CreditShoppingBill.IsDonePaying)
+                    Application.Current.MainWindow.Close();
+                else
+                {
+                    MessageBox.Show("Usted no puede seleccionar una factura que no sea a credito o ya este saldada.", "Error en seleccion");
+                    selectedBill = null;
+                    return;
+                }
+            }
+
+            btnDeleteBill.IsEnabled = true;
+            btnModifyBill.IsEnabled = true;
+            btnViewBill.IsEnabled = true;
         }
 
         private void btnAddBill_Click(object sender, RoutedEventArgs e)

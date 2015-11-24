@@ -86,7 +86,12 @@ namespace Neumaticos_del_Cibao.Database
             get
             {
                 if (IsCredit)
-                    return string.Format("Cuentas por Pagar: RD${0}", CreditShoppingBill.Owed);
+                {
+                    if(CreditShoppingBill.IsDonePaying)
+                        return string.Format("Esta Factura a Credito esta Saldada.", CreditShoppingBill.Owed);
+                    else
+                        return string.Format("Cuentas por Pagar: RD$ {0:N2}", CreditShoppingBill.Owed);
+                }
                 else
                     return "No existen cuentas por pagar.";
             }

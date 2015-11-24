@@ -13,19 +13,20 @@ namespace Neumaticos_del_Cibao.Apps.Common
     public class FormattedTextBox : TextBox
     {
         public string Formatter{ get; set; }
-        public string RealValue { get; set; }
+        public virtual string RealValue { get; set; }
 
         public FormattedTextBox() {
             GotFocus += onGotFocus;
             LostFocus += onLostFocus;
+            Formatter = "{0}"; //Set a default formatter just in case.
         }
         
-        private void onGotFocus (object sender, EventArgs e)
+        protected void onGotFocus (object sender, EventArgs e)
         {
             Text = RealValue;
         }
 
-        private void onLostFocus(object sender, EventArgs e)
+        protected void onLostFocus(object sender, EventArgs e)
         {
             RealValue = Text;
             var number = 0D;

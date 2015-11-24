@@ -78,5 +78,14 @@ namespace Neumaticos_del_Cibao.Apps.Common
 
             return cell;
         }
+
+        public static Tuple<Window, Frame> CreateWindowWithFrame()
+        {
+            var window = new Window();
+            var frame = new Frame();
+            frame.Template = frame.FindResource("BaseFrame") as ControlTemplate;
+            window.Content = frame;
+            return new Tuple<Window, Frame>(window, frame);
+        }
     }
 }
