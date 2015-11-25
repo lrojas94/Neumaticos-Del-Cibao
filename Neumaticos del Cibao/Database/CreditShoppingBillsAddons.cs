@@ -25,12 +25,14 @@ namespace Neumaticos_del_Cibao.Database
 
         public void Pay(double ammount,databaseEntities context = null)
         {
-            var shouldSave = false;
-            if (context == null)
-            {
-                context = new databaseEntities();
-                shouldSave = true;
-            }
+            if (ShoppingBill == null)
+                throw new ArgumentNullException("Base bill is null. This credit bill should not exist.");
+
+            if (IsDonePaying)
+                throw new InvalidOperationException("This bill is already payed for.");
+
+            if (!ShoppingBill.IsCredit)
+                throw new InvalidOperationException("This is not a credit bill.");
 
             //Create a register:
             this.Owed -= ammount;
@@ -42,13 +44,13 @@ namespace Neumaticos_del_Cibao.Database
             register.Date = DateTime.Today.ToString();
 
             this.Payed += ammount;
-            
+            this.Payed = Math.Round(Payed.GetValueOrDefault(), 3);
+            this.Owed = Math.Round(Owed.GetValueOrDefault(), 3);
+
             if(Owed == 0D)
                 this.IsDonePaying = true;
-
-            context.CreditShoppingBillsRegisters.Add(register);
-            if (shouldSave)
-                context.SaveChangesAsync();
+            if(context != null)
+                context.CreditShoppingBillsRegisters.Add(register);
             
         }
     }

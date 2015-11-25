@@ -84,7 +84,7 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
         {
             if(toPay.NumericValue <= 0D)
             {
-                MessageBox.Show("No puede ingresar un valor de $0.00 en el monto a pagar.");
+                MessageBox.Show("No puede ingresar un valor menor o igual a $0.00 en el monto a pagar.");
                 return;
             }
 
