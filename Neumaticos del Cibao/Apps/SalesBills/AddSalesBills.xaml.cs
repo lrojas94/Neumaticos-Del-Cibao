@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
-
+using System.Collections.ObjectModel;
 
 namespace Neumaticos_del_Cibao.Apps.SalesBills
 {
@@ -22,14 +22,33 @@ namespace Neumaticos_del_Cibao.Apps.SalesBills
     /// </summary>
     public partial class AddSalesBills : Page
     {
-        Database.databaseEntities database = new Database.databaseEntities();
-        Database.Client selectedClient;
+        private Database.SalesBill salesBill;
+        private Database.databaseEntities database;
+        private Database.Client selectedClient;
+        private Boolean isNewEntry = true;
         
         
-        public AddSalesBills()
+
+        public AddSalesBills(Database.SalesBill salesBill = null, Database.databaseEntities database = null)
         {
             InitializeComponent();
 
+            this.salesBill = salesBill;
+            if (this.salesBill == null)
+            {
+                isNewEntry = false;
+                this.salesBill = new Database.SalesBill();
+                this.salesBill.SalesBillArticles = new List<Database.SalesBillArticle>();
+                this.salesBill.Client = new Database.Client();
+            }
+
+            this.database = database;
+            if (this.database == null)
+                this.database = new Database.databaseEntities();
+
+            DataContext = this.salesBill;
+            
+            
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -51,6 +70,24 @@ namespace Neumaticos_del_Cibao.Apps.SalesBills
             
         }
 
+        private void articlesDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.Column.Header.ToString() == articleIdTextColumn.Header.ToString())
+            {
+                
+                var articleWindow = new Common.WindowsWithFrame();
+                var articleFrame = new Articles.ViewAllArticles(database);
+
+                //articleFrame.searchBox.Text = cell.Text.ToString().ToLower();
+
+                articleWindow.frame.Content = articleFrame;
+                articleWindow.ShowDialog();
+
+                var selectedArticle = articleFrame.selectedArticle;
+                var item = e.Row.Item as Database.SalesBillArticle;
+                item.Article = selectedArticle;
+            }
+        }
 
     }
 }

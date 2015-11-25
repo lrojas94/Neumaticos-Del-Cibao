@@ -91,7 +91,7 @@ namespace Neumaticos_del_Cibao.Clients
         {
             if (fromBill == true)
                 //todo
-                Console.Write("placeholder");
+                Console.WriteLine("placeholder");
             else
                 NavigationService.Navigate(new AddClient(database, SelectedClient));
 

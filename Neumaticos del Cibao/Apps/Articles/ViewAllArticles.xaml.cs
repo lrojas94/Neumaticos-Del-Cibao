@@ -21,14 +21,20 @@ namespace Neumaticos_del_Cibao.Apps.Articles
     /// </summary>
     public partial class ViewAllArticles : Page
     {
-        private Database.Article selectedArticle;
-        private Database.databaseEntities database = new Database.databaseEntities();
+        public Database.Article selectedArticle;
+        private Database.databaseEntities database;
         private TimedFunction searchFuntion;
 
-        public ViewAllArticles()
+        public ViewAllArticles(Database.databaseEntities database = null)
         {
             InitializeComponent();
             articlesListBox.ItemsSource = database.Articles.ToList();
+
+            this.database = database;
+            if(this.database == null)
+            {
+                this.database = new Database.databaseEntities();
+            }
 
             Action search = () =>
             {

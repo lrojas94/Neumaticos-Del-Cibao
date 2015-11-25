@@ -14,11 +14,20 @@ namespace Neumaticos_del_Cibao.Database
     
     public partial class Article
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Article()
+        {
+            this.SalesBillArticles = new HashSet<SalesBillArticle>();
+        }
+    
         public long Id { get; set; }
         public string Name { get; set; }
         public string MeasureUnit { get; set; }
         public Nullable<double> Measure { get; set; }
         public string CodeIdentifier { get; set; }
         public string Description { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesBillArticle> SalesBillArticles { get; set; }
     }
 }

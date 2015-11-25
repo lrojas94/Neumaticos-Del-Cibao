@@ -56,5 +56,12 @@ namespace Neumaticos_del_Cibao.Database
                 return Articles.ToList();
             }
         }
+
+        public List<SalesBillArticle> BillSearchArticles(long billId)
+        {
+            return SalesBillArticles.Where(
+                BillArticle => BillArticle.SalesBillId == billId
+                ).ToList();
+        }
     }
 }

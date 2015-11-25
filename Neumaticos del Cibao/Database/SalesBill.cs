@@ -12,20 +12,23 @@ namespace Neumaticos_del_Cibao.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Option
+    public partial class SalesBill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Option()
+        public SalesBill()
         {
-            this.Permissions = new HashSet<Permission>();
+            this.SalesBillArticles = new HashSet<SalesBillArticle>();
         }
     
         public long Id { get; set; }
-        public string OptionTitle { get; set; }
-        public string OptionType { get; set; }
-        public string ClassView { get; set; }
+        public Nullable<long> ClientId { get; set; }
+        public string BillCode { get; set; }
+        public string Date { get; set; }
+        public string ITBIS { get; set; }
+        public Nullable<long> TotalArticles { get; set; }
     
+        public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Permission> Permissions { get; set; }
+        public virtual ICollection<SalesBillArticle> SalesBillArticles { get; set; }
     }
 }
