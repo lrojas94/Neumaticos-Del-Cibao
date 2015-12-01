@@ -77,5 +77,19 @@ namespace Neumaticos_del_Cibao.Database
             else
                 return ShoppingBills.ToList();
         }
+
+        public List<Permission> PermissionSearch(string toSearch)
+        {
+            if (toSearch != "")
+            {
+                toSearch = toSearch.ToLower();
+                return Permissions.Where(
+                    Permission => Permission.Name.ToLower().Contains(toSearch) ||
+                    Permission.Description.ToLower().Contains(toSearch)
+                    ).ToList();
+            }
+            else
+                return Permissions.ToList();
+        }
     }
 }
