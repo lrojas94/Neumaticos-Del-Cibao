@@ -19,8 +19,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Content="Agregar Nuevo Artículo" Style="{StaticResource TitleBase}"  VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0,0" Padding="5"/>
-            <Label x:Name="articleInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información del Artículo" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1"/>
+            <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Content="Agregar Nuevo Artículo" Style="{StaticResource TitleBase}"  VerticalAlignment="Top" Margin="0" Padding="5"/>
+            <Label x:Name="articleInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información del Artículo" Style="{StaticResource SubtitleBase}" Margin="10" VerticalAlignment="Top" />
             <Label x:Name="nameLabel" Content="Nombre" FontWeight="Bold" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>
             <TextBox x:Name="name" Height="25" Text="{Binding Name}" Margin="10,73,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"/>
             <Label x:Name="idLabel" Content="Código" FontWeight="Bold" Grid.Column="1" Margin="10,47,10,0" Grid.Row="1" VerticalAlignment="Top"/>

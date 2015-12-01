@@ -20,8 +20,8 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Content="Mostrar Cliente" Style="{StaticResource TitleBase}"  VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0.333,0" Padding="5" Height="42"/>
-            <Label x:Name="bussinessInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información Empresa" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1" Height="32"/>
+            <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Content="Mostrar Cliente" Style="{StaticResource TitleBase}"  VerticalAlignment="Top" Margin="0" Padding="5" />
+            <Label x:Name="bussinessInfo" Grid.Row="1" Grid.ColumnSpan="2" Content="Información Empresa" Margin="10" VerticalAlignment="Top" Style="{StaticResource SubtitleBase}"/>
             <Label x:Name="nameLabel" Style="{StaticResource InputHeader}"  Content="Nombre" Margin="10,47,10,0" Grid.Row="1" FontWeight="Bold" VerticalAlignment="Top"/>
             <Label x:Name="name" Margin="10,73,10,0"  Content="{Binding Name}"  Grid.Row="1" VerticalAlignment="Top" Height="25"/>
             <Label x:Name="rncLabel" Style="{StaticResource InputHeader}" Content="RNC" Grid.Column="1" HorizontalAlignment="Left" Margin="10,47,0,0" Grid.Row="1" FontWeight="Bold" VerticalAlignment="Top"/>
@@ -37,7 +37,7 @@
             <Label x:Name="adressLabel" Content="Dirección" Style="{StaticResource InputHeader}"  HorizontalAlignment="Left" Margin="10,225,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
             <Label x:Name="adress" Content="{Binding Adress}" HorizontalAlignment="Left" Margin="10,255,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="50" Width="580" />
 
-            <Label x:Name="contactInfo" Grid.Row="2" Grid.ColumnSpan="2" Content="Información Contacto" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" Foreground="#FF95A5A6" BorderBrush="{DynamicResource Concrete}" HorizontalContentAlignment="Right" BorderThickness="0,0,0,1" Height="32"/>
+            <Label x:Name="contactInfo" Grid.Row="2" Grid.ColumnSpan="2" Content="Información Contacto" Margin="10,10,10,0" VerticalAlignment="Top" Style="{StaticResource SubtitleBase}"/>
             <Label x:Name="contactNameLabel" Content="Nombre" HorizontalAlignment="Left" Margin="10,46.667,0,0" Grid.Row="2" FontWeight="Bold" VerticalAlignment="Top"/>
             <Label x:Name="contactName" Content="{Binding ContactName}" HorizontalAlignment="Left" Margin="10,72.667,0,0" Grid.Row="2" VerticalAlignment="Top" Height="25" Width="280" />
             <Label x:Name="contactEmailLabel" Content="Email" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,102.667,0,0" Grid.Row="2" VerticalAlignment="Top" Width="280"/>

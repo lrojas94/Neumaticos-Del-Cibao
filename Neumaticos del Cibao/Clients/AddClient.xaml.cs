@@ -83,16 +83,6 @@ namespace Neumaticos_del_Cibao.Clients
             NavigationService.Navigate(new ViewAllClients());
         }
 
-        private void creditCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            maxCredit.Visibility = Visibility.Visible;
-        }
-        private void creditCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            maxCredit.Visibility = Visibility.Hidden;
-
-        }
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewAllClients());
