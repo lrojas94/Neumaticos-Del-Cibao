@@ -95,7 +95,7 @@
                     <DataTemplate DataType="Database:Permission">
                         <StackPanel Orientation="Vertical">
                             <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=Name}"></Label>
-                            <TextBlock Text="{Binding Path=Description}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="50"></TextBlock>
+                            <TextBlock Text="{Binding Path=Description}" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="5,0,0,0"></TextBlock>
                         </StackPanel>
                     </DataTemplate>
                 </Setter.Value>

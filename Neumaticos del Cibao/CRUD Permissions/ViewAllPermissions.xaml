@@ -19,7 +19,7 @@
             <common:PlaceholderTextBox x:Name="name" PlaceholderText="Nombre del permiso" Height="{Binding ActualHeight,ElementName=filterLabel}" Margin="10,72,10,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" TextChanged="name_TextChanged"/>
             <ListBox x:Name="permissions" Style="{StaticResource PermissionListBox}" Margin="10,102,10,9.667" MinHeight="100" MinWidth="100" SelectionChanged="permissions_SelectionChanged"/>
             <Label x:Name="title" Content="Nuestros permisos" VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0,0" Padding="5"/>
-            <Label x:Name="filterLabel" Content="Nuestros Permisos" FontWeight="Bold" Margin="10,47,10,0" Style="{StaticResource InputHeader}" Height="25" VerticalAlignment="Top"/>
+            <Label x:Name="filterLabel" Content="Nuestros Permisos" Margin="10,47,10,0" Style="{StaticResource InputHeader}" Height="25" VerticalAlignment="Top"/>
 
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
