@@ -25,26 +25,26 @@ namespace Neumaticos_del_Cibao.CRUD_Permissions
     {
 
         private bool newEntry = false;
-        private Database.databaseEntities database = new Database.databaseEntities();
+        private Database.databaseEntities database;
         private Database.Permission permission;
 
-        public ViewPermission(Database.Permission permission = null)
+        public ViewPermission(Database.Permission permission = null, Database.databaseEntities database = null)
         {
-            if(permission == null)
+            this.permission = permission;
+            if(this.permission == null)
             {
                 newEntry = true;
                 this.permission = new Database.Permission();
             }
-            else
-            {
-                this.permission = permission;
-            }
+
+            this.database = database;
+            if (this.database == null)
+                this.database = new Database.databaseEntities();
+
 
             InitializeComponent();
             
-            DataContext = permission;
-            name.SetBinding(TextBox.TextProperty, "Name");
-            description.SetBinding(TextBox.TextProperty, "Description");
+            DataContext = this.permission;
 
         }
 
@@ -53,9 +53,11 @@ namespace Neumaticos_del_Cibao.CRUD_Permissions
             if(newEntry == true)
             {
                 database.Permissions.Add(this.permission);
-                
+                Console.WriteLine(this.permission.Name);    
             }
-            database.SaveChanges();
+            database.SaveChangesAsync();
+
+            NavigationService.Navigate(new ViewAllPermissions(database));
             
 
 

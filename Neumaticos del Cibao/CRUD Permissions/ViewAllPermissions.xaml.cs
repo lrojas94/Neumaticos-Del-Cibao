@@ -16,40 +16,67 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Neumaticos_del_Cibao.CRUD_Permissions
-    {
+{
         /// <summary>
         /// Interaction logic for ViewAllPermissions.xaml
         /// </summary>
-        public partial class ViewAllPermissions : Page
+    public partial class ViewAllPermissions : Page
+    {
+
+        private Database.databaseEntities database;
+        private TimedFunction searchFuntion;
+        private Database.Permission selectedPermission = null;
+            
+
+        public ViewAllPermissions(Database.databaseEntities database = null)
         {
+            InitializeComponent();
 
-            private Database.databaseEntities database = new Database.databaseEntities();
-            private TimedFunction searchFuntion;
+            this.database = database;
+            if (database == null)
+                database = new Database.databaseEntities();
 
-            public ViewAllPermissions()
+
+
+            permissions.ItemsSource = database.Permissions.ToList();
+
+            Action search = () =>
             {
-                InitializeComponent();
-                permissions.ItemsSource = database.Permissions.ToList();
+                permissions.ItemsSource = database.PermissionSearch(name.RealText);
+            };
+            
 
-                Action search = () =>
-                {
-                    permissions.ItemsSource = database.PermissionSearch(name.RealText);
-                };
-
-                searchFuntion = new TimedFunction(search);
+            searchFuntion = new TimedFunction(search);
                 
-            }
+        }
         
+        private void name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            searchFuntion.Run();   
+        }
 
+        private void btnAnadir_Click(object sender, RoutedEventArgs e)
+        {
+            Database.Permission nullperm = null;
+            NavigationService.Navigate(new ViewPermission(nullperm,database));
+        }
 
-            private void name_TextChanged(object sender, TextChangedEventArgs e)
-            {
-                searchFuntion.Run();   
-            }
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewPermission(selectedPermission, database));
+        }
 
-            private void btnAnadir_Click(object sender, RoutedEventArgs e)
-            {
-                NavigationService.Navigate(new ViewPermission());
-            }
+        private void permissions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedPermission = (sender as ListBox).SelectedItem as Database.Permission;
+                
+        }
+
+        private void btnEliminar_Click(object sender, RoutedEventArgs e)
+        {
+            database.Permissions.Remove(selectedPermission);
+            database.SaveChangesAsync();
+            permissions.ItemsSource = database.PermissionSearch(name.RealText);
         }
     }
+}

@@ -26,7 +26,8 @@ namespace Neumaticos_del_Cibao
             InitializeComponent();
             shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
             salesFrame.Content = new Apps.SalesOptions.SalesOptions();
-            generalFrame.Content = new Apps.GeneralOptions();
+            //generalFrame.Content = new Apps.GeneralOptions();
+            generalFrame.Content = new CRUD_Permissions.ViewAllPermissions();
 
         }
 

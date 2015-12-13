@@ -11,17 +11,26 @@
 
     <ScrollViewer VerticalScrollBarVisibility="auto">
         <Grid Background="#FFECF0F1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
 
-
-            <common:PlaceholderTextBox x:Name="name" PlaceholderText="Nombre del permiso" Height="{Binding ActualHeight,ElementName=filterLabel}" Margin="68,72,73,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" TextChanged="name_TextChanged"/>
-            <ListBox x:Name="permissions" Margin="68,102,73,58" MinHeight="100" MinWidth="100"/>
+            <common:PlaceholderTextBox x:Name="name" PlaceholderText="Nombre del permiso" Height="{Binding ActualHeight,ElementName=filterLabel}" Margin="10,72,10,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" TextChanged="name_TextChanged"/>
+            <ListBox x:Name="permissions" Style="{StaticResource PermissionListBox}" Margin="10,102,10,9.667" MinHeight="100" MinWidth="100" SelectionChanged="permissions_SelectionChanged"/>
             <Label x:Name="title" Content="Nuestros permisos" VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0,0" Padding="5"/>
-            <Label x:Name="filterLabel" Content="Nuestros Permisos" FontWeight="Bold" Margin="68,47,73,0" Style="{StaticResource InputHeader}" Height="25" VerticalAlignment="Top"/>
-            <StackPanel Orientation="Horizontal" Height="20" Margin="68,0,73,38" Width="{Binding ActualWidth,ElementName=permissions}" VerticalAlignment="Bottom" >
-                <Button Width="60" x:Name="btnAnadir" Content="Anadir" Height="20" VerticalAlignment="Top" Click="btnAnadir_Click"/>
-                <Button Width="{Binding ActualWidth, ElementName=btnAnadir}" x:Name="btnModificar" Content="Modificar"/>
-                <Button Width="{Binding ActualWidth, ElementName=btnAnadir}" x:Name="btnEliminar" Content="Eliminar"/>
-            </StackPanel>
+            <Label x:Name="filterLabel" Content="Nuestros Permisos" FontWeight="Bold" Margin="10,47,10,0" Style="{StaticResource InputHeader}" Height="25" VerticalAlignment="Top"/>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnAnadir" Content="Anadir" Height="25" Grid.Column="0" VerticalAlignment="Top" Click="btnAnadir_Click" Margin="10,0"/>
+                <Button Width="{Binding ActualWidth, ElementName=btnAnadir}" Height="25" Grid.Column="1" x:Name="btnModificar" Content="Modificar" Click="btnModificar_Click"/>
+                <Button Width="{Binding ActualWidth, ElementName=btnAnadir}" Height="25" Grid.Column="2" x:Name="btnEliminar" Content="Eliminar" Click="btnEliminar_Click"/>
+            </Grid>
         </Grid>
     </ScrollViewer>
     <!--falta poner que los datos se carguen de la base de datos -->

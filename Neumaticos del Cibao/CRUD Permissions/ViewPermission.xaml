@@ -11,10 +11,10 @@
         <Grid Background="#FFECF0F1">
             <Label x:Name="title"  Content="Permisos" VerticalAlignment="Top" RenderTransformOrigin="1.026,4.019" FontSize="21.333" BorderThickness="0,0,0,3" BorderBrush="{DynamicResource BelizeHole}" HorizontalContentAlignment="Center" Foreground="White" Background="{DynamicResource PeterRiver}" Margin="0,0,-0,0" Padding="5"/>
             <Label Content="Nombre" FontWeight="Bold" x:Name="nameLabel" Margin="10,69,232,0" Height="27" VerticalAlignment="Top"/>
-            <TextBox Margin="10,96,10,0"  x:Name="name" Height="{Binding ActualHeight, ElementName=nameLabel}" VerticalAlignment="Top"></TextBox>
+            <TextBox Margin="10,96,10,0"  x:Name="name" Height="25" Text="{Binding Name}" VerticalAlignment="Top"></TextBox>
 
             <Label x:Name="descriptionLabel" FontWeight="Bold" Content="Descripcion" Margin="10,134,192,0" Height="27" VerticalAlignment="Top"></Label>
-            <TextBox x:Name="description" Margin="10,161,10,48" TextWrapping="Wrap"/>
+            <TextBox x:Name="description" Margin="10,161,10,48" Text="{Binding Description}" TextWrapping="Wrap"/>
 
             <Button x:Name="btnCreate" Content="Aceptar" Margin="0,0,10,17" HorizontalAlignment="Right" Width="82" Height="26" VerticalAlignment="Bottom" Click="btnCreate_Click"></Button>
 
