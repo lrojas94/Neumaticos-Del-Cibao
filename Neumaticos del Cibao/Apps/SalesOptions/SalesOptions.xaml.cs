@@ -21,11 +21,11 @@ namespace Neumaticos_del_Cibao.Apps.SalesOptions
     public partial class SalesOptions : Page
     {
         Database.databaseEntities database;
-        public SalesOptions()
+        public SalesOptions(Database.Employee loggedEmployee)
         {
             InitializeComponent();
             database = new Database.databaseEntities();
-            var options = database.Options.Where(o => o.OptionType == "Sales").ToList();
+            var options = database.EmployeesOptions(loggedEmployee, "Sales");
             grid.ParentPage = this;
             grid.ColumnCount = 3;
             grid.ButtonHeight = 35;

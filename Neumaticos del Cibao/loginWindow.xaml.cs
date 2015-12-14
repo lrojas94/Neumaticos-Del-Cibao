@@ -65,7 +65,7 @@ namespace Neumaticos_del_Cibao
                     }
                     else
                     {
-                        var home = new MainWindow();
+                        var home = new MainWindow(employee);
                         home.Show();
                         Close();
                     }

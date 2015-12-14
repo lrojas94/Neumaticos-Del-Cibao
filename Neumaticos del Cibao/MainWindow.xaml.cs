@@ -21,12 +21,15 @@ namespace Neumaticos_del_Cibao
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+
+        private Database.databaseEntities database = new Database.databaseEntities();
+        public MainWindow(Database.Employee loggedEmployee)
         {
+
             InitializeComponent();
-            shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
-            salesFrame.Content = new Apps.SalesOptions.SalesOptions();
-            generalFrame.Content = new Apps.GeneralOptions();
+            shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions(loggedEmployee);
+            salesFrame.Content = new Apps.SalesOptions.SalesOptions(loggedEmployee);
+            generalFrame.Content = new Apps.GeneralOptions(loggedEmployee);
 
         }
 

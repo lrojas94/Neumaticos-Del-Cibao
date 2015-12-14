@@ -112,6 +112,9 @@
     <Compile Include="Apps\GeneralOptions.xaml.cs">
       <DependentUpon>GeneralOptions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\Roles\OptionsPermissions.xaml.cs">
+      <DependentUpon>OptionsPermissions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Apps\SalesOptions\SalesOptions.xaml.cs">
       <DependentUpon>SalesOptions.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
     <Page Include="Apps\GeneralOptions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\Roles\OptionsPermissions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Apps\SalesOptions\SalesOptions.xaml">
       <SubType>Designer</SubType>

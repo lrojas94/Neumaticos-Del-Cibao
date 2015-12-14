@@ -22,13 +22,13 @@ namespace Neumaticos_del_Cibao.Apps
     {
         private Database.databaseEntities database;
         
-        public GeneralOptions(Database.databaseEntities context = null)
+        public GeneralOptions(Database.Employee loggedEmployee,Database.databaseEntities context = null)
         {
             InitializeComponent();
             database = context;
             if(database == null)
                 database = new Database.databaseEntities();
-            var options = database.Options.Where(o => o.OptionType == "General").ToList();
+            var options = database.EmployeesOptions(loggedEmployee, "General");
             grid.ParentPage = this;
             grid.BuildOptionGrid(options);
         }

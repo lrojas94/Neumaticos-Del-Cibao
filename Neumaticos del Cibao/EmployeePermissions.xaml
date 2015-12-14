@@ -1,0 +1,57 @@
+﻿<Page x:Class="Neumaticos_del_Cibao.Apps.Employees.EmployeePermissions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Neumaticos_del_Cibao.Apps.Employees"
+      xmlns:Common ="clr-namespace:Neumaticos_del_Cibao.Apps.Common"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="EmployeePermissions">
+
+    <Grid Style="{StaticResource BaseGrid}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label x:Name="title" Style="{StaticResource TitleBase}" Grid.Row="0" Content="Permisos de Usuario" VerticalAlignment="Top"/>
+                <Label x:Name="employeeLabel" Content="Empleado" Grid.Row="1" VerticalAlignment="Top" Margin="10,10,10,0" Style="{StaticResource InputHeader}"/>
+                <Common:PlaceholderTextBox PlaceholderText="Buscar Empleado" Grid.Row="1" x:Name="searchBox" Margin="0,36,10,0" VerticalAlignment="Top" Width="{Binding ActualWidth,ElementName=employeeLabel}" HorizontalAlignment="Right" Height="25" VerticalContentAlignment="Center" TextChanged="searchBox_TextChanged"/>
+                <ListBox x:Name="employees" Margin="10,66,10,0" Grid.Row="1" Style="{StaticResource EmployeeListBox}" Width="{Binding ActualWidth,ElementName=searchBox}" Height="88" VerticalAlignment="Top" SelectionChanged="employees_SelectionChanged"></ListBox>
+                <Label x:Name="selectedEmployeeLabel" Grid.Row="1" Style="{StaticResource SubtitleBase}"  Content="Empleado Seleccionado" Margin="10,159,10,0" VerticalAlignment="Top"/>
+                <TextBlock x:Name="info" TextWrapping="Wrap" Grid.Row="2" TextAlignment="Justify" Margin="10,0,10,0" Text="Para agregar un permiso a un empleado, seleccione el empleado en la tabla superior, luego doble click al permiso a agregar. Este permiso pasara a la tabla de &quot;Permisos del Empleado&quot;. Para eliminar alguno de los permisos de empleado,, doble click al permiso en la tabla &quot;Permisos de empleado&quot;." Foreground="{DynamicResource Concrete}"/>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="availablePermissionsLabel" Content="Permisos Disponibles" Grid.Column="0" Style="{StaticResource InputHeader}" HorizontalAlignment="Left" Width="{Binding ActualWidth,ElementName=employeeLabel,Converter={StaticResource mathConverter},ConverterParameter=x/2-5}" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="availablePermissions" Style ="{StaticResource PermissionListBox}" Grid.Column="0" Margin="10,36,0,10" HorizontalContentAlignment="Stretch" Width="{Binding ActualWidth, ElementName=availablePermissionsLabel}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Left">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                <EventSetter Event="MouseDoubleClick" Handler="availablePermission_MouseDoubleClick"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                    <Label x:Name="userPermissionsLabel" Content="Permisos de Usuario" Grid.Column="1" Style="{StaticResource InputHeader}" HorizontalAlignment="Right" Width="{Binding ActualWidth, ConverterParameter=x/2-5, Converter={StaticResource mathConverter}, ElementName=employeeLabel}" Margin="0,10,10,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="userPermissions" Grid.Column="1" Style ="{StaticResource PermissionListBox}" Margin="0,36,10,10" HorizontalContentAlignment="Stretch" Width="{Binding ActualWidth, ElementName=availablePermissionsLabel}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Right">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                <EventSetter Event="MouseDoubleClick" Handler="userPermission_MouseDoubleClick"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
+                <Button Grid.Row="4" Height="25" Margin="10,0,10,10" Content="Guardar Cambios" Name="saveChanges" Click="saveChanges_Click"></Button>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>

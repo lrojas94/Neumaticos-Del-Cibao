@@ -23,11 +23,11 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
     public partial class ShoppingOptions : Page
     {
         Database.databaseEntities database;
-        public ShoppingOptions()
+        public ShoppingOptions(Database.Employee loggedEmployee)
         {
             InitializeComponent();
             database = new Database.databaseEntities();
-            var options = database.Options.Where(o => o.OptionType == "Shopping").ToList();
+            var options = database.EmployeesOptions(loggedEmployee, "Shopping");
             grid.ParentPage = this;
             grid.BuildOptionGrid(options);
         }
