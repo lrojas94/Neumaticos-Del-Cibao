@@ -23,11 +23,14 @@ namespace Neumaticos_del_Cibao
     {
         public MainWindow()
         {
-            InitializeComponent();
-            shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
-            salesFrame.Content = new Apps.SalesOptions.SalesOptions();
-            generalFrame.Content = new Apps.GeneralOptions();
             
+            InitializeComponent();
+            //shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
+            shoppingFrame.Content = new Apps.ShoppingOptions.ShowShoppingBills();
+            //salesFrame.Content = new Apps.SalesOptions.SalesOptions();
+            salesFrame.Content = new Apps.ShoppingOptions.PaySalesCreditBill();
+            //generalFrame.Content = new Apps.GeneralOptions();
+            generalFrame.Content = new Apps.ShoppingOptions.ShowSalesBills();
 
         }
 

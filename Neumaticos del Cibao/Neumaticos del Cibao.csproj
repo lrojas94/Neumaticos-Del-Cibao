@@ -115,14 +115,23 @@
     <Compile Include="Apps\SalesOptions\SalesOptions.xaml.cs">
       <DependentUpon>SalesOptions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\ShoppingOptions\AddBasicSalesBill.xaml.cs">
+      <DependentUpon>AddBasicSalesBill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Apps\ShoppingOptions\AddBasicShoppingBill.xaml.cs">
       <DependentUpon>AddBasicShoppingBill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\ShoppingOptions\PaySalesCreditBill.xaml.cs">
+      <DependentUpon>PaySalesCreditBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\PayShoppingCreditBill.xaml.cs">
       <DependentUpon>PayShoppingCreditBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\ShoppingOptions.xaml.cs">
       <DependentUpon>ShoppingOptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Apps\ShoppingOptions\ShowSalesBills.xaml.cs">
+      <DependentUpon>ShowSalesBills.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\ShowShoppingBills.xaml.cs">
       <DependentUpon>ShowShoppingBills.xaml</DependentUpon>
@@ -154,6 +163,14 @@
     <Compile Include="Database\Client.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\CreditSalesBill.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CreditSalesBillsAddons.cs" />
+    <Compile Include="Database\CreditSalesBillsRegister.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CreditSalesBillsRegisterAddons.cs" />
     <Compile Include="Database\CreditShoppingBill.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
@@ -195,7 +212,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Apps\ShoppingOptions\AddBasicSalesBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Apps\ShoppingOptions\AddBasicShoppingBill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\ShoppingOptions\PaySalesCreditBill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,6 +229,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Apps\ShoppingOptions\ShoppingOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\ShoppingOptions\ShowSalesBills.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,6 +303,14 @@
     <Compile Include="Database\Person.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\SalesBill.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SalesBillArticle.cs">
+      <DependentUpon>Database.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SalesBillArticlesAddons.cs" />
+    <Compile Include="Database\SalesBillsAddons.cs" />
     <Compile Include="Database\ShoppingBill.cs">
       <DependentUpon>Database.tt</DependentUpon>
     </Compile>

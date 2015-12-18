@@ -78,6 +78,24 @@ namespace Neumaticos_del_Cibao.Database
                 return ShoppingBills.ToList();
         }
 
+        public List<SalesBill> SalesBillSearch(string toSearch)
+        {
+            if (toSearch != "")
+            {
+                toSearch = toSearch.ToLower();
+                var noLeadingZeros = 0;
+                int.TryParse(toSearch, out noLeadingZeros);
+                var noLeadingString = noLeadingZeros.ToString();
+                return SalesBills.Where(
+                    bill => bill.Date.Contains(toSearch)
+                    || bill.Id.ToString().Contains(noLeadingString)
+                    || bill.Client.Name.Contains(toSearch)
+                    ).ToList();
+            }
+            else
+                return SalesBills.ToList();
+        }
+
         public List<Permission> PermissionSearch(string toSearch)
         {
             if (toSearch != "")

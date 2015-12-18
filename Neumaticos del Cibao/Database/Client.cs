@@ -18,6 +18,7 @@ namespace Neumaticos_del_Cibao.Database
         public Client()
         {
             this.ShoppingBills = new HashSet<ShoppingBill>();
+            this.SalesBills = new HashSet<SalesBill>();
         }
     
         public long Id { get; set; }
@@ -37,5 +38,7 @@ namespace Neumaticos_del_Cibao.Database
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingBill> ShoppingBills { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SalesBill> SalesBills { get; set; }
     }
 }

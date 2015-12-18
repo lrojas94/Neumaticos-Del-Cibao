@@ -1,19 +1,24 @@
 BEGIN TRANSACTION;
 CREATE TABLE "SalesBills" (
-	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`BillCode`	TEXT,
+	`Id`	INTEGER NOT NULL,
 	`ClientId`	INTEGER,
 	`Date`	TEXT,
-	`ITBIS`	REAL,
-	`TotalArticles`	INTEGER,
-	FOREIGN KEY(`ClientId`) REFERENCES Clients
+	`ITBIS`	TEXT DEFAULT 'f' CHECK(ITBIS = 'f' or ITBIS = 't'),
+	`ITBISPercent`	REAL,
+	`Credit`	TEXT DEFAULT 'f' CHECK(Credit = 'f' or Credit = 't'),
+	PRIMARY KEY(Id),
+	FOREIGN KEY(`ClientId`) REFERENCES Clients ( Id )
 );
+INSERT INTO `SalesBills` VALUES (0,1,'17-Dec-15 12:00:00 AM',NULL,NULL,NULL);
+INSERT INTO `SalesBills` VALUES (1,1,'17-Dec-15 12:00:00 AM',NULL,NULL,NULL);
 CREATE TABLE "SalesBillArticles" (
 	`Id`	INTEGER PRIMARY KEY AUTOINCREMENT,
-	`ArticleId`	TEXT,
-	`Quantity`	INTEGER NOT NULL,
-	`SalesBillId`	INTEGER,
-	FOREIGN KEY(`ArticleId`) REFERENCES Articles,
-	FOREIGN KEY(`SalesBillId`) REFERENCES SalesBills
+	`ArticleId`	INTEGER NOT NULL,
+	`Quantity`	INTEGER NOT NULL DEFAULT 0,
+	`SalesBillId`	INTEGER NOT NULL,
+	`ArticlePrice`	REAL NOT NULL DEFAULT 0,
+	FOREIGN KEY(`ArticleId`) REFERENCES Articles ( Id ),
+	FOREIGN KEY(`SalesBillId`) REFERENCES SalesBills ( Id )
 );
+INSERT INTO `SalesBillArticles` VALUES (1,1,20,0,1000.0);
 COMMIT;
