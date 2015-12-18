@@ -401,7 +401,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Apps\Reports\DailyReport.rdlc" />
-    <EmbeddedResource Include="Apps\Reports\SalesBillReport .rdlc" />
+    <EmbeddedResource Include="Apps\Reports\SalesBillReport.rdlc" />
     <EmbeddedResource Include="Apps\Reports\ShoppingBillReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
