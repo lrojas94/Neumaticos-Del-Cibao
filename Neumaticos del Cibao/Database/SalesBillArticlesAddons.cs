@@ -16,6 +16,8 @@ namespace Neumaticos_del_Cibao.Database
             Quantity = 0;
         }
 
+        public double? ArticleCount { get; internal set; }
+
         [DependsOn("ArticleCount", "ArticlePrice")]
         public double TotalPrice
         {

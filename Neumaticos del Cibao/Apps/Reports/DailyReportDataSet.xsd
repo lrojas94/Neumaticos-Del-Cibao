@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DailyReportDataSet" targetNamespace="http://tempuri.org/DailyReportDataSet.xsd" xmlns:mstns="http://tempuri.org/DailyReportDataSet.xsd" xmlns="http://tempuri.org/DailyReportDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="dbConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dbConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Neumaticos_del_Cibao.Properties.Settings.GlobalReference.Default.dbConnectionString" Provider="System.Data.SQLite.EF6" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ShoppingBillTableAdapter" GeneratorDataComponentClassName="ShoppingBillTableAdapter" Name="ShoppingBill" UserDataComponentName="ShoppingBillTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Clients.Name AS ClientName, ShoppingBills.Id AS BillId, ShoppingBillsArticles.ArticlePrice, ShoppingBillsArticles.ArticleCount, Articles.Name AS ArticleName, Articles.CodeIdentifier AS ArticleCode
+FROM            ShoppingBills INNER JOIN
+                         ShoppingBillsArticles ON ShoppingBills.Id = ShoppingBillsArticles.ShoppingBillId INNER JOIN
+                         Clients ON ShoppingBills.Company = Clients.Id INNER JOIN
+                         Articles ON ShoppingBillsArticles.ArticleId = Articles.Id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ClientName" DataSetColumn="ClientName" />
+              <Mapping SourceColumn="BillId" DataSetColumn="BillId" />
+              <Mapping SourceColumn="ArticlePrice" DataSetColumn="ArticlePrice" />
+              <Mapping SourceColumn="ArticleCount" DataSetColumn="ArticleCount" />
+              <Mapping SourceColumn="ArticleName" DataSetColumn="ArticleName" />
+              <Mapping SourceColumn="ArticleCode" DataSetColumn="ArticleCode" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SalesBillTableAdapter" GeneratorDataComponentClassName="SalesBillTableAdapter" Name="SalesBill" UserDataComponentName="SalesBillTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dbConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        SalesBills.Id AS BillId, SalesBillArticles.Quantity AS ArticleCount, SalesBillArticles.ArticlePrice, Articles.Name AS ArticleName, Articles.CodeIdentifier as ArticleCode, Clients.Name AS ClientName
+FROM            SalesBills INNER JOIN
+                         SalesBillArticles ON SalesBills.Id = SalesBillArticles.SalesBillId INNER JOIN
+                         Articles ON SalesBillArticles.ArticleId = Articles.Id INNER JOIN
+                         Clients ON SalesBills.ClientId = Clients.Id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ArticlePrice" DataSetColumn="ArticlePrice" />
+              <Mapping SourceColumn="BillId" DataSetColumn="BillId" />
+              <Mapping SourceColumn="ArticleCount" DataSetColumn="ArticleCount" />
+              <Mapping SourceColumn="ArticleName" DataSetColumn="ArticleName" />
+              <Mapping SourceColumn="ArticleCode" DataSetColumn="ArticleCode" />
+              <Mapping SourceColumn="ClientName" DataSetColumn="ClientName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DailyReportDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DailyReportDataSet" msprop:Generator_UserDSName="DailyReportDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ShoppingInformation" msprop:Generator_TableClassName="ShoppingInformationDataTable" msprop:Generator_TableVarName="tableShoppingInformation" msprop:Generator_TablePropName="ShoppingInformation" msprop:Generator_RowDeletingName="ShoppingInformationRowDeleting" msprop:Generator_RowChangingName="ShoppingInformationRowChanging" msprop:Generator_RowEvHandlerName="ShoppingInformationRowChangeEventHandler" msprop:Generator_RowDeletedName="ShoppingInformationRowDeleted" msprop:Generator_UserTableName="ShoppingInformation" msprop:Generator_RowChangedName="ShoppingInformationRowChanged" msprop:Generator_RowEvArgName="ShoppingInformationRowChangeEvent" msprop:Generator_RowClassName="ShoppingInformationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreditBillsPayment" msprop:Generator_ColumnVarNameInTable="columnCreditBillsPayment" msprop:Generator_ColumnPropNameInRow="CreditBillsPayment" msprop:Generator_ColumnPropNameInTable="CreditBillsPaymentColumn" msprop:Generator_UserColumnName="CreditBillsPayment" type="xs:double" minOccurs="0" />
+              <xs:element name="BillsPayment" msprop:Generator_ColumnVarNameInTable="columnBillsPayment" msprop:Generator_ColumnPropNameInRow="BillsPayment" msprop:Generator_ColumnPropNameInTable="BillsPaymentColumn" msprop:Generator_UserColumnName="BillsPayment" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalPayment" msprop:Generator_ColumnVarNameInTable="columnTotalPayment" msprop:Generator_ColumnPropNameInRow="TotalPayment" msprop:Generator_ColumnPropNameInTable="TotalPaymentColumn" msprop:Generator_UserColumnName="TotalPayment" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SalesInformation" msprop:Generator_TableClassName="SalesInformationDataTable" msprop:Generator_TableVarName="tableSalesInformation" msprop:Generator_RowChangedName="SalesInformationRowChanged" msprop:Generator_TablePropName="SalesInformation" msprop:Generator_RowDeletingName="SalesInformationRowDeleting" msprop:Generator_RowChangingName="SalesInformationRowChanging" msprop:Generator_RowEvHandlerName="SalesInformationRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesInformationRowDeleted" msprop:Generator_RowClassName="SalesInformationRow" msprop:Generator_UserTableName="SalesInformation" msprop:Generator_RowEvArgName="SalesInformationRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Date" msprop:Generator_ColumnVarNameInTable="columnDate" msprop:Generator_ColumnPropNameInRow="Date" msprop:Generator_ColumnPropNameInTable="DateColumn" msprop:Generator_UserColumnName="Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CreditBillsPayment" msprop:Generator_ColumnVarNameInTable="columnCreditBillsPayment" msprop:Generator_ColumnPropNameInRow="CreditBillsPayment" msprop:Generator_ColumnPropNameInTable="CreditBillsPaymentColumn" msprop:Generator_UserColumnName="CreditBillsPayment" type="xs:double" minOccurs="0" />
+              <xs:element name="BillsPayment" msprop:Generator_ColumnVarNameInTable="columnBillsPayment" msprop:Generator_ColumnPropNameInRow="BillsPayment" msprop:Generator_ColumnPropNameInTable="BillsPaymentColumn" msprop:Generator_UserColumnName="BillsPayment" type="xs:double" minOccurs="0" />
+              <xs:element name="TotalPayment" msprop:Generator_ColumnVarNameInTable="columnTotalPayment" msprop:Generator_ColumnPropNameInRow="TotalPayment" msprop:Generator_ColumnPropNameInTable="TotalPaymentColumn" msprop:Generator_UserColumnName="TotalPayment" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ShoppingBill" msprop:Generator_TableClassName="ShoppingBillDataTable" msprop:Generator_TableVarName="tableShoppingBill" msprop:Generator_RowChangedName="ShoppingBillRowChanged" msprop:Generator_TablePropName="ShoppingBill" msprop:Generator_RowDeletingName="ShoppingBillRowDeleting" msprop:Generator_RowChangingName="ShoppingBillRowChanging" msprop:Generator_RowEvHandlerName="ShoppingBillRowChangeEventHandler" msprop:Generator_RowDeletedName="ShoppingBillRowDeleted" msprop:Generator_RowClassName="ShoppingBillRow" msprop:Generator_UserTableName="ShoppingBill" msprop:Generator_RowEvArgName="ShoppingBillRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ClientName" msprop:Generator_ColumnVarNameInTable="columnClientName" msprop:Generator_ColumnPropNameInRow="ClientName" msprop:Generator_ColumnPropNameInTable="ClientNameColumn" msprop:Generator_UserColumnName="ClientName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BillId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnBillId" msprop:Generator_ColumnPropNameInRow="BillId" msprop:Generator_ColumnPropNameInTable="BillIdColumn" msprop:Generator_UserColumnName="BillId" type="xs:long" />
+              <xs:element name="ArticlePrice" msprop:Generator_ColumnVarNameInTable="columnArticlePrice" msprop:Generator_ColumnPropNameInRow="ArticlePrice" msprop:Generator_ColumnPropNameInTable="ArticlePriceColumn" msprop:Generator_UserColumnName="ArticlePrice" type="xs:double" />
+              <xs:element name="ArticleCount" msprop:Generator_ColumnVarNameInTable="columnArticleCount" msprop:Generator_ColumnPropNameInRow="ArticleCount" msprop:Generator_ColumnPropNameInTable="ArticleCountColumn" msprop:Generator_UserColumnName="ArticleCount" type="xs:double" />
+              <xs:element name="ArticleName" msprop:Generator_ColumnVarNameInTable="columnArticleName" msprop:Generator_ColumnPropNameInRow="ArticleName" msprop:Generator_ColumnPropNameInTable="ArticleNameColumn" msprop:Generator_UserColumnName="ArticleName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ArticleCode" msprop:Generator_ColumnVarNameInTable="columnArticleCode" msprop:Generator_ColumnPropNameInRow="ArticleCode" msprop:Generator_ColumnPropNameInTable="ArticleCodeColumn" msprop:Generator_UserColumnName="ArticleCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SalesBill" msprop:Generator_TableClassName="SalesBillDataTable" msprop:Generator_TableVarName="tableSalesBill" msprop:Generator_TablePropName="SalesBill" msprop:Generator_RowDeletingName="SalesBillRowDeleting" msprop:Generator_RowChangingName="SalesBillRowChanging" msprop:Generator_RowEvHandlerName="SalesBillRowChangeEventHandler" msprop:Generator_RowDeletedName="SalesBillRowDeleted" msprop:Generator_UserTableName="SalesBill" msprop:Generator_RowChangedName="SalesBillRowChanged" msprop:Generator_RowEvArgName="SalesBillRowChangeEvent" msprop:Generator_RowClassName="SalesBillRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ArticlePrice" msprop:Generator_ColumnVarNameInTable="columnArticlePrice" msprop:Generator_ColumnPropNameInRow="ArticlePrice" msprop:Generator_ColumnPropNameInTable="ArticlePriceColumn" msprop:Generator_UserColumnName="ArticlePrice" type="xs:double" />
+              <xs:element name="BillId" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnBillId" msprop:Generator_ColumnPropNameInRow="BillId" msprop:Generator_ColumnPropNameInTable="BillIdColumn" msprop:Generator_UserColumnName="BillId" type="xs:long" />
+              <xs:element name="ArticleCount" msprop:Generator_ColumnVarNameInTable="columnArticleCount" msprop:Generator_ColumnPropNameInRow="ArticleCount" msprop:Generator_ColumnPropNameInTable="ArticleCountColumn" msprop:Generator_UserColumnName="ArticleCount" type="xs:long" />
+              <xs:element name="ArticleName" msprop:Generator_ColumnVarNameInTable="columnArticleName" msprop:Generator_ColumnPropNameInRow="ArticleName" msprop:Generator_ColumnPropNameInTable="ArticleNameColumn" msprop:Generator_UserColumnName="ArticleName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ArticleCode" msprop:Generator_ColumnVarNameInTable="columnArticleCode" msprop:Generator_ColumnPropNameInRow="ArticleCode" msprop:Generator_ColumnPropNameInTable="ArticleCodeColumn" msprop:Generator_UserColumnName="ArticleCode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ClientName" msprop:Generator_ColumnVarNameInTable="columnClientName" msprop:Generator_ColumnPropNameInRow="ClientName" msprop:Generator_ColumnPropNameInTable="ClientNameColumn" msprop:Generator_UserColumnName="ClientName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

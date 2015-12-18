@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
+namespace Neumaticos_del_Cibao.Apps.SalesOptions
 {
     /// <summary>
     /// Interaction logic for AddBasicSalesBill.xaml
@@ -59,8 +59,6 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
             database = context;
             if (context == null)
                 database = new Database.databaseEntities();
-
-            DataContext = this.bill;
         }
 
         private void searchSupplier_Click(object sender, RoutedEventArgs e)

@@ -25,12 +25,12 @@ namespace Neumaticos_del_Cibao
         {
             
             InitializeComponent();
-            //shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
-            shoppingFrame.Content = new Apps.ShoppingOptions.ShowShoppingBills();
-            //salesFrame.Content = new Apps.SalesOptions.SalesOptions();
-            salesFrame.Content = new Apps.ShoppingOptions.PaySalesCreditBill();
-            //generalFrame.Content = new Apps.GeneralOptions();
-            generalFrame.Content = new Apps.ShoppingOptions.ShowSalesBills();
+            shoppingFrame.Content = new Apps.ShoppingOptions.ShoppingOptions();
+            //shoppingFrame.Content = new Apps.ShoppingOptions.ShowShoppingBills();
+            salesFrame.Content = new Apps.SalesOptions.SalesOptions();
+            //salesFrame.Content = new Apps.ShoppingOptions.PaySalesCreditBill();
+            generalFrame.Content = new Apps.GeneralOptions();
+            //generalFrame.Content = new Apps.ShoppingOptions.ShowSalesBills();
 
         }
 

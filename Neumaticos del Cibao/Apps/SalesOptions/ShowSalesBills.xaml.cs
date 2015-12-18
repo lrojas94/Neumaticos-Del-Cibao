@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
+namespace Neumaticos_del_Cibao.Apps.SalesOptions
 {
     /// <summary>
     /// Interaction logic for ShowSalesBills.xaml
@@ -101,6 +101,11 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             searchFunction.Run();
+        }
+
+        private void btnViewBill_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ShowSalesBill(selectedBill));
         }
     }
     

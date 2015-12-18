@@ -18,8 +18,8 @@ namespace Neumaticos_del_Cibao.Database
         public Article()
         {
             this.ShoppingBillsArticles = new HashSet<ShoppingBillsArticle>();
-            this.Inventories = new HashSet<Inventory>();
             this.SalesBillArticles = new HashSet<SalesBillArticle>();
+            this.Inventories = new HashSet<Inventory>();
         }
     
         public long Id { get; set; }
@@ -32,8 +32,8 @@ namespace Neumaticos_del_Cibao.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShoppingBillsArticle> ShoppingBillsArticles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesBillArticle> SalesBillArticles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Inventory> Inventories { get; set; }
     }
 }
