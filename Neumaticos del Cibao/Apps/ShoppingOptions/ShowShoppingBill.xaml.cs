@@ -1,5 +1,6 @@
 ﻿using Microsoft.Reporting.WinForms;
 using Neumaticos_del_Cibao.Apps.Reports;
+using Neumaticos_del_Cibao.Apps.Reports.DailyReportDataSetTableAdapters;
 using Neumaticos_del_Cibao.Database;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,10 @@ namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
             InitializeComponent();
             database = new databaseEntities();
             reporter.Reset();
-            var shoppingDataSource = new ReportDataSource("ShoppingBillArticles", shoppingBill.ShoppingBillsArticles);
+            var ta = new ShoppingBillTableAdapter();
+            var source = ta.GetData().Where(row => row.BillId == shoppingBill.Id);
+
+            var shoppingDataSource = new ReportDataSource("ShoppingBillArticles", source);
             reporter.LocalReport.DataSources.Add(shoppingDataSource);
             reporter.Name = "Reporte Diario";
             reporter.LocalReport.ReportEmbeddedResource = "Neumaticos_del_Cibao.Apps.Reports.ShoppingBillReport.rdlc";

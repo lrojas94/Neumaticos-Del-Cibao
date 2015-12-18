@@ -47,9 +47,10 @@ namespace Neumaticos_del_Cibao.Apps.Reports
                                   where bill.Date == today && bill.Credit == "f"
                                   select bill).Sum(bill => 
                                        bill.ShoppingBillsArticles.Sum(
-                                           a => a.ArticlePrice * a.ArticleCount
+                                           a => (double?)a.ArticlePrice * (double?)a.ArticleCount
                                        )
                                    );
+            nonCreditBills = nonCreditBills == null ? 0 : nonCreditBills;
             //Get total payment on credit bills:
             var creditBills = (from bill in database.ShoppingBills
                                where bill.Date == today && bill.Credit == "t"
@@ -61,7 +62,7 @@ namespace Neumaticos_del_Cibao.Apps.Reports
                                     .Where(register => register.Date == today)
                                     .Sum(register => register.Payed)
                                 );
-
+            creditBills = creditBills == null ? 0 : creditBills;
 
             var totalPayedToday = nonCreditBills + creditBills;
 
@@ -69,7 +70,7 @@ namespace Neumaticos_del_Cibao.Apps.Reports
             var row = dataTable.NewRow();
 
             row["Date"] = today;
-            row["CreditBillsPayment"] = creditBills == null ? 0 : creditBills;
+            row["CreditBillsPayment"] = creditBills;
             row["BillsPayment"] = nonCreditBills;
             row["TotalPayment"] = totalPayedToday;
 

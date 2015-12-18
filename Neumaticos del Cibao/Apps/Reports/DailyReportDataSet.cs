@@ -9,3 +9,10 @@
         }
     }
 }
+
+namespace Neumaticos_del_Cibao.Apps.Reports.DailyReportDataSetTableAdapters {
+    
+    
+    public partial class ShoppingBillTableAdapter {
+    }
+}
