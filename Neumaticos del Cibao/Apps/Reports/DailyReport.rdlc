@@ -645,21 +645,12 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Chart Name="Chart1">
+      <Chart Name="Chart3">
         <ChartCategoryHierarchy>
           <ChartMembers>
             <ChartMember>
-              <Group Name="Chart1_CategoryGroup">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!Date.Value</GroupExpression>
-                </GroupExpressions>
-              </Group>
-              <SortExpressions>
-                <SortExpression>
-                  <Value>=Fields!Date.Value</Value>
-                </SortExpression>
-              </SortExpressions>
-              <Label>=Fields!Date.Value</Label>
+              <Group Name="ChartGroup" />
+              <Label />
             </ChartMember>
           </ChartMembers>
         </ChartCategoryHierarchy>
@@ -679,19 +670,23 @@
               <ChartDataPoints>
                 <ChartDataPoint>
                   <ChartDataPointValues>
-                    <Y>=Sum(Fields!BillsPayment.Value)</Y>
+                    <Y>=Max(Fields!BillsPayment.Value)</Y>
                   </ChartDataPointValues>
                   <ChartDataLabel>
                     <Style />
+                    <UseValueAsLabel>true</UseValueAsLabel>
                   </ChartDataLabel>
                   <Style />
                   <ChartMarker>
                     <Style />
                   </ChartMarker>
                   <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Pagos al Contado</LegendText>
+                  </ChartItemInLegend>
                 </ChartDataPoint>
               </ChartDataPoints>
-              <Subtype>Stacked</Subtype>
+              <Type>Shape</Type>
               <Style />
               <ChartEmptyPoints>
                 <Style />
@@ -702,9 +697,6 @@
                   <Style />
                 </ChartDataLabel>
               </ChartEmptyPoints>
-              <ChartItemInLegend>
-                <LegendText>Pagos al Contado</LegendText>
-              </ChartItemInLegend>
               <ValueAxisName>Primary</ValueAxisName>
               <CategoryAxisName>Primary</CategoryAxisName>
               <ChartSmartLabel>
@@ -716,7 +708,7 @@
               <ChartDataPoints>
                 <ChartDataPoint>
                   <ChartDataPointValues>
-                    <Y>=Sum(Fields!CreditBillsPayment.Value)</Y>
+                    <Y>=Max(Fields!CreditBillsPayment.Value)</Y>
                   </ChartDataPointValues>
                   <ChartDataLabel>
                     <Style />
@@ -726,9 +718,12 @@
                     <Style />
                   </ChartMarker>
                   <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Pagos a Credito</LegendText>
+                  </ChartItemInLegend>
                 </ChartDataPoint>
               </ChartDataPoints>
-              <Subtype>Stacked</Subtype>
+              <Type>Shape</Type>
               <Style />
               <ChartEmptyPoints>
                 <Style />
@@ -739,9 +734,6 @@
                   <Style />
                 </ChartDataLabel>
               </ChartEmptyPoints>
-              <ChartItemInLegend>
-                <LegendText>Pagos a Credito</LegendText>
-              </ChartItemInLegend>
               <ValueAxisName>Primary</ValueAxisName>
               <CategoryAxisName>Primary</CategoryAxisName>
               <ChartSmartLabel>
@@ -759,7 +751,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Fecha</Caption>
+                  <Caption>Axis Title</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -834,7 +826,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Total de Compras</Caption>
+                  <Caption>Axis Title</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -951,8 +943,8 @@
             <VerticalAlign>Top</VerticalAlign>
           </Style>
         </ChartNoDataMessage>
-        <DataSetName>SalesInformation</DataSetName>
-        <Top>3.50917in</Top>
+        <DataSetName>ShoppingInformation</DataSetName>
+        <Top>3.57167in</Top>
         <Left>0.155in</Left>
         <Height>2in</Height>
         <Width>3in</Width>
@@ -966,21 +958,12 @@
           <BackgroundGradientType>None</BackgroundGradientType>
         </Style>
       </Chart>
-      <Chart Name="Chart2">
+      <Chart Name="Chart4">
         <ChartCategoryHierarchy>
           <ChartMembers>
             <ChartMember>
-              <Group Name="Chart1_CategoryGroup2">
-                <GroupExpressions>
-                  <GroupExpression>=Fields!Date.Value</GroupExpression>
-                </GroupExpressions>
-              </Group>
-              <SortExpressions>
-                <SortExpression>
-                  <Value>=Fields!Date.Value</Value>
-                </SortExpression>
-              </SortExpressions>
-              <Label>=Fields!Date.Value</Label>
+              <Group Name="ChartGroup2" />
+              <Label />
             </ChartMember>
           </ChartMembers>
         </ChartCategoryHierarchy>
@@ -1000,19 +983,23 @@
               <ChartDataPoints>
                 <ChartDataPoint>
                   <ChartDataPointValues>
-                    <Y>=Count(Fields!BillsPayment.Value)</Y>
+                    <Y>=Max(Fields!BillsPayment.Value)</Y>
                   </ChartDataPointValues>
                   <ChartDataLabel>
                     <Style />
+                    <UseValueAsLabel>true</UseValueAsLabel>
                   </ChartDataLabel>
                   <Style />
                   <ChartMarker>
                     <Style />
                   </ChartMarker>
                   <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Pagos al Contado</LegendText>
+                  </ChartItemInLegend>
                 </ChartDataPoint>
               </ChartDataPoints>
-              <Subtype>Stacked</Subtype>
+              <Type>Shape</Type>
               <Style />
               <ChartEmptyPoints>
                 <Style />
@@ -1023,9 +1010,6 @@
                   <Style />
                 </ChartDataLabel>
               </ChartEmptyPoints>
-              <ChartItemInLegend>
-                <LegendText>Pagos al Contado</LegendText>
-              </ChartItemInLegend>
               <ValueAxisName>Primary</ValueAxisName>
               <CategoryAxisName>Primary</CategoryAxisName>
               <ChartSmartLabel>
@@ -1037,7 +1021,7 @@
               <ChartDataPoints>
                 <ChartDataPoint>
                   <ChartDataPointValues>
-                    <Y>=Count(Fields!CreditBillsPayment.Value)</Y>
+                    <Y>=Max(Fields!CreditBillsPayment.Value)</Y>
                   </ChartDataPointValues>
                   <ChartDataLabel>
                     <Style />
@@ -1047,9 +1031,12 @@
                     <Style />
                   </ChartMarker>
                   <DataElementOutput>Output</DataElementOutput>
+                  <ChartItemInLegend>
+                    <LegendText>Pagos a Credito</LegendText>
+                  </ChartItemInLegend>
                 </ChartDataPoint>
               </ChartDataPoints>
-              <Subtype>Stacked</Subtype>
+              <Type>Shape</Type>
               <Style />
               <ChartEmptyPoints>
                 <Style />
@@ -1060,9 +1047,6 @@
                   <Style />
                 </ChartDataLabel>
               </ChartEmptyPoints>
-              <ChartItemInLegend>
-                <LegendText>Pagos a Credito</LegendText>
-              </ChartItemInLegend>
               <ValueAxisName>Primary</ValueAxisName>
               <CategoryAxisName>Primary</CategoryAxisName>
               <ChartSmartLabel>
@@ -1080,7 +1064,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Fecha</Caption>
+                  <Caption>Axis Title</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -1155,7 +1139,7 @@
                   <FontSize>8pt</FontSize>
                 </Style>
                 <ChartAxisTitle>
-                  <Caption>Total de Ventas</Caption>
+                  <Caption>Axis Title</Caption>
                   <Style>
                     <FontSize>8pt</FontSize>
                   </Style>
@@ -1272,8 +1256,8 @@
             <VerticalAlign>Top</VerticalAlign>
           </Style>
         </ChartNoDataMessage>
-        <DataSetName>ShoppingInformation</DataSetName>
-        <Top>3.50917in</Top>
+        <DataSetName>SalesInformation</DataSetName>
+        <Top>3.57167in</Top>
         <Left>3.34895in</Left>
         <Height>2in</Height>
         <Width>3in</Width>
@@ -1288,7 +1272,7 @@
         </Style>
       </Chart>
     </ReportItems>
-    <Height>5.88417in</Height>
+    <Height>6.95708in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
