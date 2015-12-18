@@ -12,13 +12,14 @@ namespace Neumaticos_del_Cibao.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Inventory
+    public partial class CreditSalesBillsRegister
     {
         public long Id { get; set; }
-        public Nullable<long> Article { get; set; }
-        public Nullable<long> Quantity { get; set; }
-        public Nullable<double> Price { get; set; }
+        public long SalesBillsId { get; set; }
+        public Nullable<double> Payed { get; set; }
+        public Nullable<double> Owed { get; set; }
+        public string Date { get; set; }
     
-        public virtual Article Article1 { get; set; }
+        public virtual CreditSalesBill CreditSalesBill { get; set; }
     }
 }

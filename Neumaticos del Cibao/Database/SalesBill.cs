@@ -12,27 +12,23 @@ namespace Neumaticos_del_Cibao.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Article
+    public partial class SalesBill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Article()
+        public SalesBill()
         {
-            this.ShoppingBillsArticles = new HashSet<ShoppingBillsArticle>();
-            this.Inventories = new HashSet<Inventory>();
             this.SalesBillArticles = new HashSet<SalesBillArticle>();
         }
     
         public long Id { get; set; }
-        public string Name { get; set; }
-        public string MeasureUnit { get; set; }
-        public Nullable<double> Measure { get; set; }
-        public string Description { get; set; }
-        public string CodeIdentifier { get; set; }
+        public Nullable<long> ClientId { get; set; }
+        public string Date { get; set; }
+        public string ITBIS { get; set; }
+        public Nullable<double> ITBISPercent { get; set; }
+        public string Credit { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShoppingBillsArticle> ShoppingBillsArticles { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventory> Inventories { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual CreditSalesBill CreditSalesBill { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesBillArticle> SalesBillArticles { get; set; }
     }

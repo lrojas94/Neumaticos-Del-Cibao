@@ -1,0 +1,40 @@
+﻿<Page x:Class="Neumaticos_del_Cibao.Apps.ShoppingOptions.ShowSalesBills"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Neumaticos_del_Cibao.Apps.ShoppingOptions"
+      xmlns:common="clr-namespace:Neumaticos_del_Cibao.Apps.Common"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="600"
+      Title="ShowSalesBills">
+
+    <ContentControl Template="{StaticResource BaseControlTemplate}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Style="{StaticResource TitleBase}" Grid.Row="0" Content="Facturas de Venta"></Label>
+            <Label Style="{StaticResource InputHeader}" x:Name="ourBills" Content="Facturas" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold"/>
+            <common:PlaceholderTextBox x:Name="searchBox" PlaceholderText="Busqueda de Facturas" VerticalContentAlignment="Center" Height="25" Margin="10,36,10,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="searchBox_TextChanged"/>
+            <ListBox x:Name="billsListBox" Style="{StaticResource SalesBillsListBox}"  Margin="10,69,9.667,10" Grid.Row="1" SelectionChanged="billsListBox_SelectionChanged"/>
+            <Grid Height="25" Grid.Row="2" Margin="0,0.333,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnAddBill" Content="Añadir Factura" Margin="10,0,9,0" Click="btnAddBill_Click" />
+                <Button x:Name="btnViewBill" IsEnabled="False" Content="Ver Factura" Grid.Column="1" Margin="10.667,0,10.333,0" VerticalAlignment="Top" Height="25"/>
+                <Button x:Name="btnModifyBill" IsEnabled="False" Content="Editar Factura" Grid.Column="2" Margin="9.333,0,10,0" Click="btnModifyBill_Click"/>
+                <Button x:Name="btnDeleteBill" IsEnabled="False" Content="Eliminar Factura" Grid.Column="3" Margin="10,0,10,0" Click="btnDeleteBill_Click" />
+
+            </Grid>
+        </Grid>
+    </ContentControl>
+
+</Page>
