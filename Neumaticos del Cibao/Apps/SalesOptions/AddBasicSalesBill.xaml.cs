@@ -59,8 +59,6 @@ namespace Neumaticos_del_Cibao.Apps.SalesOptions
             database = context;
             if (context == null)
                 database = new Database.databaseEntities();
-
-            DataContext = this.bill;
         }
 
         private void searchSupplier_Click(object sender, RoutedEventArgs e)

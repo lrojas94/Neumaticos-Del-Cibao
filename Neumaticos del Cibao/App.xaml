@@ -86,7 +86,7 @@
                         <StackPanel Orientation="Vertical">
                             <Label Style="{DynamicResource InputHeader}" Content="{Binding Path=SalesBillTitle}"></Label>
                             <TextBlock Text="{Binding Path=SalesBillSubtitle}" Foreground="{StaticResource Concrete}" TextAlignment="Justify" TextWrapping="Wrap" TextTrimming="WordEllipsis" MaxHeight="30" Padding="5,0,0,0"></TextBlock>
-                            <!--- <Label Content="{Binding Debt}" Foreground="{StaticResource Alizarin}" Visibility="{Binding IsCredit,Converter={StaticResource BoolToVis}}"></Label> -->
+                            <Label Content="{Binding Debt}" Foreground="{StaticResource Alizarin}" Visibility="{Binding IsCredit,Converter={StaticResource BoolToVis}}"></Label>
                         </StackPanel>
                     </DataTemplate>
                 </Setter.Value>

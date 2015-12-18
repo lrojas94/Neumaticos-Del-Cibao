@@ -11,15 +11,14 @@ namespace Neumaticos_del_Cibao.Database
 {
     using System;
     using System.Collections.Generic;
-
-    [Serializable]
+    
     public partial class Inventory
     {
         public long Id { get; set; }
-        public Nullable<long> Article { get; set; }
+        public Nullable<long> ArticleId { get; set; }
         public Nullable<long> Quantity { get; set; }
         public Nullable<double> Price { get; set; }
     
-        public virtual Article Article1 { get; set; }
+        public virtual Article Article { get; set; }
     }
 }

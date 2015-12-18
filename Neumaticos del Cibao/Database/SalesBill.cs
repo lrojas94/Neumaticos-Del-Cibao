@@ -17,6 +17,9 @@ namespace Neumaticos_del_Cibao.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SalesBill()
         {
+            this.ITBIS = "f";
+            this.ITBISPercent = 0D;
+            this.Credit = "f";
             this.SalesBillArticles = new HashSet<SalesBillArticle>();
         }
     

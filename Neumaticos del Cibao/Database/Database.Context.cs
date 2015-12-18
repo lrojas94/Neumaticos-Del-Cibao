@@ -18,7 +18,6 @@ namespace Neumaticos_del_Cibao.Database
         public databaseEntities()
             : base("name=databaseEntities")
         {
-            this.Configuration.ProxyCreationEnabled = true;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -36,10 +35,10 @@ namespace Neumaticos_del_Cibao.Database
         public virtual DbSet<ShoppingBillsArticle> ShoppingBillsArticles { get; set; }
         public virtual DbSet<CreditShoppingBill> CreditShoppingBills { get; set; }
         public virtual DbSet<CreditShoppingBillsRegister> CreditShoppingBillsRegisters { get; set; }
-        public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<CreditSalesBill> CreditSalesBills { get; set; }
         public virtual DbSet<CreditSalesBillsRegister> CreditSalesBillsRegisters { get; set; }
-        public virtual DbSet<SalesBill> SalesBills { get; set; }
         public virtual DbSet<SalesBillArticle> SalesBillArticles { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<SalesBill> SalesBills { get; set; }
     }
 }

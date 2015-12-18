@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Users\Edward\Documents\Projects\Neumaticos-Del-Cibao\Database\database.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="databaseModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;D:\Universidad\Ingenieria de Software\Neumaticos-Del-Cibao\Database\database.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Articles">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="integer" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="MeasureUnit" Type="nvarchar" MaxLength="2147483647" />
           <Property Name="Measure" Type="real" />
@@ -96,7 +96,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Article" Type="integer" />
+          <Property Name="ArticleId" Type="integer" />
           <Property Name="Quantity" Type="integer" />
           <Property Name="Price" Type="real" />
         </EntityType>
@@ -275,7 +275,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Inventory">
-              <PropertyRef Name="Article" />
+              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -505,16 +505,21 @@
             <End Role="CreditShoppingBill" EntitySet="CreditShoppingBills" />
             <End Role="CreditShoppingBillsRegister" EntitySet="CreditShoppingBillsRegisters" />
           </AssociationSet>
-          <EntitySet Name="Inventories" EntityType="databaseModel.Inventory" />
-          <AssociationSet Name="FK_Inventory_0_0" Association="databaseModel.FK_Inventory_0_0">
-            <End Role="Article" EntitySet="Articles" />
-            <End Role="Inventory" EntitySet="Inventories" />
-          </AssociationSet>
           <EntitySet Name="CreditSalesBills" EntityType="databaseModel.CreditSalesBill" />
           <EntitySet Name="CreditSalesBillsRegisters" EntityType="databaseModel.CreditSalesBillsRegister" />
           <AssociationSet Name="FK_CreditSalesBillsRegister_0_0" Association="databaseModel.FK_CreditSalesBillsRegister_0_0">
             <End Role="CreditSalesBill" EntitySet="CreditSalesBills" />
             <End Role="CreditSalesBillsRegister" EntitySet="CreditSalesBillsRegisters" />
+          </AssociationSet>
+          <EntitySet Name="SalesBillArticles" EntityType="databaseModel.SalesBillArticle" />
+          <AssociationSet Name="FK_SalesBillArticles_1_0" Association="databaseModel.FK_SalesBillArticles_1_0">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="SalesBillArticle" EntitySet="SalesBillArticles" />
+          </AssociationSet>
+          <EntitySet Name="Inventories" EntityType="databaseModel.Inventory" />
+          <AssociationSet Name="FK_Inventory_0_0" Association="databaseModel.FK_Inventory_0_0">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Inventory" EntitySet="Inventories" />
           </AssociationSet>
           <EntitySet Name="SalesBills" EntityType="databaseModel.SalesBill" />
           <AssociationSet Name="FK_SalesBills_0_0" Association="databaseModel.FK_SalesBills_0_0">
@@ -524,11 +529,6 @@
           <AssociationSet Name="FK_CreditSalesBills_0_0" Association="databaseModel.FK_CreditSalesBills_0_0">
             <End Role="SalesBill" EntitySet="SalesBills" />
             <End Role="CreditSalesBill" EntitySet="CreditSalesBills" />
-          </AssociationSet>
-          <EntitySet Name="SalesBillArticles" EntityType="databaseModel.SalesBillArticle" />
-          <AssociationSet Name="FK_SalesBillArticles_1_0" Association="databaseModel.FK_SalesBillArticles_1_0">
-            <End Role="Article" EntitySet="Articles" />
-            <End Role="SalesBillArticle" EntitySet="SalesBillArticles" />
           </AssociationSet>
           <AssociationSet Name="FK_SalesBillArticles_0_0" Association="databaseModel.FK_SalesBillArticles_0_0">
             <End Role="SalesBill" EntitySet="SalesBills" />
@@ -636,8 +636,8 @@
           <Property Name="Description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="CodeIdentifier" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ShoppingBillsArticles" Relationship="databaseModel.FK_ShoppingBillsArticles_0_0" FromRole="Article" ToRole="ShoppingBillsArticle" />
-          <NavigationProperty Name="Inventories" Relationship="databaseModel.FK_Inventory_0_0" FromRole="Article" ToRole="Inventory" />
           <NavigationProperty Name="SalesBillArticles" Relationship="databaseModel.FK_SalesBillArticles_1_0" FromRole="Article" ToRole="SalesBillArticle" />
+          <NavigationProperty Name="Inventories" Relationship="databaseModel.FK_Inventory_0_0" FromRole="Article" ToRole="Inventory" />
         </EntityType>
         <EntityType Name="ShoppingBill">
           <Key>
@@ -747,28 +747,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Inventory">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Article" Type="Int64" />
-          <Property Name="Quantity" Type="Int64" />
-          <Property Name="Price" Type="Double" />
-          <NavigationProperty Name="Article1" Relationship="databaseModel.FK_Inventory_0_0" FromRole="Inventory" ToRole="Article" />
-        </EntityType>
-        <Association Name="FK_Inventory_0_0">
-          <End Type="databaseModel.Article" Role="Article" Multiplicity="0..1" />
-          <End Type="databaseModel.Inventory" Role="Inventory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Article">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Inventory">
-              <PropertyRef Name="Article" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="CreditSalesBill">
           <Key>
             <PropertyRef Name="SalesBillId" />
@@ -803,6 +781,52 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="SalesBillArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="Int64" Nullable="false" />
+          <Property Name="Quantity" Type="Int64" Nullable="false" />
+          <Property Name="SalesBillId" Type="Int64" Nullable="false" />
+          <Property Name="ArticlePrice" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="databaseModel.FK_SalesBillArticles_1_0" FromRole="SalesBillArticle" ToRole="Article" />
+          <NavigationProperty Name="SalesBill" Relationship="databaseModel.FK_SalesBillArticles_0_0" FromRole="SalesBillArticle" ToRole="SalesBill" />
+        </EntityType>
+        <Association Name="FK_SalesBillArticles_1_0">
+          <End Type="databaseModel.Article" Role="Article" Multiplicity="1" />
+          <End Type="databaseModel.SalesBillArticle" Role="SalesBillArticle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalesBillArticle">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleId" Type="Int64" />
+          <Property Name="Quantity" Type="Int64" />
+          <Property Name="Price" Type="Double" />
+          <NavigationProperty Name="Article" Relationship="databaseModel.FK_Inventory_0_0" FromRole="Inventory" ToRole="Article" />
+        </EntityType>
+        <Association Name="FK_Inventory_0_0">
+          <End Type="databaseModel.Article" Role="Article" Multiplicity="0..1" />
+          <End Type="databaseModel.Inventory" Role="Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="SalesBill">
           <Key>
             <PropertyRef Name="Id" />
@@ -810,9 +834,9 @@
           <Property Name="Id" Type="Int64" Nullable="false" />
           <Property Name="ClientId" Type="Int64" />
           <Property Name="Date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ITBIS" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="ITBISPercent" Type="Double" />
-          <Property Name="Credit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="ITBIS" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" DefaultValue="f" />
+          <Property Name="ITBISPercent" Type="Double" DefaultValue="0" />
+          <Property Name="Credit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" DefaultValue="f" />
           <NavigationProperty Name="Client" Relationship="databaseModel.FK_SalesBills_0_0" FromRole="SalesBill" ToRole="Client" />
           <NavigationProperty Name="CreditSalesBill" Relationship="databaseModel.FK_CreditSalesBills_0_0" FromRole="SalesBill" ToRole="CreditSalesBill" />
           <NavigationProperty Name="SalesBillArticles" Relationship="databaseModel.FK_SalesBillArticles_0_0" FromRole="SalesBill" ToRole="SalesBillArticle" />
@@ -838,30 +862,6 @@
             </Principal>
             <Dependent Role="CreditSalesBill">
               <PropertyRef Name="SalesBillId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="SalesBillArticle">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ArticleId" Type="Int64" Nullable="false" />
-          <Property Name="Quantity" Type="Int64" Nullable="false" />
-          <Property Name="SalesBillId" Type="Int64" Nullable="false" />
-          <Property Name="ArticlePrice" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Article" Relationship="databaseModel.FK_SalesBillArticles_1_0" FromRole="SalesBillArticle" ToRole="Article" />
-          <NavigationProperty Name="SalesBill" Relationship="databaseModel.FK_SalesBillArticles_0_0" FromRole="SalesBillArticle" ToRole="SalesBill" />
-        </EntityType>
-        <Association Name="FK_SalesBillArticles_1_0">
-          <End Type="databaseModel.Article" Role="Article" Multiplicity="1" />
-          <End Type="databaseModel.SalesBillArticle" Role="SalesBillArticle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Article">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="SalesBillArticle">
-              <PropertyRef Name="ArticleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1022,16 +1022,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Inventories">
-            <EntityTypeMapping TypeName="databaseModel.Inventory">
-              <MappingFragment StoreEntitySet="Inventory">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Article" ColumnName="Article" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="CreditSalesBills">
             <EntityTypeMapping TypeName="databaseModel.CreditSalesBill">
               <MappingFragment StoreEntitySet="CreditSalesBills">
@@ -1053,6 +1043,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SalesBillArticles">
+            <EntityTypeMapping TypeName="databaseModel.SalesBillArticle">
+              <MappingFragment StoreEntitySet="SalesBillArticles">
+                <ScalarProperty Name="ArticlePrice" ColumnName="ArticlePrice" />
+                <ScalarProperty Name="SalesBillId" ColumnName="SalesBillId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="databaseModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SalesBills">
             <EntityTypeMapping TypeName="databaseModel.SalesBill">
               <MappingFragment StoreEntitySet="SalesBills">
@@ -1061,17 +1072,6 @@
                 <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="ClientId" ColumnName="ClientId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SalesBillArticles">
-            <EntityTypeMapping TypeName="databaseModel.SalesBillArticle">
-              <MappingFragment StoreEntitySet="SalesBillArticles">
-                <ScalarProperty Name="ArticlePrice" ColumnName="ArticlePrice" />
-                <ScalarProperty Name="SalesBillId" ColumnName="SalesBillId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

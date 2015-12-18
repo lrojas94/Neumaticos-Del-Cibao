@@ -11,9 +11,7 @@ namespace Neumaticos_del_Cibao.Database
 {
     using System;
     using System.Collections.Generic;
-    using System.Xml.Serialization;
-
-    [Serializable]
+    
     public partial class ShoppingBill
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -34,7 +32,6 @@ namespace Neumaticos_del_Cibao.Database
     
         public virtual Client Client { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [XmlIgnoreAttribute]
         public virtual ICollection<ShoppingBillsArticle> ShoppingBillsArticles { get; set; }
         public virtual CreditShoppingBill CreditShoppingBill { get; set; }
     }
