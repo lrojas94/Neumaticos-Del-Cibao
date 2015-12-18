@@ -102,6 +102,11 @@ namespace Neumaticos_del_Cibao.Apps.SalesOptions
         {
             searchFunction.Run();
         }
+
+        private void btnViewBill_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ShowSalesBill(selectedBill));
+        }
     }
     
 }

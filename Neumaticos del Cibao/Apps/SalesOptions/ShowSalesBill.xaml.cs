@@ -17,27 +17,28 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
+namespace Neumaticos_del_Cibao.Apps.SalesOptions
 {
     /// <summary>
     /// Interaction logic for ShowShoppingBill.xaml
     /// </summary>
-    public partial class ShowShoppingBill : Page
+    public partial class ShowSalesBill : Page
     {
         Database.databaseEntities database;
-        public ShowShoppingBill(Database.ShoppingBill shoppingBill)
+
+        public ShowSalesBill(Database.SalesBill salesBill)
         {
             InitializeComponent();
             InitializeComponent();
             database = new databaseEntities();
             reporter.Reset();
-            var ta = new ShoppingBillTableAdapter();
-            var source = ta.GetData().Where(row => row.BillId == shoppingBill.Id);
+            var ta = new SalesBillTableAdapter();
+            var source = ta.GetData().Where(row => row.BillId == salesBill.Id);
 
-            var shoppingDataSource = new ReportDataSource("ShoppingBillArticles", source);
-            reporter.LocalReport.DataSources.Add(shoppingDataSource);
-            reporter.Name = "Factura de Compra";
-            reporter.LocalReport.ReportEmbeddedResource = "Neumaticos_del_Cibao.Apps.Reports.ShoppingBillReport.rdlc";
+            var salesDataSource = new ReportDataSource("SalesBillArticles", source);
+            reporter.LocalReport.DataSources.Add(salesDataSource);
+            reporter.Name = "Factura de Venta";
+            reporter.LocalReport.ReportEmbeddedResource = "Neumaticos_del_Cibao.Apps.Reports.SalesBillReport.rdlc";
             reporter.RefreshReport();
         }
     }

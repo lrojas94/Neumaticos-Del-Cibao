@@ -158,6 +158,9 @@
     <Compile Include="Apps\SalesOptions\AddBasicSalesBill.xaml.cs">
       <DependentUpon>AddBasicSalesBill.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Apps\SalesOptions\ShowSalesBill.xaml.cs">
+      <DependentUpon>ShowSalesBill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Apps\ShoppingOptions\AddBasicShoppingBill.xaml.cs">
       <DependentUpon>AddBasicShoppingBill.xaml</DependentUpon>
     </Compile>
@@ -263,6 +266,10 @@
     <Page Include="Apps\SalesOptions\AddBasicSalesBill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apps\SalesOptions\ShowSalesBill.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Apps\ShoppingOptions\AddBasicShoppingBill.xaml">
       <SubType>Designer</SubType>
@@ -394,6 +401,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Apps\Reports\DailyReport.rdlc" />
+    <EmbeddedResource Include="Apps\Reports\SalesBillReport .rdlc" />
     <EmbeddedResource Include="Apps\Reports\ShoppingBillReport.rdlc" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
