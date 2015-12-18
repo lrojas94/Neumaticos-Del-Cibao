@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Neumaticos_del_Cibao.Apps.ShoppingOptions
+namespace Neumaticos_del_Cibao.Apps.SalesOptions
 {
     /// <summary>
     /// Interaction logic for ShowSalesBills.xaml

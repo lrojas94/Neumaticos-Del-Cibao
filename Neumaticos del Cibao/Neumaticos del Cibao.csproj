@@ -115,13 +115,13 @@
     <Compile Include="Apps\SalesOptions\SalesOptions.xaml.cs">
       <DependentUpon>SalesOptions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Apps\ShoppingOptions\AddBasicSalesBill.xaml.cs">
+    <Compile Include="Apps\SalesOptions\AddBasicSalesBill.xaml.cs">
       <DependentUpon>AddBasicSalesBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\AddBasicShoppingBill.xaml.cs">
       <DependentUpon>AddBasicShoppingBill.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Apps\ShoppingOptions\PaySalesCreditBill.xaml.cs">
+    <Compile Include="Apps\SalesOptions\PaySalesCreditBill.xaml.cs">
       <DependentUpon>PaySalesCreditBill.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\PayShoppingCreditBill.xaml.cs">
@@ -130,7 +130,7 @@
     <Compile Include="Apps\ShoppingOptions\ShoppingOptions.xaml.cs">
       <DependentUpon>ShoppingOptions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Apps\ShoppingOptions\ShowSalesBills.xaml.cs">
+    <Compile Include="Apps\SalesOptions\ShowSalesBills.xaml.cs">
       <DependentUpon>ShowSalesBills.xaml</DependentUpon>
     </Compile>
     <Compile Include="Apps\ShoppingOptions\ShowShoppingBills.xaml.cs">
@@ -212,7 +212,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Apps\ShoppingOptions\AddBasicSalesBill.xaml">
+    <Page Include="Apps\SalesOptions\AddBasicSalesBill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,7 +220,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Apps\ShoppingOptions\PaySalesCreditBill.xaml">
+    <Page Include="Apps\SalesOptions\PaySalesCreditBill.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,7 +232,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Apps\ShoppingOptions\ShowSalesBills.xaml">
+    <Page Include="Apps\SalesOptions\ShowSalesBills.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
