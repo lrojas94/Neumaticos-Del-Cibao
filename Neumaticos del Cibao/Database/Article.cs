@@ -11,7 +11,9 @@ namespace Neumaticos_del_Cibao.Database
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Xml.Serialization;
+
+    [Serializable]
     public partial class Article
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

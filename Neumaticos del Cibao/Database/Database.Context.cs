@@ -18,6 +18,7 @@ namespace Neumaticos_del_Cibao.Database
         public databaseEntities()
             : base("name=databaseEntities")
         {
+            this.Configuration.ProxyCreationEnabled = true;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

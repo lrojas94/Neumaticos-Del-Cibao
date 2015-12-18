@@ -11,7 +11,8 @@ namespace Neumaticos_del_Cibao.Database
 {
     using System;
     using System.Collections.Generic;
-    
+
+    [Serializable]
     public partial class ShoppingBillsArticle
     {
         public long ShoppingBillId { get; set; }
